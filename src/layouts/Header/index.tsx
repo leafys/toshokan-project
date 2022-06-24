@@ -1,4 +1,4 @@
-import { IObjectInterface } from 'components/NavBar/NavBar.props';
+import { IObjectInterface } from '../../components/NavBar/NavBar.props';
 import NavBar from '../../components/NavBar';
 
 const Index = () => {
@@ -10,7 +10,7 @@ const Index = () => {
 
   return (
     <header>
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center px-5 py-4">
         <a href="/">
           <img className="max-w-logo" src="/logo.png" alt="header-logo" />
         </a>

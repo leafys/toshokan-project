@@ -9,9 +9,6 @@ module.exports = {
       xl: '1440px',
       xxl: '1600px',
     },
-    maxWidth: {
-      logo: '180px',
-    },
     colors: {
       blue: '#1fb6ff',
       purple: '#bd00ff',
@@ -21,7 +18,7 @@ module.exports = {
       yellow: '#ffc82c',
       'gray-dark': '#273444',
       gray: '#8492a6',
-      'gray-light': '#d3dce6',
+      'gray-light': '#fcfcfc',
       dark: '#302d2d',
     },
     fontFamily: {
@@ -35,6 +32,12 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      maxWidth: {
+        logo: '180px',
+      },
+      width: {
+        90: '360px',
       },
     },
   },

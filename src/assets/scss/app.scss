@@ -1,4 +1,4 @@
-@import "./abstracts";
-@import "./modules/tailwind.css";
+@import '@styles/base/base';
 
-
+@import '@styles/abstracts';
+@import '@styles/modules/tailwind.css';
