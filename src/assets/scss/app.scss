@@ -1,4 +1,6 @@
-@import "./abstracts";
-@import "./modules/tailwind.css";
+@import "@styles/abstracts";
+@import "@styles/modules/tailwind.css";
 
-
+body {
+  background-color: #000;
+}
