@@ -9,7 +9,6 @@ module.exports = {
       xl: { max: '1230px' },
       xl2: { max: '1440px' },
       xxl: { max: '1600px' },
-      xxl2: { max: '2000px' },
     },
     colors: {
       blue: '#1fb6ff',
@@ -24,25 +23,17 @@ module.exports = {
       dark: '#302d2d',
       black: '#000',
     },
+    placeholderColor: {
+      'primary-color': '#fcfcfc',
+    },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      Roboto: ['Roboto', 'sans-serif'],
     },
     extend: {
-      spacing: {
-        128: '32rem',
-        144: '36rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
-      },
-      maxWidth: {
-        logo: '180px',
-      },
       width: {
-        90: '360px',
-        60: '60px',
-        300: '300px',
+        'main-logo': '180px',
+        'mobile-tablet-logo': '70px',
+        'retractable-input': '360px',
         btn: '120px',
       },
       padding: {

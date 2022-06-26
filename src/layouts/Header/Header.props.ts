@@ -1,6 +1,6 @@
 import { IRouteObjectItems } from '../../App.props';
 
-export interface INavBarProps {
+export interface IHeader {
+  className: string;
   routeItems: IRouteObjectItems[];
-  className?: string;
 }

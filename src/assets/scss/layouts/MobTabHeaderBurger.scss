@@ -1,6 +1,6 @@
-// .hidden {
-//   visibility: hidden;
-// }
+.hidden_menu {
+  visibility: hidden;
+}
 
 .burger-button {
   position: relative;
@@ -36,7 +36,11 @@
 
 .burger-bar--2 {
   transform-origin: 100% 50%;
-  transform: scaleX(0.8);
+  transform: scaleX(1);
+}
+
+.burger-bar--3 {
+  transform: translateY(6px);
 }
 
 .burger-button:hover .burger-bar--2 {
@@ -45,10 +49,6 @@
 
 .no-touchevents .burger-bar--2:hover {
   transform: scaleX(1);
-}
-
-.burger-bar--3 {
-  transform: translateY(6px);
 }
 
 #burger.active .burger-button {

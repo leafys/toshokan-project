@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { INavBarProps, IObjectInterface } from './NavBar.props';
+import { INavBarProps } from './NavBar.props';
 import styles from './NavBar.module.scss';
 import MyButton from '../UI/Button/MyButton';
 import cn from 'classnames';
+import MyInput from '../UI/MyInput/MyInput';
+import { IRouteObjectItems } from '../../App.props';
 
-const NavBar: React.FC<INavBarProps> = ({ linkItems, ...props }) => {
+const NavBar: React.FC<INavBarProps> = ({ routeItems, ...props }) => {
+  const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
-  const [isActive, setIsActive] = React.useState(false);
 
   return (
     <nav {...props}>
-      <ul className="flex items-center">
-        {linkItems.map((item: IObjectInterface, index) => (
+      <ul className="flex items-center xl:flex-col">
+        {routeItems.map((item: IRouteObjectItems, index) => (
           <li className={styles.item} key={index}>
             <a href={item.link}>{item.title}</a>
           </li>
@@ -23,10 +25,10 @@ const NavBar: React.FC<INavBarProps> = ({ linkItems, ...props }) => {
           className={styles.searchIcon}
         ></div>
 
-        <input
+        <MyInput
           className={cn([styles.input, isActive && styles.retractable_input])}
-          type="search"
           placeholder={cn([isActive && 'Search...'])}
+          type="search"
         />
       </div>
 
