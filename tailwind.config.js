@@ -3,11 +3,13 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
-      xxl: '1600px',
+      sm: { max: '480px' },
+      md: { max: '768px' },
+      lg: { max: '976px' },
+      xl: { max: '1230px' },
+      xl2: { max: '1440px' },
+      xxl: { max: '1600px' },
+      xxl2: { max: '2000px' },
     },
     colors: {
       blue: '#1fb6ff',
@@ -20,6 +22,7 @@ module.exports = {
       gray: '#8492a6',
       'gray-light': '#fcfcfc',
       dark: '#302d2d',
+      black: '#000',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -38,6 +41,13 @@ module.exports = {
       },
       width: {
         90: '360px',
+        60: '60px',
+        300: '300px',
+        btn: '120px',
+      },
+      padding: {
+        10: '10px',
+        30: '30px',
       },
     },
   },

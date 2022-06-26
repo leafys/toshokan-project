@@ -1,19 +1,36 @@
-.nav_item {
-  @apply mr-9 text-xl transition ease-in-out duration-300 text-gray-light;
+.item {
+  @apply mr-9 text-xl duration-300 text-gray-light;
 
   &:hover {
     @apply text-purple;
   }
 }
 
+.input_block {
+  @apply h-10 relative flex items-center rounded-md;
+}
+
+.input {
+  @apply transition-all duration-500 w-0 pl-12 h-full rounded-md outline-none bg-black text-black placeholder-dark;
+}
+
+.retractable_input {
+  @apply w-90 bg-dark placeholder-gray-light text-gray-light;
+}
+
+.btn {
+  @apply text-gray-light ml-5 border-2 border-purple px-30 py-10 rounded-md w-btn;
+}
+
 .searchIcon {
-  position: relative;
+  position: absolute;
   top: 0;
-  left: 0;
-  width: 60px;
+  left: 0px;
+  width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
+  border-radius: 6px;
   align-items: center;
   z-index: 1000;
   cursor: pointer;

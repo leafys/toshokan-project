@@ -1,36 +1,40 @@
-import React from 'react';
+import * as React from 'react';
 import { INavBarProps, IObjectInterface } from './NavBar.props';
 import styles from './NavBar.module.scss';
+import MyButton from '../UI/Button/MyButton';
+import cn from 'classnames';
 
-const NavBar: React.FC<INavBarProps> = ({ linkItems }) => {
+const NavBar: React.FC<INavBarProps> = ({ linkItems, ...props }) => {
+  const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
+  const [isActive, setIsActive] = React.useState(false);
+
   return (
-    <nav className="flex items-center">
+    <nav {...props}>
       <ul className="flex items-center">
         {linkItems.map((item: IObjectInterface, index) => (
-          <li className={styles.nav_item} key={index}>
+          <li className={styles.item} key={index}>
             <a href={item.link}>{item.title}</a>
           </li>
         ))}
       </ul>
+      <div className={styles.input_block}>
+        <div
+          onClick={() => setIsActive(!isActive)}
+          className={styles.searchIcon}
+        ></div>
 
-      <div className="h-10 w-90 relative flex items-center bg-dark rounded-md">
-        <div className={styles.searchIcon}></div>
-
-        <div className="w-full h-full">
-          <input
-            className="h-full rounded-md outline-none bg-dark w-full text-gray-light"
-            type="text"
-            placeholder="search..."
-          />
-        </div>
+        <input
+          className={cn([styles.input, isActive && styles.retractable_input])}
+          type="search"
+          placeholder={cn([isActive && 'Search...'])}
+        />
       </div>
 
-      <button className="text-gray-light ml-5 border-2 border-purple px-7  py-3 rounded-md">
-        Sign up
-      </button>
-      <button className="text-gray-light ml-5 border-2 border-purple px-7  py-3 rounded-md">
-        Sign in
-      </button>
+      {buttonName.map((item, index) => (
+        <MyButton className={styles.btn} key={index}>
+          {item.title}
+        </MyButton>
+      ))}
     </nav>
   );
 };
