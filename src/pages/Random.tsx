@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const Random = () => {
-  return (
-    <div>Random</div>
-  )
-}
+const Random = (): JSX.Element => {
+  return <div>Random</div>;
+};
 
-export default Random
+export default Random;

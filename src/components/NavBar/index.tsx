@@ -2,7 +2,7 @@ import React from 'react';
 import { INavBarProps } from './NavBar.props';
 import styles from './NavBar.module.scss';
 import cn from 'classnames';
-import { IRouteObjectItems } from '@router/AppRoutes.props';
+import { IRouteObjectItem } from '@router/AppRoutes.props';
 import MyButton from '@UI/Buttons/MainButton';
 import MyInput from '@UI/Inputs/MainInput';
 import { NavLink } from 'react-router-dom';
@@ -14,9 +14,9 @@ const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
   return (
     <nav {...props}>
       <ul className="flex items-center xl:flex-col">
-        {routeItems.map((item: IRouteObjectItems, index) => (
+        {routeItems.map((item: IRouteObjectItem, index) => (
           <li className={styles.item} key={index}>
-            <NavLink to={item.path}>{item.path}</NavLink>
+            <NavLink to={item.path}>{item.title}</NavLink>
           </li>
         ))}
       </ul>

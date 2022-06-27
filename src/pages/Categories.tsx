@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Categories = () => {
+const Categories = (): JSX.Element => {
   return (
     <div>Categories</div>
   )

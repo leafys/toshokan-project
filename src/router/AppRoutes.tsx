@@ -1,21 +1,17 @@
 import React from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Layout from "@layouts/Layout";
-import { publicRoutes } from ".";
-import { IRouteObjectItems } from "@router/AppRoutes.props";
+import Layout from "@layouts/LayoutWithHeaderAndFooter";
+import { IRouteObjectItem } from "@router/AppRoutes.props";
+import { publicRoutes } from "@router/routes";
 
-const AppRoutes = () => {
+const AppRoutes = (): JSX.Element => {
   let location = useLocation();
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={<Navigate to="home" state={{ from: location }} replace />}
-        />
         {publicRoutes.map(
-          (item: IRouteObjectItems): JSX.Element => (
+          (item: IRouteObjectItem): JSX.Element => (
             <Route
               key={item.path}
               path={item.path}
@@ -26,9 +22,7 @@ const AppRoutes = () => {
       </Route>
       <Route
         path="*"
-        element={
-          <Navigate to="home" state={{ from: location }} replace />
-        }
+        element={<Navigate to="/" state={{ from: location }} replace />}
       />
     </Routes>
   );
