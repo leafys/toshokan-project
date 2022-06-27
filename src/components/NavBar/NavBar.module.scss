@@ -1,5 +1,5 @@
 .item {
-  @apply mr-9 text-xl duration-300;
+  @apply mr-9 text-xl duration-300 first-letter:uppercase;
 
   @apply xl:mr-0 xl:mb-3 xl:text-xl;
 
@@ -40,7 +40,7 @@
   cursor: pointer;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 15px;
     height: 15px;
@@ -51,7 +51,7 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 3px;
     height: 12px;

@@ -1,4 +1,4 @@
-import { IRouteObjectItems } from 'App.props';
+import { IRouteObjectItems } from '@router/AppRoutes.props';
 
 export interface IMobTabHeader {
   className: string;

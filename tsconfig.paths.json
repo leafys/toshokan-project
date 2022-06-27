@@ -5,7 +5,8 @@
       "@styles/*": ["./assets/scss/*"],
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
-      "@UI/*": ["./components/UI/*"]
+      "@UI/*": ["./components/UI/*"],
+      "@router/*": ["./router/*"]
     }
   }
 }

@@ -1,4 +1,4 @@
 export interface IRouteObjectItems {
-  title: string;
-  link: string;
+  path: string;
+  element: React.FC;
 }
