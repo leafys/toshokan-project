@@ -1,11 +1,24 @@
-/* ----------------------------------------------------------------
-	Variables
------------------------------------------------------------------*/
-
 :root {
-  // Font
+  --primary-font: 'Roboto', sans-serif;
 
-  // Layout (cards)
+  --fz-X-small: 12px;
+  --fz-small: 13px;
+  --fz-medium: 16px;
+  --fz-large: 18px;
+  --fz-X-large: 20px;
+  --fz-XX-large: 22px;
+  --fz-XXX-large: 24px;
 
-  // Border Radius
+  --white: #fff;
+  --black: #000;
+  --gray-light: #fcfcfc;
+  --purple: #bd00ff;
+  --gray: #1f1f1f;
+  --brown-dark: #302d2d;
+
+  --black-opacity-80: rgba(0, 0, 0, 0.8);
+
+  --gray-opacity: rgba(0, 0, 0, 0.5);
+
+  --light-gray-opacity: rgba(48, 45, 45, 0.17);
 }

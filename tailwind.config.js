@@ -1,37 +1,46 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      sm: { max: '480px' },
+      md: { max: '768px' },
+      lg: { max: '976px' },
+      xl: { max: '1230px' },
+      xl2: { max: '1440px' },
+      xxl: { max: '1600px' },
     },
     colors: {
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'yellow': '#ffc82c',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      white: 'var(--white)',
+      purple: 'var(--purple)',
+      'brown-dark': 'var(--brown-dark)',
+      gray: 'var(--gray)',
+      'gray-light': 'var(--gray-light)',
+      dark: 'var(--brown-dark)',
+      black: 'var(--black)',
+      'black-opacity-80': 'var(--black-opacity-80)',
+      'gray-opacity': 'var(--gray-opacity)',
+      'light-gray-opacity': 'var(--light-gray-opacity)',
+    },
+    placeholderColor: {
+      'primary-color': '#fcfcfc',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      'primary-font': 'var(--primary-font)',
     },
     extend: {
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
+      width: {
+        'main-logo': '180px',
+        'mobile-tablet-logo': '70px',
+        'retractable-input': '360px',
+        btn: '120px',
       },
-      borderRadius: {
-        '4xl': '2rem',
-      }
-    }
+      padding: {
+        10: '10px',
+        30: '30px',
+      },
+    },
   },
   plugins: [],
-}
+};

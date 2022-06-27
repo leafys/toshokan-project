@@ -1,6 +1,5 @@
-@import "@styles/abstracts";
-@import "@styles/modules/tailwind.css";
+@import '@styles/base/base';
 
-body {
-  background-color: #000;
-}
+@import '@styles/abstracts';
+@import '@styles/modules/tailwind.css';
+@import '@styles/layouts';

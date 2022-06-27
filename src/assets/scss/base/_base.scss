@@ -1,2 +1,18 @@
-@import "@styles/base/fonts.scss";
-@import "@styles/base/typography.scss";
+@import '@styles/base/fonts.scss';
+@import '@styles/base/typography.scss';
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  @apply relative w-full h-full m-0 p-0 font-primary-font bg-black text-gray-light overflow-hidden;
+}
