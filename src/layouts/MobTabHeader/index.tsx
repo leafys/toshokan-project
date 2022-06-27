@@ -1,14 +1,14 @@
 import React from 'react';
-import NavBar from '../../components/NavBar';
-import MyInput from '../../components/UI/MyInput/MyInput';
+import NavBar from '@components/NavBar';
+import MyInput from '@UI/Inputs/MainInput';
 import Burger from './Burger';
+import SideBar from './SideBar';
 import { IMobTabHeader } from './MobTabHeader.props';
-import SideBar from './SideBar/Index';
 
-const MobTabHeader: React.FC<IMobTabHeader> = ({
+const MobTabHeader = ({
   routeItems,
   ...className
-}) => {
+}: IMobTabHeader): JSX.Element => {
   const [isNavOpen, setIsNavOpen] = React.useState<boolean>(false);
 
   const toggleNav = () => {
@@ -22,7 +22,7 @@ const MobTabHeader: React.FC<IMobTabHeader> = ({
           <img
             className="w-mobile-tablet-logo"
             src="images/mob-logo.png"
-            alt="header-logo"
+            alt="logo"
           />
         </a>
 

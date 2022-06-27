@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface ISideBar {
-  isNavOpen: Boolean;
-  children: JSX.Element;
+  isNavOpen: boolean;
+  children: ReactNode;
   toggleNav: () => void;
 }

@@ -2,18 +2,17 @@ import React from 'react';
 import cn from 'classnames';
 import { IBurger } from './Burger.props';
 
-const Burger: React.FC<IBurger> = ({ isNavOpen, toggleNav }) => {
+const Burger = ({ isNavOpen, toggleNav }: IBurger): JSX.Element => {
   return (
     <div
       onClick={toggleNav}
-      id="burger"
-      className={cn([isNavOpen && 'active'])}
+      className={cn(['burger', isNavOpen && 'burger__active'])}
     >
-      <button type="button" className="burger-button" title="Menu">
-        <span className="hidden_menu">Toggle menu</span>
-        <span className="burger-bar burger-bar--1"></span>
-        <span className="burger-bar burger-bar--2"></span>
-        <span className="burger-bar burger-bar--3"></span>
+      <button type="button" className="burger__button" title="Menu">
+        <span className="burger__hidden_menu">Toggle menu</span>
+        <span className="burger__bar burger__bar--1"></span>
+        <span className="burger__bar burger__bar--2"></span>
+        <span className="burger__bar burger__bar--3"></span>
       </button>
     </div>
   );

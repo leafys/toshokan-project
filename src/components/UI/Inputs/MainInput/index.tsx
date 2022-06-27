@@ -1,9 +1,9 @@
 import React from 'react';
-import { IInput } from './MyInput.props';
-import styles from './MyInput.module.scss';
+import { IInput } from './MainInput.props';
+import styles from './MainInput.module.scss';
 import cn from 'classnames';
 
-const MyInput: React.FC<IInput> = ({ className, ...props }) => {
+const MyInput = ({ className, ...props }: IInput): JSX.Element => {
   return <input className={cn([styles.root_input, className])} {...props} />;
 };
 

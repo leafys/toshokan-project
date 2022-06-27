@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
@@ -11,23 +12,22 @@ module.exports = {
       xxl: { max: '1600px' },
     },
     colors: {
-      blue: '#1fb6ff',
-      purple: '#bd00ff',
-      pink: '#ff49db',
-      orange: '#ff7849',
-      green: '#13ce66',
-      yellow: '#ffc82c',
-      'gray-dark': '#273444',
-      gray: '#8492a6',
-      'gray-light': '#fcfcfc',
-      dark: '#302d2d',
-      black: '#000',
+      white: 'var(--white)',
+      purple: 'var(--purple)',
+      'brown-dark': 'var(--brown-dark)',
+      gray: 'var(--gray)',
+      'gray-light': 'var(--gray-light)',
+      dark: 'var(--brown-dark)',
+      black: 'var(--black)',
+      'black-opacity-80': 'var(--black-opacity-80)',
+      'gray-opacity': 'var(--gray-opacity)',
+      'light-gray-opacity': 'var(--light-gray-opacity)',
     },
     placeholderColor: {
       'primary-color': '#fcfcfc',
     },
     fontFamily: {
-      Roboto: ['Roboto', 'sans-serif'],
+      'primary-font': 'var(--primary-font)',
     },
     extend: {
       width: {

@@ -1,12 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import { INavBarProps } from './NavBar.props';
 import styles from './NavBar.module.scss';
-import MyButton from '../UI/Button/MyButton';
 import cn from 'classnames';
-import MyInput from '../UI/MyInput/MyInput';
-import { IRouteObjectItems } from '../../App.props';
+import { IRouteObjectItems } from 'App.props';
+import MyButton from '@UI/Buttons/MainButton';
+import MyInput from '@UI/Inputs/MainInput';
 
-const NavBar: React.FC<INavBarProps> = ({ routeItems, ...props }) => {
+const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
 
@@ -29,6 +29,7 @@ const NavBar: React.FC<INavBarProps> = ({ routeItems, ...props }) => {
           className={cn([styles.input, isActive && styles.retractable_input])}
           placeholder={cn([isActive && 'Search...'])}
           type="search"
+          onChange={(e) => console.log(e.target.value)}
         />
       </div>
 

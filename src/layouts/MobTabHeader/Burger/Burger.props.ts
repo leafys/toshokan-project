@@ -1,4 +1,4 @@
 export interface IBurger {
-  isNavOpen: Boolean;
+  isNavOpen: boolean;
   toggleNav: () => void;
 }

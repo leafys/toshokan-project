@@ -1,5 +1,5 @@
+import Header from '@layouts/Header';
 import { IRouteObjectItems } from './App.props';
-import Header from './layouts/Header';
 import MobTabHeader from './layouts/MobTabHeader';
 
 function App() {
