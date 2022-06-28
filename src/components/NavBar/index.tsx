@@ -30,7 +30,6 @@ const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
           className={cn([styles.input, isActive && styles.retractable_input])}
           placeholder={cn([isActive && 'Search...'])}
           type="search"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
 
