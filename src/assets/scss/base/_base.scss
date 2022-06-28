@@ -16,3 +16,7 @@ html,
 body {
   @apply relative w-full h-full m-0 p-0 font-primary-font bg-black text-gray-light overflow-hidden;
 }
+
+.active{
+  @apply text-purple;
+}
