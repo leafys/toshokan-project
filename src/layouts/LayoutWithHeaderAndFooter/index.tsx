@@ -1,12 +1,11 @@
-import DescHeader from '@layouts/Header/DescHeader';
-import MobTabHeader from '@layouts/Header/MobTabHeader';
+import Header from '@layouts/Header';
+
 import { Outlet } from 'react-router-dom';
 
 const index = (): JSX.Element => {
   return (
     <>
-      <DescHeader className="xl:hidden xl:flex-col" />
-      <MobTabHeader className="hidden xl:block" />
+      <Header />
 
       <main>
         <Outlet />

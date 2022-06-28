@@ -4,9 +4,12 @@ import MyInput from '@UI/Inputs/MainInput';
 import Burger from './Burger';
 import SideBar from './SideBar';
 import { IMobTabHeader } from './MobTabHeader.props';
+import { useRecoilState } from 'recoil';
+import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 
 const MobTabHeader = ({ ...className }: IMobTabHeader): JSX.Element => {
   const [isNavOpen, setIsNavOpen] = React.useState<boolean>(false);
+  const [searchValue, setSearchValue] = useRecoilState(headerSearchValue);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -24,6 +27,8 @@ const MobTabHeader = ({ ...className }: IMobTabHeader): JSX.Element => {
         </a>
 
         <MyInput
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
           placeholder="Search..."
           type="search"

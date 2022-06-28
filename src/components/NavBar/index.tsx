@@ -6,10 +6,14 @@ import { IRouteObjectItem } from '@router/AppRoutes.props';
 import MyButton from '@UI/Buttons/MainButton';
 import MyInput from '@UI/Inputs/MainInput';
 import { NavLink } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 
 const NavBar = ({ ...props }: INavBarProps): JSX.Element => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
+  const [searchValue, setSearchValue] = useRecoilState(headerSearchValue);
+
   const routesTitleItems = [
     { path: '/', title: 'Home' },
     { path: 'category', title: 'Category' },
@@ -32,6 +36,8 @@ const NavBar = ({ ...props }: INavBarProps): JSX.Element => {
         ></div>
 
         <MyInput
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           className={cn([styles.input, isActive && styles.retractable_input])}
           placeholder={cn([isActive && 'Search...'])}
           type="search"
