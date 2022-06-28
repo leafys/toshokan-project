@@ -6,7 +6,10 @@
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
       "@UI/*": ["./components/UI/*"],
-      "@router/*": ["./router/*"]
+      "@router/*": ["./router/*"],
+      "@pages/*": ["./pages/*"],
+      "@atoms/*": ["./store/atoms/*"],
+      "@selectros/*": ["./store/selectros/*"]
     }
   }
 }

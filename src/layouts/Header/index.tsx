@@ -1,17 +1,13 @@
-import NavBar from '@components/NavBar';
-import { IHeader } from './Header.props';
+import React from 'react';
+import DescHeader from '@layouts/Header/DescHeader';
+import MobTabHeader from '@layouts/Header/MobTabHeader';
 
-const Header = ({ routeItems, ...className }: IHeader): JSX.Element => {
+const Header = () => {
   return (
-    <header {...className}>
-      <div className="container mx-auto flex justify-between items-center px-5 py-4">
-        <a href="/">
-          <img className="w-main-logo" src="images/logo.png" alt="logo" />
-        </a>
-
-        <NavBar className="flex items-center" routeItems={routeItems} />
-      </div>
-    </header>
+    <>
+      <DescHeader className="xl:hidden xl:flex-col" />
+      <MobTabHeader className="hidden xl:block" />
+    </>
   );
 };
 

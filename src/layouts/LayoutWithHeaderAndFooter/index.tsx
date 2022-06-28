@@ -1,14 +1,12 @@
-import Header from "@layouts/Header";
-import MobTabHeader from "@layouts/MobTabHeader";
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { publicRoutes } from "../../router/routes";
+import Header from '@layouts/Header';
+
+import { Outlet } from 'react-router-dom';
 
 const index = (): JSX.Element => {
   return (
     <>
-      <Header routeItems={publicRoutes} className="xl:hidden xl:flex-col" />
-      <MobTabHeader routeItems={publicRoutes} className="hidden xl:block" />
+      <Header />
+
       <main>
         <Outlet />
       </main>

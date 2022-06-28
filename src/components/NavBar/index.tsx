@@ -6,17 +6,31 @@ import { IRouteObjectItem } from '@router/AppRoutes.props';
 import MyButton from '@UI/Buttons/MainButton';
 import MyInput from '@UI/Inputs/MainInput';
 import { NavLink } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 
-const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
+const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
+  const [searchValue, setSearchValue] = useRecoilState(headerSearchValue);
+
+  const routesTitleItems = [
+    { path: '/', title: 'Home' },
+    { path: 'category', title: 'Category' },
+    { path: 'random', title: 'Random' },
+  ];
 
   return (
     <nav {...props}>
       <ul className="flex items-center xl:flex-col">
-        {routeItems.map((item: IRouteObjectItem, index) => (
+        {routesTitleItems.map((item: IRouteObjectItem, index) => (
           <li className={styles.item} key={index}>
-            <NavLink to={item.path}>{item.title}</NavLink>
+            <NavLink
+              onClick={() => setIsNavOpen && setIsNavOpen(false)}
+              to={item.path}
+            >
+              {item.title}
+            </NavLink>
           </li>
         ))}
       </ul>
@@ -27,10 +41,11 @@ const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
         ></div>
 
         <MyInput
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           className={cn([styles.input, isActive && styles.retractable_input])}
           placeholder={cn([isActive && 'Search...'])}
           type="search"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
 

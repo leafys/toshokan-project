@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { ISideBar } from './SideBar.props';
 import styles from './SideBar.module.scss';

@@ -1,5 +1,5 @@
 export interface IRouteObjectItem {
-  title? : string
+  title?: string;
   path: string;
-  element: React.FC;
+  element?: string;
 }

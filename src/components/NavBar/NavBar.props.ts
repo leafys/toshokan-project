@@ -1,6 +1,6 @@
-import { IRouteObjectItem } from '@router/AppRoutes.props';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface INavBarProps {
-  routeItems: IRouteObjectItem[];
   className?: string;
+  setIsNavOpen?: Dispatch<SetStateAction<boolean>>;
 }
