@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 
-const NavBar = ({ ...props }: INavBarProps): JSX.Element => {
+const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
   const [searchValue, setSearchValue] = useRecoilState(headerSearchValue);
@@ -25,7 +25,12 @@ const NavBar = ({ ...props }: INavBarProps): JSX.Element => {
       <ul className="flex items-center xl:flex-col">
         {routesTitleItems.map((item: IRouteObjectItem, index) => (
           <li className={styles.item} key={index}>
-            <NavLink to={item.path}>{item.title}</NavLink>
+            <NavLink
+              onClick={() => setIsNavOpen && setIsNavOpen(false)}
+              to={item.path}
+            >
+              {item.title}
+            </NavLink>
           </li>
         ))}
       </ul>
