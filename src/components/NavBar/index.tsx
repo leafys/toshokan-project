@@ -7,14 +7,19 @@ import MyButton from '@UI/Buttons/MainButton';
 import MyInput from '@UI/Inputs/MainInput';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = ({ routeItems, ...props }: INavBarProps): JSX.Element => {
+const NavBar = ({ ...props }: INavBarProps): JSX.Element => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const buttonName = [{ title: 'Sign up' }, { title: 'Sign in' }];
+  const routesTitleItems = [
+    { path: '/', title: 'Home' },
+    { path: 'category', title: 'Category' },
+    { path: 'random', title: 'Random' },
+  ];
 
   return (
     <nav {...props}>
       <ul className="flex items-center xl:flex-col">
-        {routeItems.map((item: IRouteObjectItem, index) => (
+        {routesTitleItems.map((item: IRouteObjectItem, index) => (
           <li className={styles.item} key={index}>
             <NavLink to={item.path}>{item.title}</NavLink>
           </li>

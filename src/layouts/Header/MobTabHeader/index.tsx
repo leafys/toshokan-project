@@ -5,10 +5,7 @@ import Burger from './Burger';
 import SideBar from './SideBar';
 import { IMobTabHeader } from './MobTabHeader.props';
 
-const MobTabHeader = ({
-  routeItems,
-  ...className
-}: IMobTabHeader): JSX.Element => {
+const MobTabHeader = ({ ...className }: IMobTabHeader): JSX.Element => {
   const [isNavOpen, setIsNavOpen] = React.useState<boolean>(false);
 
   const toggleNav = () => {
@@ -33,10 +30,7 @@ const MobTabHeader = ({
         />
 
         <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-          <NavBar
-            className="xl:flex xl:flex-col xl:items-center"
-            routeItems={routeItems}
-          />
+          <NavBar className="xl:flex xl:flex-col xl:items-center" />
         </SideBar>
 
         <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
