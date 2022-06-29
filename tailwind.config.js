@@ -4,12 +4,11 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     screens: {
-      sm: { max: '480px' },
-      md: { max: '768px' },
-      lg: { max: '976px' },
-      xl: { max: '1230px' },
-      xl2: { max: '1440px' },
-      xxl: { max: '1600px' },
+      sm: { max: "580px"},
+      md: { max: "768px" },
+      lg: { max: "976px" },
+      xl: { max: "1230px" },
+      xxl: { max: "1600px" },
     },
     colors: {
       white: 'var(--white)',
