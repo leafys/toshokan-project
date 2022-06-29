@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import styles from "./Footer.module.scss";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import styles from './Footer.module.scss';
 import {
   IRoutesTitleItem,
   ISocialLink,
   routesTitleItems,
   socialLinks,
-} from "@layouts/routesTitleItems";
+} from '@layouts/routesTitleItems';
 
 const Footer = () => {
   return (
@@ -48,7 +48,7 @@ const Footer = () => {
                   className="flex gap-2  sm:text-base;"
                   key={index}
                 >
-                  <div className={styles["social__img"]}>{item.icon}</div>
+                  <div className={styles['social__img']}>{item.icon}</div>
                   {item.title}
                 </Link>
               ))}

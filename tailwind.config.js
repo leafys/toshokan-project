@@ -4,11 +4,11 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     screens: {
-      sm: { max: "580px"},
-      md: { max: "768px" },
-      lg: { max: "976px" },
-      xl: { max: "1230px" },
-      xxl: { max: "1600px" },
+      sm: { max: '580px' },
+      md: { max: '768px' },
+      lg: { max: '976px' },
+      xl: { max: '1230px' },
+      xxl: { max: '1600px' },
     },
     colors: {
       white: 'var(--white)',
@@ -27,6 +27,12 @@ module.exports = {
     },
     fontFamily: {
       'primary-font': 'var(--primary-font)',
+    },
+    fontSize: {
+      sm: ['12px', '15px'],
+      base: ['16px', '24px'],
+      lg: ['20px', '28px'],
+      xl: ['24px', '32px'],
     },
     extend: {
       width: {
