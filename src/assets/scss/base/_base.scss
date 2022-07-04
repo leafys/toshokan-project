@@ -14,7 +14,7 @@
 
 html,
 body {
-  @apply relative w-full h-full m-0 p-0 font-primary-font bg-black text-gray-light overflow-hidden;
+  @apply relative w-full h-full m-0 p-0 font-primary-font bg-black text-gray-light;
 }
 
 input[type='search']::-webkit-search-decoration,
@@ -26,4 +26,10 @@ input[type='search']::-webkit-search-results-decoration {
 
 .active {
   @apply text-purple;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

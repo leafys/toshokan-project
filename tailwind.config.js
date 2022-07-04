@@ -4,11 +4,11 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     screens: {
-      sm: { max: "580px"},
-      md: { max: "768px" },
-      lg: { max: "976px" },
-      xl: { max: "1230px" },
-      xxl: { max: "1600px" },
+      sm: { max: '580px' },
+      md: { max: '768px' },
+      lg: { max: '976px' },
+      xl: { max: '1230px' },
+      xxl: { max: '1600px' },
     },
     colors: {
       white: 'var(--white)',
@@ -28,12 +28,27 @@ module.exports = {
     fontFamily: {
       'primary-font': 'var(--primary-font)',
     },
+    fontSize: {
+      sm: ['12px', '15px'],
+      base: ['16px', '24px'],
+      lg: ['20px', '28px'],
+      xl: ['24px', '32px'],
+    },
     extend: {
       width: {
         'main-logo': '180px',
         'mobile-tablet-logo': '70px',
         'retractable-input': '360px',
         btn: '120px',
+      },
+      animation: {
+        appearance: 'emersion 1.2s forwards',
+      },
+      keyframes: {
+        emersion: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
       },
       padding: {
         10: '10px',

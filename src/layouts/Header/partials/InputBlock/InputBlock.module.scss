@@ -1,0 +1,97 @@
+.input_block {
+  @apply h-10 relative flex items-center rounded-md xl:hidden;
+}
+
+.input {
+  @apply transition-all duration-500 w-0 pl-12 h-full rounded-md outline-none bg-black;
+}
+
+.retractable_input {
+  @apply w-retractable-input bg-dark;
+}
+
+.btn {
+  @apply ml-5 px-30 py-10 rounded-md w-btn;
+
+  @apply xl:ml-0 xl:px-4 xl:py-2 xl:my-2;
+}
+
+.select_btn_block {
+  @apply animate-appearance absolute -bottom-9 flex transition-all duration-500;
+}
+
+.select_btn {
+  @apply px-4 py-1 mr-3 text-sm border-gray rounded-md;
+
+  @apply hover:border-purple transition-all duration-300;
+}
+
+.active_btn {
+  @apply border-purple;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    transform: translate(-4px, -4px);
+    cursor: pointer;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 12px;
+    background: #fff;
+    transform: translate(6px, 6px) rotate(315deg);
+  }
+}
+
+.clearInput {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @apply animate-appearance;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 15px;
+    background: #999;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 15px;
+    background: #999;
+    transform: rotate(-45deg);
+  }
+}

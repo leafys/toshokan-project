@@ -10,7 +10,9 @@
       "@pages/*": ["./pages/*"],
       "@atoms/*": ["./store/atoms/*"],
       "@selectors/*": ["./store/selectors/*"],
-      "@plugins": ["./plugins"]
+      "@plugins": ["./plugins"],
+      "@plugins/*": ["./plugins/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   }
 }

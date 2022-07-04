@@ -16,7 +16,7 @@ const SideBar = ({ isNavOpen, children, toggleNav }: ISideBar): JSX.Element => {
         style={{ transform: transform }}
         className={styles.sidebar__panel}
       >
-        {isNavOpen && <div className="sidebar-panel">{children}</div>}
+        {isNavOpen && <div className={styles.sidebar__panel}>{children}</div>}
       </animated.div>
     </div>
   );
