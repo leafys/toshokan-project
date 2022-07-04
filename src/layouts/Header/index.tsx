@@ -28,17 +28,20 @@ const Header = (): JSX.Element => {
     setIsNavOpen(!isNavOpen);
   };
 
-  const toggleSelectCategory = (btn: any, index: any) => {
+  const toggleSelectCategory = (btn: { text: string }, index: number) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
   };
 
   const pushQuery = () => {
     if (!searchValue || searchValue.length < 3) return;
+
     navigate({
       pathname: '/search',
+
       search: `?${createSearchParams(searchParams)}`,
     });
+
     searchFunc();
   };
 

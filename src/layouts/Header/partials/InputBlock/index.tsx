@@ -38,28 +38,28 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
         placeholder={cn([isActive && 'Search...'])}
         type="search"
       />
-      {isActive && (
-        <span
-          onClick={() => setValueInput('')}
-          className={styles.clearInput}
-        ></span>
-      )}
 
       {isActive && (
-        <div className={styles.select_btn_block}>
-          {selectBtns.map((btn, index) => (
-            <MyButton
-              key={index}
-              className={cn(
-                { [styles.select_btn]: true },
-                { [styles.active_btn]: activeBtnIndex === index }
-              )}
-              onClick={() => toggleSelectCategory(btn, index)}
-            >
-              {btn.text}
-            </MyButton>
-          ))}
-        </div>
+        <>
+          <span
+            onClick={() => setValueInput('')}
+            className={styles.clearInput}
+          ></span>
+          <div className={styles.select_btn_block}>
+            {selectBtns.map((btn, index) => (
+              <MyButton
+                key={index}
+                className={cn(
+                  { [styles.select_btn]: true },
+                  { [styles.active_btn]: activeBtnIndex === index }
+                )}
+                onClick={() => toggleSelectCategory(btn, index)}
+              >
+                {btn.text}
+              </MyButton>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

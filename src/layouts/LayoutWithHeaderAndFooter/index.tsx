@@ -8,7 +8,7 @@ const index = (): JSX.Element => {
     <>
       <Header />
 
-      <main className="container">
+      <main>
         <Outlet />
       </main>
 

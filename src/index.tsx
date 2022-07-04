@@ -4,15 +4,8 @@ import '@styles/app.scss';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from '@plugins/reactQuery';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
