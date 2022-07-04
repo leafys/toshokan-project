@@ -17,7 +17,7 @@
 }
 
 .select_btn_block {
-  @apply absolute -bottom-9 flex transition-all duration-500;
+  @apply animate-appearance absolute -bottom-9 flex transition-all duration-500;
 }
 
 .select_btn {
@@ -61,5 +61,37 @@
     height: 12px;
     background: #fff;
     transform: translate(6px, 6px) rotate(315deg);
+  }
+}
+
+.clearInput {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @apply animate-appearance;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 15px;
+    background: #999;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 15px;
+    background: #999;
+    transform: rotate(-45deg);
   }
 }

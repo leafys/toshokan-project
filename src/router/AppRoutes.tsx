@@ -3,6 +3,7 @@ import Layout from '@layouts/LayoutWithHeaderAndFooter';
 import Home from '@pages/Home';
 import Categories from '@pages/Categories';
 import Random from '@pages/Random';
+import Search from '@pages/Search';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -15,6 +16,7 @@ const AppRoutes = () => {
         { index: true, element: <Home /> },
         { path: 'category', element: <Categories /> },
         { path: 'random', element: <Random /> },
+        { path: 'search', element: <Search /> },
       ],
     },
     {

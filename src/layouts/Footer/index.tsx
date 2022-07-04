@@ -25,15 +25,15 @@ const Footer = () => {
               <span className="text-sm sm:text-center">
                 Animes online todos os direitos reservados
               </span>
-              <span className="text-sm sm:max-w-[250px] sm:text-center">
+              <span className="text-sm sm:text-center">
                 Atenção: Este site não hospeda nenhum vídeo em seu servidor.
                 Todo conteudo é provido por terceiros e não afiliados.
               </span>
             </div>
           </div>
 
-          <div className="flex items-end sm:flex-col sm:items-center sm:gap-5">
-            <ul className="flex items-end gap-2 flex-col sm:flex-row sm:justify-center ">
+          <div className="flex items-end sm:flex-col sm:items-center sm:gap-5 ">
+            <ul className="flex items-end gap-2 flex-col sm:flex-row sm:justify-center sm:flex-wrap">
               {routesTitleItems.map((item: IRoutesTitleItem) => (
                 <li className={styles.item} key={item.path}>
                   <NavLink to={item.path}>{item.title}</NavLink>
@@ -41,7 +41,7 @@ const Footer = () => {
               ))}
             </ul>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:justify-evenly">
               {socialLinks.map((item: ISocialLink, index) => (
                 <Link
                   to={item.path}

@@ -41,6 +41,15 @@ module.exports = {
         'retractable-input': '360px',
         btn: '120px',
       },
+      animation: {
+        appearance: 'emersion 1.2s forwards',
+      },
+      keyframes: {
+        emersion: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
       padding: {
         10: '10px',
         30: '30px',
