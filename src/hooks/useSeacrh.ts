@@ -5,14 +5,18 @@ type ISearch = {
   searchParams: object;
 };
 
+// засунуть в env и axios(plugin)
+const BASE_URL = 'https://jikan1.p.rapidapi.com';
+axios.defaults.baseURL = BASE_URL;
+
 export const useSeacrh = ({
   searchCategory,
   searchParams,
 }: ISearch): (() => Promise<void>) => {
   return async () => {
-    return axios({
+    return await axios({
       method: 'GET',
-      url: `https://jikan1.p.rapidapi.com/search/${searchCategory}`,
+      url: `search/${searchCategory}`,
       params: { q: searchParams },
     })
       .then(({ data }) => {

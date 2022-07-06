@@ -3,6 +3,20 @@
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+
+      screens: {
+        default: '1600px',
+      },
+    },
     screens: {
       sm: { max: '580px' },
       md: { max: '768px' },
@@ -21,6 +35,7 @@ module.exports = {
       'black-opacity-80': 'var(--black-opacity-80)',
       'gray-opacity': 'var(--gray-opacity)',
       'light-gray-opacity': 'var(--light-gray-opacity)',
+      orange: 'var(--orange)',
     },
     placeholderColor: {
       'primary-color': '#fcfcfc',
