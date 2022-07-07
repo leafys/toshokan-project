@@ -9,7 +9,7 @@ type jpgTypes = {
 };
 
 export interface IPopularTitlesItem {
-  mal_id: number;
+  mal_id?: number;
   title: string;
   type: string;
   score: number;
