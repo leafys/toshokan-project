@@ -8,5 +8,4 @@ const Home = (): JSX.Element => {
     </div>
   );
 };
-
 export default Home;
