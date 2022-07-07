@@ -5,10 +5,6 @@ type ISearch = {
   searchParams: object;
 };
 
-// засунуть в env и axios(plugin)
-const BASE_URL = 'https://jikan1.p.rapidapi.com';
-axios.defaults.baseURL = BASE_URL;
-
 export const useSeacrh = ({
   searchCategory,
   searchParams,

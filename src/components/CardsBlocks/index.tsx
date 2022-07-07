@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './partials/Card';
 import { useQuery } from 'react-query';
-import axios from 'axios';
+import { axios } from '@plugins';
 import {
   IPopularTitlesItem,
   IPopularTitles,
@@ -14,9 +14,7 @@ const CardsBlocks = (): JSX.Element => {
   useQuery(
     'top anime',
     async () => {
-      return await axios.get<IPopularTitles>(
-        'https://api.jikan.moe/v4/top/anime'
-      );
+      return await axios.get<IPopularTitles>('top/anime');
     },
     {
       onSuccess: ({ data }) => setTopTitles(data.data),
@@ -30,7 +28,14 @@ const CardsBlocks = (): JSX.Element => {
 
       <div className="flex flex-wrap justify-center gap-7 pt-5">
         {topTitles.map((item) => (
-          <Card key={item.mal_id} {...item} />
+          <Card
+            key={item.mal_id}
+            title={item.title}
+            type={item.type}
+            score={item.score}
+            year={item.year}
+            images={item.images}
+          />
         ))}
       </div>
     </div>
