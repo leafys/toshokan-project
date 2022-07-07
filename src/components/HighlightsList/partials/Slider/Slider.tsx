@@ -1,19 +1,19 @@
-import { Pagination, Autoplay, SwiperOptions } from "swiper";
-import styles from "./slider.module.scss";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/scss";
-import "swiper/scss/pagination";
-import { ITopAnime, useHightLight } from "@hooks/useHightLight";
-import Slide from "./partials/Slide";
-const Slider = () => {
+import { Pagination, Autoplay, SwiperOptions } from 'swiper';
+import styles from './slider.module.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import { ITopAnime, useHightLight } from '@hooks/useHightLight';
+import Slide from './partials/Slide';
+const Slider = (): JSX.Element => {
   const { data } = useHightLight();
 
   const swiperSettings: SwiperOptions = {
     pagination: {
       dynamicBullets: true,
       clickable: true,
-      bulletActiveClass: `swiper-pagination-bullet-active ${styles["pagination-bullet-active"]}`,
-      bulletClass: `swiper-pagination-bullet ${styles["pagination-bullet"]}`,
+      bulletActiveClass: `swiper-pagination-bullet-active ${styles['pagination-bullet-active']}`,
+      bulletClass: `swiper-pagination-bullet ${styles['pagination-bullet']}`,
     },
     navigation: true,
     slidesPerGroup: 3,
@@ -23,7 +23,7 @@ const Slider = () => {
       disableOnInteraction: false,
     },
     spaceBetween: 10,
-    slidesPerView: "auto",
+    slidesPerView: 'auto',
     breakpoints: {
       320: {
         spaceBetween: 10,
@@ -43,8 +43,8 @@ const Slider = () => {
     <>
       <Swiper {...swiperSettings} className={styles.swiper}>
         {data?.map((item: ITopAnime) => (
-          <SwiperSlide className={styles["swiper-slide"]} key={item.mal_id}>
-            <Slide image_url={item.images.jpg.image_url} title={item.title} />
+          <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
+            <Slide {...item} />
           </SwiperSlide>
         ))}
       </Swiper>

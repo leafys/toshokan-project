@@ -1,7 +1,7 @@
-import React from "react";
-import Slider from "./partials/Slider/Slider";
+import React from 'react';
+import Slider from './partials/Slider/Slider';
 
-const HighlightsList = () => {
+const HighlightsList = (): JSX.Element => {
   return (
     <div className="max-w-[1350px] mx-auto">
       <h1 className="text-xxl">HighlightsList</h1>

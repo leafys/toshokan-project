@@ -1,36 +1,33 @@
-import axios from "axios";
-import { useQuery } from "react-query";
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export interface ITopAnime {
   images: {
-    jpg: {
-      image_url: Images;
-    };
-    webp: Images;
+    jpg: Images;
   };
   mal_id: number;
   title: string;
   type: string;
 }
 
-type Images = {
-  image_url: "string";
-  small_image_url: "string";
-  large_image_url: "string";
+export type Images = {
+  image_url: string;
+  small_image_url: string;
+  large_image_url: string;
 };
 
 export const useHightLight = (limit = 15) => {
   return useQuery(
-    "HighLight",
+    'HighLight',
     async () => {
-      const responce = await axios.get("https://api.jikan.moe/v4/top/anime", {
+      const responce = await axios.get('https://api.jikan.moe/v4/top/anime', {
         params: { limit: limit },
       });
       return responce.data.data;
     },
     {
       onError: (err: any) => {
-        console.log("error");
+        console.log('error');
       },
     }
   );
