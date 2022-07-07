@@ -1,3 +1,4 @@
+
 import HighlightsList from "@components/HighlightsList";
 
 const Home = (): JSX.Element => {
