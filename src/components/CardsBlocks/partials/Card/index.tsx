@@ -10,7 +10,7 @@ const Card = (card: IPopularTitlesItem): JSX.Element => {
           <img
             className="w-full h-full object-cover"
             src={card.images.jpg.large_image_url}
-            alt=""
+            alt="anime canvas"
           />
         </div>
 

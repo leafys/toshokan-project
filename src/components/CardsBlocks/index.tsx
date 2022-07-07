@@ -24,8 +24,6 @@ const CardsBlocks = (): JSX.Element => {
     }
   );
 
-  console.log(topTitles);
-
   return (
     <div>
       <h1 className="text-xl">Top Titles</h1>
