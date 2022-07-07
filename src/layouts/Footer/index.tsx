@@ -10,8 +10,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="mt-auto">
-      <div className="container mx-auto py-8 px-5 bg-light-gray-opacity">
+    <footer className="mt-auto bg-light-gray-opacity">
+      <div className="container mx-auto py-8 px-5">
         <div className="flex md:gap-4 sm:justify-center sm:flex-col ">
           <div className="flex flex-auto flex-col gap-2 sm:items-center">
             <Link to="/" className="max-w-[260px] sm:max-w-[210px]">

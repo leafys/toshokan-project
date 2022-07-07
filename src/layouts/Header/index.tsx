@@ -26,6 +26,10 @@ const Header = (): JSX.Element => {
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+
+    !isNavOpen && typeof window != 'undefined' && window.document
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
   };
 
   const toggleSelectCategory = (btn: { text: string }, index: number) => {
@@ -57,7 +61,7 @@ const Header = (): JSX.Element => {
 
   return (
     <header>
-      <div className="container mx-auto flex justify-between items-center px-5 py-4 xl:hidden xl:flex-col">
+      <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
         <Link to="/">
           <img className="w-main-logo" src="images/logo.png" alt="logo" />
         </Link>
