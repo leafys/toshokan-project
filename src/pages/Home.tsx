@@ -1,7 +1,11 @@
-import React from 'react';
+import HighlightsList from "@components/HighlightsList";
 
 const Home = (): JSX.Element => {
-  return <div className="home">Home</div>;
+  return (
+    <div className="home container ">
+      <HighlightsList />
+    </div>
+  );
 };
 
 export default Home;
