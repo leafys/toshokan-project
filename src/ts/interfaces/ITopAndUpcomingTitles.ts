@@ -3,22 +3,22 @@ export interface IError {
 }
 
 type jpgTypes = {
-  ImageType: string;
-  small_image_url: string;
+  image_url: string;
   large_image_url: string;
+  small_image_url: string;
 };
 
-export interface IPopularTitlesItem {
+export interface ITypesTopAndUncomingTitles {
   mal_id?: number;
   title: string;
   type: string;
-  score: number;
-  year: number;
+  score?: number;
+  year?: number;
   images: {
     jpg: jpgTypes;
   };
 }
 
 export interface IPopularTitles {
-  data: IPopularTitlesItem[];
+  data: ITypesTopAndUncomingTitles[];
 }

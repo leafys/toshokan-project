@@ -1,0 +1,7 @@
+.test {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 20px;
+
+  @apply cards-md-:grid cards-md-:justify-items-center;
+}
