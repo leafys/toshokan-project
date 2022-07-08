@@ -5,11 +5,3 @@
     @apply text-purple;
   }
 }
-
-.social {
-  @apply flex items-center gap-3 text-base text-justify;
-
-  &__img {
-    @apply w-[28px];
-  }
-}

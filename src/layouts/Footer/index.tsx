@@ -48,7 +48,7 @@ const Footer = () => {
                   className="flex gap-2  sm:text-base;"
                   key={index}
                 >
-                  <div className={styles['social__img']}>{item.icon}</div>
+                  <div className="w-[28px]">{item.icon}</div>
                   {item.title}
                 </Link>
               ))}
