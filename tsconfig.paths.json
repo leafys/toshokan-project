@@ -12,7 +12,8 @@
       "@selectors/*": ["./store/selectors/*"],
       "@plugins": ["./plugins"],
       "@plugins/*": ["./plugins/*"],
-      "@hooks/*": ["./hooks/*"]
+      "@hooks/*": ["./hooks/*"],
+      "@interfaces/*": ["./ts/interfaces/*"]
     }
   }
 }

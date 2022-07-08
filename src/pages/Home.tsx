@@ -1,5 +1,5 @@
-import CardsBlocks from "@components/CardsBlocks";
-import HighlightsList from "@components/HighlightsList";
+import CardsBlocks from '@components/CardsBlocks';
+import HighlightsList from '@components/HighlightsList';
 const Home = (): JSX.Element => {
   return (
     <div className="home container">

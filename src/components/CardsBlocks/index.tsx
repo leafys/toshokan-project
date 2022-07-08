@@ -1,41 +1,23 @@
 import React from 'react';
 import Card from './partials/Card';
-import { useQuery } from 'react-query';
-import { axios } from '@plugins';
-import {
-  IPopularTitlesItem,
-  IPopularTitles,
-  IError,
-} from './interfaces/ICardsBlocks';
+import styles from './CardsBlocks.module.scss';
+import { useHightLight } from '@hooks/useTitles';
+import { ITypesTopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
 
 const CardsBlocks = (): JSX.Element => {
-  const [topTitles, setTopTitles] = React.useState<IPopularTitlesItem[]>([]);
+  const [topTitles, setTopTitles] = React.useState<
+    ITypesTopAndUncomingTitles[]
+  >([]);
 
-  useQuery(
-    'top anime',
-    async () => {
-      return await axios.get<IPopularTitles>('top/anime');
-    },
-    {
-      onSuccess: ({ data }) => setTopTitles(data.data),
-      onError: (error: IError) => alert(error.message),
-    }
-  );
+  useHightLight('top anime', 15, 'top/anime', setTopTitles);
 
   return (
     <div>
-      <h1 className="text-xl">Top Titles</h1>
+      <h1 className="text-xxl pb-4">Top Anime</h1>
 
-      <div className="flex flex-wrap justify-center gap-7 pt-5">
+      <div className={styles.test}>
         {topTitles.map((item) => (
-          <Card
-            key={item.mal_id}
-            title={item.title}
-            type={item.type}
-            score={item.score}
-            year={item.year}
-            images={item.images}
-          />
+          <Card key={item.mal_id} {...item} />
         ))}
       </div>
     </div>

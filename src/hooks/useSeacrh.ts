@@ -2,7 +2,7 @@ import { axios } from '@plugins';
 
 type ISearch = {
   searchCategory: string;
-  searchParams: object;
+  searchParams: { [x: string]: string };
 };
 
 export const useSeacrh = ({
@@ -12,8 +12,8 @@ export const useSeacrh = ({
   return async () => {
     return await axios({
       method: 'GET',
-      url: `search/${searchCategory}`,
-      params: { q: searchParams },
+      url: `${searchCategory}`,
+      params: { q: searchParams[searchCategory] },
     })
       .then(({ data }) => {
         console.log(data);

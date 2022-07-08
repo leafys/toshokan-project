@@ -1,39 +1,31 @@
-import { IPopularTitlesItem } from '@components/CardsBlocks/interfaces/ICardsBlocks';
+import { ITypesTopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
-const Card = ({
-  title,
-  type,
-  score,
-  year,
-  images,
-}: IPopularTitlesItem): JSX.Element => {
+const Card = (card: ITypesTopAndUncomingTitles): JSX.Element => {
   return (
-    <article className="max-w-[190px] w-full">
-      <Link className="flex flex-col h-full" to="#">
-        <div className="h-[260px]">
-          <img
-            className="w-full h-full object-cover"
-            src={images.jpg.large_image_url}
-            alt="anime canvas"
-          />
-        </div>
+    <article className="h-full">
+      <Link to="#">
+        <img
+          className="object-cover w-full h-[300px] cards-md-:w-[200px]"
+          src={card.images.jpg.large_image_url}
+          alt="anime canvas"
+        />
 
-        <div className="flex flex-col">
+        <div className="w-full cards-md-:w-[200px]">
           <h3 className="whitespace-nowrap overflow-hidden text-ellipsis">
-            {title}
+            {card.title}
           </h3>
 
-          <div className="flex justify-between">
-            <span>{type}</span>
+          <div className="flex justify-between items-center">
+            <span>{card.type}</span>
 
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2 items-center">
               <BsFillStarFill className="fill-orange" />
-              <span>{score}</span>
+              <span className="">{card.score}</span>
             </div>
 
-            <span>{year === null ? 'unknown' : year}</span>
+            <span>{card.year === null ? 'unknown' : card.year}</span>
           </div>
         </div>
       </Link>
