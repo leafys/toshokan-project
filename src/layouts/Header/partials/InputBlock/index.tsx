@@ -51,7 +51,9 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
                 key={index}
                 className={cn(
                   { [styles.select_btn]: true },
-                  { [styles.active_btn]: activeBtnIndex === index }
+                  {
+                    [styles.active_btn]: activeBtnIndex === index,
+                  }
                 )}
                 onClick={() => toggleSelectCategory(btn, index)}
               >
