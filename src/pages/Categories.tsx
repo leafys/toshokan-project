@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Categories = (): JSX.Element => {
-  return (
-    <div>Categories</div>
-  )
-}
+  return <div>Categories</div>;
+};
 
-export default Categories
+export default Categories;
