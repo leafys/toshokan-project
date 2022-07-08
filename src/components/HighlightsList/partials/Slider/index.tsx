@@ -16,15 +16,13 @@ const Slider = (): JSX.Element => {
   useHightLight('upcoming', 15, 'seasons/upcoming', setUpcomingTitle);
 
   return (
-    <>
-      <Swiper {...swiperSettings} className={styles.swiper}>
-        {upcomingTitle.map((item: ITypesTopAndUncomingTitles) => (
-          <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
-            <Slide {...item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+    <Swiper {...swiperSettings} className={styles.swiper}>
+      {upcomingTitle.map((item: ITypesTopAndUncomingTitles) => (
+        <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
+          <Slide {...item} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 
