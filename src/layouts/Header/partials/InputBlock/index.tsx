@@ -3,7 +3,7 @@ import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
-import { KeyboardEvent } from 'react';
+import { FocusEvent, KeyboardEvent } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 
@@ -12,7 +12,18 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
 
   const setValueInput = useSetRecoilState(searchInputValue);
 
+  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    const currentTarget = e.currentTarget;
+
+    setTimeout(() => {
+      if (!currentTarget.contains(document.activeElement)) {
+        setIsActive(false);
+      }
+    }, 0);
+  };
+
   const onSearch = () => (!isActive ? setIsActive(true) : pushQuery());
+
   const onHandler = (event: KeyboardEvent<HTMLInputElement>) =>
     event.key === 'Enter' && pushQuery();
 
@@ -27,7 +38,7 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
   } = inputBlockProps;
 
   return (
-    <div className={styles.input_block}>
+    <div onBlur={handleBlur} tabIndex={1} className={styles.input_block}>
       <div onClick={onSearch} className={styles.searchIcon}></div>
 
       <MyInput
@@ -51,9 +62,7 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
                 key={index}
                 className={cn(
                   { [styles.select_btn]: true },
-                  {
-                    [styles.active_btn]: activeBtnIndex === index,
-                  }
+                  { [styles.active_btn]: activeBtnIndex === index }
                 )}
                 onClick={() => toggleSelectCategory(btn, index)}
               >
