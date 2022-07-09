@@ -32,8 +32,6 @@
   "scripts": {
     "dev": "craco start",
     "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject",
     "prettier": "npx prettier --write ."
   },
   "eslintConfig": {
