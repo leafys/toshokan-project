@@ -27,7 +27,7 @@ export const swiperSettings: SwiperOptions = {
   },
   breakpoints: {
     320: {
-      slidesPerView: 2,
+      slidesPerView: "auto",
       spaceBetween: 10,
     },
 

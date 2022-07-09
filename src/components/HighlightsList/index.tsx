@@ -6,16 +6,20 @@ const HighlightsList = (): JSX.Element => {
   const [progressBar, setProgressBar] = useState<number>(0);
 
   return (
-    <div className="mt-6 mb-12 mx-auto">
-      <h1 className="text-xxl">Upcoming</h1>
+    <div className="mb-12 mx-auto">
       <ProgressBar
         completed={progressBar}
         isLabelVisible={false}
-        height="6px"
+        height="4px"
         bgColor="#891cc2"
         baseBgColor="#a6a6b2"
+        transitionDuration="0.5s"
+        borderRadius="0px"
       />
-      <Slider setProgressBar={setProgressBar} />
+      <div className="container">
+        <h1 className="text-xxl mt-6">Upcoming</h1>
+        <Slider setProgressBar={setProgressBar} />
+      </div>
     </div>
   );
 };

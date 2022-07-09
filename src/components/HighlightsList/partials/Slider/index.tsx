@@ -29,6 +29,7 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
         ? slideProgress - 6
         : slideProgress
     );
+    console.log(slider.progress);
   };
 
   return (
@@ -37,7 +38,7 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
       className={styles.swiper}
       onSlideChange={onSlideChange}
     >
-      {upcomingTitle.map((item: ITopAndUncomingTitles, index) => (
+      {upcomingTitle.map((item: ITopAndUncomingTitles) => (
         <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
           <Slide {...item} />
         </SwiperSlide>
