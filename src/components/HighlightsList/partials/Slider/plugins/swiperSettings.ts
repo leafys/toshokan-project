@@ -1,4 +1,4 @@
-import { SwiperOptions, Pagination, Autoplay, Controller } from 'swiper';
+import { SwiperOptions, Pagination, Autoplay} from 'swiper';
 import styles from '../slider.module.scss';
 
 export const swiperSettings: SwiperOptions = {
@@ -11,10 +11,11 @@ export const swiperSettings: SwiperOptions = {
   },
 
   setWrapperSize: true,
-  modules: [Pagination, Autoplay, Controller],
+  modules: [Pagination, Autoplay],
   autoplay: {
     delay: 5000,
     disableOnInteraction: false,
+    pauseOnMouseEnter: true,
   },
   spaceBetween: 10,
   slidesPerView: 2,
