@@ -2,11 +2,7 @@
   width: 100%;
   height: 100%;
 
-  padding: 15px 0px 50px 0px !important;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0 0px 50px 0px !important;
 
   .pagination-bullet {
     background: rgb(255, 255, 255);
@@ -22,4 +18,16 @@
   .swiper-slide {
     width: auto;
   }
+
+  .scrollbar-horizontal {
+    background: rgb(89 90 220 / 40%);
+
+    & div {
+      background: rgba(0, 0, 255, 0.4);
+    }
+  }
+}
+
+.pagination-progressbar-fill {
+  background: rgb(247, 13, 223) !important;
 }
