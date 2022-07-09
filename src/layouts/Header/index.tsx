@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import NavBar from '@components/NavBar';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
@@ -11,6 +10,7 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
+import { useState } from 'react';
 
 const Header = (): JSX.Element => {
   const [searchValue, setSearchValue] =
