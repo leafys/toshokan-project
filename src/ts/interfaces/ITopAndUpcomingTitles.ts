@@ -14,6 +14,7 @@ export interface ITypesTopAndUncomingTitles {
   type: string;
   score?: number;
   year?: number;
+  synopsis?: string;
   images: {
     jpg: jpgTypes;
   };
