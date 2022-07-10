@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.3",
+    "@ramonak/react-progress-bar": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -31,8 +32,6 @@
   "scripts": {
     "dev": "craco start",
     "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject",
     "prettier": "npx prettier --write ."
   },
   "eslintConfig": {

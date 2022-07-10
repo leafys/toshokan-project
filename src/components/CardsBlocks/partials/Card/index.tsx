@@ -1,31 +1,47 @@
-import { ITypesTopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
+import styles from './Card.module.scss';
 
-const Card = (card: ITypesTopAndUncomingTitles): JSX.Element => {
+const Card = (card: ITopAndUncomingTitles): JSX.Element => {
   return (
-    <article className="h-full">
-      <Link to="#">
+    <article className="w-full h-full">
+      <Link className="m-md-:flex w-full" to="#">
         <img
-          className="object-cover w-full h-[300px] cards-md-:w-[200px]"
-          src={card.images.jpg.large_image_url}
+          className={styles['card-img']}
+          src={card.images.jpg.image_url}
           alt="anime canvas"
         />
 
-        <div className="w-full cards-md-:w-[200px]">
-          <h3 className="whitespace-nowrap overflow-hidden text-ellipsis">
-            {card.title}
-          </h3>
+        <div className={styles['block-card-info']}>
+          <h3 className={styles['card-title']}>{card.title}</h3>
 
-          <div className="flex justify-between items-center">
-            <span>{card.type}</span>
+          <h4 className={styles['card-desc']}>{card.synopsis}</h4>
 
-            <div className="flex gap-2 items-center">
-              <BsFillStarFill className="fill-orange" />
-              <span className="">{card.score}</span>
+          <h4 className={styles['card-fold-desc']}>{card.synopsis}</h4>
+
+          <div className={styles['card-section-score-type-year']}>
+            <div className="m-md-:flex m-md-:gap-2 items-center">
+              <span className={styles['card-section-first-span']}>Type:</span>
+              <span className="m-sm-:text-md mb-2">{card.type}</span>
             </div>
 
-            <span>{card.year === null ? 'unknown' : card.year}</span>
+            <div className="flex gap-2 items-center">
+              <BsFillStarFill className="fill-orange m-md-:hidden" />
+              <div className="m-md-:flex m-md-:gap-2">
+                <span className={styles['card-section-first-span']}>
+                  Score:
+                </span>
+                <span className="m-sm-:text-md mb-2">{card.score}</span>
+              </div>
+            </div>
+
+            <div className="m-md-:flex m-md-:gap-2">
+              <span className={styles['card-section-first-span']}>Year:</span>
+              <span className="m-sm-:text-md mb-2">
+                {card.year === null ? 'unknown' : card.year}
+              </span>
+            </div>
           </div>
         </div>
       </Link>

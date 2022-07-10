@@ -1,0 +1,51 @@
+.card-img {
+  @apply m-xs-:h-[180px] m-xs-:w-[115px] object-cover w-full h-[300px] m-md-:w-[150px] m-md-:h-auto;
+}
+
+.block-card-info {
+  @apply m-md-:pl-5 m-xs-:pl-2 w-full m-md-:flex m-md-:flex-col;
+}
+
+.card-title {
+  @apply m-md-:text-light-orange m-xs-:text-md m-sm-:text-base m-md-:whitespace-normal m-md-:text-lg m-md-:overflow-visible whitespace-nowrap overflow-hidden text-ellipsis;
+
+  @media (max-width: 640px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+  }
+}
+
+.card-desc {
+  @apply hidden h-min mt-2 mb-4 m-xs-:hidden m-sm-:text-md m-sm-:text-left m-md-:text-justify m-md-:block text-contrast-gray;
+
+  @media (max-width: 640px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    box-orient: vertical;
+  }
+}
+
+.card-fold-desc {
+  @apply hidden m-sm-:text-md text-contrast-gray;
+}
+
+.card-section-score-type-year {
+  @apply m-md-:justify-end justify-between flex m-md-:flex-col;
+}
+
+.card-section-first-span {
+  @apply hidden m-sm-:text-md m-md-:block mb-2;
+}

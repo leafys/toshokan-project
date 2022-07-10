@@ -24,12 +24,20 @@ input[type='search']::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
+body::-webkit-scrollbar {
+  @apply bg-dark-purple;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-purple;
+  border-radius: 20px;
+}
+
 .active {
   @apply text-purple;
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  @apply flex flex-col min-h-screen;
 }
