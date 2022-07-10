@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import NavBar from '@components/NavBar';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
@@ -11,6 +10,7 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
+import { MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
   const [searchValue, setSearchValue] =
@@ -32,9 +32,14 @@ const Header = (): JSX.Element => {
       : (document.body.style.overflow = 'unset');
   };
 
-  const toggleSelectCategory = (btn: { text: string }, index: number) => {
+  const toggleSelectCategory = (
+    btn: { text: string },
+    index: number,
+    focus: MutableRefObject<HTMLInputElement | null>
+  ) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
+    focus.current?.focus();
   };
 
   const pushQuery = () => {

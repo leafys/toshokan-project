@@ -1,7 +1,12 @@
-.test {
+.cards-block {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 20px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(1, minmax(190px, 1fr));
+    justify-items: start;
+  }
 
   @apply cards-md-:grid cards-md-:justify-items-center;
 }

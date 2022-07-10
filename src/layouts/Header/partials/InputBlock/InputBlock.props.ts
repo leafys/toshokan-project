@@ -1,5 +1,5 @@
 import { SetterOrUpdater } from 'recoil';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 type propsType = {
   searchValue: string;
@@ -8,7 +8,11 @@ type propsType = {
   setSearchValue: SetterOrUpdater<string>;
   isActive: boolean;
   activeBtnIndex: number;
-  toggleSelectCategory: (btn: { text: string }, index: number) => void;
+  toggleSelectCategory: (
+    btn: { text: string },
+    index: number,
+    focus: MutableRefObject<HTMLInputElement | null>
+  ) => void;
 };
 
 export interface IInputBlockProps {

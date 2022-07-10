@@ -3,19 +3,38 @@ import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
-import { KeyboardEvent } from 'react';
+import { FocusEvent, KeyboardEvent, useRef } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 
 const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
   const selectBtns = [{ text: 'anime' }, { text: 'manga' }];
-
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const setValueInput = useSetRecoilState(searchInputValue);
 
-  const onSearch = () => (!isActive ? setIsActive(true) : pushQuery());
-  const onHandler = (event: KeyboardEvent<HTMLInputElement>) =>
-    event.key === 'Enter' && pushQuery();
+  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    const currentTarget = e.currentTarget;
 
+    setTimeout(() => {
+      if (!currentTarget.contains(document.activeElement)) {
+        setIsActive(false);
+      }
+    }, 0);
+  };
+
+  const onSearch = () => {
+    !isActive ? setIsActive(true) : pushQuery();
+    inputRef.current?.focus();
+  };
+
+  const clearSearchInput = () => {
+    setValueInput('');
+    inputRef.current?.focus();
+  };
+
+  const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    event.key === 'Enter' && pushQuery();
+  };
   const {
     setSearchValue,
     pushQuery,
@@ -27,11 +46,12 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
   } = inputBlockProps;
 
   return (
-    <div className={styles.input_block}>
+    <div onBlur={handleBlur} tabIndex={1} className={styles.input_block}>
       <div onClick={onSearch} className={styles.searchIcon}></div>
 
       <MyInput
         value={searchValue}
+        ref={inputRef}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={onHandler}
         className={cn([styles.input, isActive && styles.retractable_input])}
@@ -41,21 +61,16 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
 
       {isActive && (
         <>
-          <span
-            onClick={() => setValueInput('')}
-            className={styles.clearInput}
-          ></span>
+          <span onClick={clearSearchInput} className={styles.clearInput}></span>
           <div className={styles.select_btn_block}>
             {selectBtns.map((btn, index) => (
               <MyButton
                 key={index}
                 className={cn(
                   { [styles.select_btn]: true },
-                  {
-                    [styles.active_btn]: activeBtnIndex === index,
-                  }
+                  { [styles.active_btn]: activeBtnIndex === index }
                 )}
-                onClick={() => toggleSelectCategory(btn, index)}
+                onClick={() => toggleSelectCategory(btn, index, inputRef)}
               >
                 {btn.text}
               </MyButton>
