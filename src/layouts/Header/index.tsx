@@ -32,9 +32,14 @@ const Header = (): JSX.Element => {
       : (document.body.style.overflow = 'unset');
   };
 
-  const toggleSelectCategory = (btn: { text: string }, index: number) => {
+  const toggleSelectCategory = (
+    btn: { text: string },
+    index: number,
+    focus: any
+  ) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
+    focus.current.focus();
   };
 
   const pushQuery = () => {
