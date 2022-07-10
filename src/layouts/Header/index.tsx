@@ -10,7 +10,7 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
-import { useState } from 'react';
+import { MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
   const [searchValue, setSearchValue] =
@@ -35,11 +35,11 @@ const Header = (): JSX.Element => {
   const toggleSelectCategory = (
     btn: { text: string },
     index: number,
-    focus: any
+    focus: MutableRefObject<HTMLInputElement | null>
   ) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
-    focus.current.focus();
+    focus.current?.focus();
   };
 
   const pushQuery = () => {
