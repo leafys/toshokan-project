@@ -65,54 +65,57 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header>
-      <div className="container fixed left-0 right-0 z-10 bg-black mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
-        <Link to="/">
-          <img className="w-main-logo" src="images/logo.png" alt="logo" />
-        </Link>
-
-        <div className="flex items-center">
-          <NavBar className="flex items-center" />
-
-          <InputBlock inputBlockProps={inputBlockProps} />
-
-          <MyButton className={styles.btn}>Sign up</MyButton>
-          <MyButton className={styles.btn}>Sign in</MyButton>
-        </div>
-      </div>
-
-      <div className="hidden xl:block">
-        <div className="container mx-auto flex items-center px-5 py-4">
+    <>
+      <div className="h-[80px] "></div>
+      <header className="w-full bg-black fixed top-0 left-0 right-0 z-10">
+        <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
           <Link to="/">
-            <img
-              className="w-mobile-tablet-logo"
-              src="images/mob-logo.png"
-              alt="logo"
-            />
+            <img className="w-main-logo" src="images/logo.png" alt="logo" />
           </Link>
 
-          <MyInput
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-            placeholder="Search..."
-            type="search"
-          />
+          <div className="flex items-center">
+            <NavBar className="flex items-center" />
 
-          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-            <NavBar
-              setIsNavOpen={setIsNavOpen}
-              className="xl:flex xl:flex-col xl:items-center"
-            />
+            <InputBlock inputBlockProps={inputBlockProps} />
 
             <MyButton className={styles.btn}>Sign up</MyButton>
             <MyButton className={styles.btn}>Sign in</MyButton>
-          </SideBar>
-
-          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
         </div>
-      </div>
-    </header>
+
+        <div className="hidden xl:block">
+          <div className="container mx-auto flex items-center px-5 py-4">
+            <Link to="/">
+              <img
+                className="w-mobile-tablet-logo"
+                src="images/mob-logo.png"
+                alt="logo"
+              />
+            </Link>
+
+            <MyInput
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+              placeholder="Search..."
+              type="search"
+            />
+
+            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+              <NavBar
+                setIsNavOpen={setIsNavOpen}
+                className="xl:flex xl:flex-col xl:items-center"
+              />
+
+              <MyButton className={styles.btn}>Sign up</MyButton>
+              <MyButton className={styles.btn}>Sign in</MyButton>
+            </SideBar>
+
+            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
