@@ -36,7 +36,7 @@ module.exports = {
       'gray-opacity': 'var(--gray-opacity)',
       'light-gray-opacity': 'var(--light-gray-opacity)',
       orange: 'var(--orange)',
-      "dark-purple": "var(--dark-purple)",
+      'dark-purple': 'var(--dark-purple)',
       'contrast-gray': 'var(--contrast-gray)',
       'light-orange': 'var(--light-orange)',
     },
@@ -56,9 +56,10 @@ module.exports = {
     },
     extend: {
       screens: {
-        'cards-md-': { max: '640px' },
-        'cards-sm-': { max: '490px' },
-        'cards-fold': { max: '375px' },
+        'm-md-': { max: '640px' },
+        'm-sm-': { max: '490px' },
+        'm-xs-': { max: '375px' },
+        'm-fold': { max: '319px' },
       },
       width: {
         'main-logo': '180px',
