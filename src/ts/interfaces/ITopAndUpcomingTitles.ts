@@ -8,7 +8,7 @@ type jpgTypes = {
   small_image_url: string;
 };
 
-export interface ITypesTopAndUncomingTitles {
+export interface ITopAndUncomingTitles {
   mal_id?: number;
   title: string;
   type: string;
@@ -20,5 +20,5 @@ export interface ITypesTopAndUncomingTitles {
 }
 
 export interface IPopularTitles {
-  data: ITypesTopAndUncomingTitles[];
+  data: ITopAndUncomingTitles[];
 }
