@@ -61,7 +61,7 @@ const Header = (): JSX.Element => {
 
   return (
     <header>
-      <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
+      <div className="container fixed left-0 right-0 z-10 bg-black mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
         <Link to="/">
           <img className="w-main-logo" src="images/logo.png" alt="logo" />
         </Link>
