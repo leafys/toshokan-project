@@ -29,7 +29,6 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
         ? slideProgress - 6
         : slideProgress
     );
-    console.log(slider.progress);
   };
 
   return (

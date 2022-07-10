@@ -3,13 +3,14 @@ import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
-import { FocusEvent, KeyboardEvent, useRef } from 'react';
+import { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 
 const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
   const selectBtns = [{ text: 'anime' }, { text: 'manga' }];
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [isUserScrolled, setIsUserScrolled] = useState<boolean>(true);
   const setValueInput = useSetRecoilState(searchInputValue);
 
   const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
@@ -21,6 +22,21 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
       }
     }, 0);
   };
+
+  const scrollCheck = () => {
+    if (window.scrollY > 70) {
+      setIsUserScrolled(false);
+    } else {
+      setIsUserScrolled(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollCheck);
+    return () => {
+      window.removeEventListener('scroll', scrollCheck);
+    };
+  }, []);
 
   const onSearch = () => {
     !isActive ? setIsActive(true) : pushQuery();
@@ -62,7 +78,7 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
       {isActive && (
         <>
           <span onClick={clearSearchInput} className={styles.clearInput}></span>
-          <div className={styles.select_btn_block}>
+          <div className={cn(styles.select_btn_block, isUserScrolled &&  styles.select_btn_block_active)}>
             {selectBtns.map((btn, index) => (
               <MyButton
                 key={index}
