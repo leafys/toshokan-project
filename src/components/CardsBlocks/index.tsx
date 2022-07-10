@@ -13,7 +13,7 @@ const CardsBlocks = (): JSX.Element => {
     <div className="container">
       <h1 className="text-xxl pb-4">Top Anime</h1>
 
-      <div className={styles.test}>
+      <div className={styles['cards-block']}>
         {topTitles.map((item) => (
           <Card key={item.mal_id} {...item} />
         ))}
