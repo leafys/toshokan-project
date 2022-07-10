@@ -25,14 +25,12 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 body::-webkit-scrollbar {
+  @apply bg-dark-purple;
   width: 10px;
-  height: 1em;
-  background: rgba(48, 45, 45, 0.601);
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgba(128, 0, 128, 0.65);
-  
+  @apply bg-purple;
   border-radius: 20px;
 }
 
@@ -41,8 +39,5 @@ body::-webkit-scrollbar-thumb {
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  @apply flex flex-col min-h-screen;
 }
-
