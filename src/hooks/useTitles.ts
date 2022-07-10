@@ -22,7 +22,6 @@ export const useHightLight = (
     {
       onSuccess: ({ data }) => {
         setData(data.data);
-        console.log(data.data);
       },
       onError: (error: IError) => {
         alert(error.message);
