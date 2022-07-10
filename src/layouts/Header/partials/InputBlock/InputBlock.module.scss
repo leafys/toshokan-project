@@ -20,7 +20,7 @@
   @apply animate-appearance  absolute -bottom-9 flex transition-all duration-500;
 
   &_active {
-    @apply -bottom-[60px];
+    bottom: -60px;
   }
 }
 
