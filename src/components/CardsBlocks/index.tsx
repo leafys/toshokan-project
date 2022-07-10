@@ -11,7 +11,7 @@ const CardsBlocks = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h1 className="text-xxl pb-4">Top Anime</h1>
+      <h1 className="text-xxl pb-4 font-bold">Top Anime</h1>
 
       <div className={styles['cards-block']}>
         {topTitles.map((item) => (

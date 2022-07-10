@@ -17,7 +17,7 @@ const HighlightsList = (): JSX.Element => {
         borderRadius="0px"
       />
       <div className="container">
-        <h1 className="text-xxl mt-6">Upcoming</h1>
+        <h1 className="text-xxl mt-6 font-bold">Upcoming</h1>
         <Slider setProgressBar={setProgressBar} />
       </div>
     </div>
