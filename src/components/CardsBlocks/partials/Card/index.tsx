@@ -1,8 +1,8 @@
-import { ITypesTopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
-const Card = (card: ITypesTopAndUncomingTitles): JSX.Element => {
+const Card = (card: ITopAndUncomingTitles): JSX.Element => {
   return (
     <article className="h-full">
       <Link to="#">
