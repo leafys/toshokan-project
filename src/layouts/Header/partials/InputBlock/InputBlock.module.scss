@@ -17,11 +17,15 @@
 }
 
 .select_btn_block {
-  @apply animate-appearance absolute -bottom-9 flex transition-all duration-500;
+  @apply animate-appearance  absolute -bottom-9 flex transition-all duration-500;
+
+  &_active {
+    @apply -bottom-[60px];
+  }
 }
 
 .select_btn {
-  @apply px-4 py-1 mr-3 text-sm border-gray rounded-md;
+  @apply px-4 py-1 mr-3 text-sm border-gray bg-black rounded-md;
 
   @apply hover:border-purple transition-all duration-300;
 }
