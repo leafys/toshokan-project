@@ -6,7 +6,7 @@ import styles from './Card.module.scss';
 const Card = (card: ITopAndUncomingTitles): JSX.Element => {
   return (
     <article className="w-full h-full">
-      <Link className="cards-md-:flex w-full" to="#">
+      <Link className="m-md-:flex w-full" to="#">
         <img
           className={styles['card-img']}
           src={card.images.jpg.image_url}
@@ -21,24 +21,24 @@ const Card = (card: ITopAndUncomingTitles): JSX.Element => {
           <h4 className={styles['card-fold-desc']}>{card.synopsis}</h4>
 
           <div className={styles['card-section-score-type-year']}>
-            <div className="cards-md-:flex cards-md-:gap-2 items-center">
+            <div className="m-md-:flex m-md-:gap-2 items-center">
               <span className={styles['card-section-first-span']}>Type:</span>
-              <span className="cards-sm-:text-md mb-2">{card.type}</span>
+              <span className="m-sm-:text-md mb-2">{card.type}</span>
             </div>
 
             <div className="flex gap-2 items-center">
-              <BsFillStarFill className="fill-orange cards-md-:hidden" />
-              <div className="cards-md-:flex cards-md-:gap-2">
+              <BsFillStarFill className="fill-orange m-md-:hidden" />
+              <div className="m-md-:flex m-md-:gap-2">
                 <span className={styles['card-section-first-span']}>
                   Score:
                 </span>
-                <span className="cards-sm-:text-md mb-2">{card.score}</span>
+                <span className="m-sm-:text-md mb-2">{card.score}</span>
               </div>
             </div>
 
-            <div className="cards-md-:flex cards-md-:gap-2">
+            <div className="m-md-:flex m-md-:gap-2">
               <span className={styles['card-section-first-span']}>Year:</span>
-              <span className="cards-sm-:text-md mb-2">
+              <span className="m-sm-:text-md mb-2">
                 {card.year === null ? 'unknown' : card.year}
               </span>
             </div>

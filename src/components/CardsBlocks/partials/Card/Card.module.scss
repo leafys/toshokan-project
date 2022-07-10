@@ -1,13 +1,13 @@
 .card-img {
-  @apply cards-fold:h-[180px] cards-fold:w-[115px] object-cover w-full h-[300px] cards-md-:w-[150px] cards-md-:h-auto;
+  @apply m-xs-:h-[180px] m-xs-:w-[115px] object-cover w-full h-[300px] m-md-:w-[150px] m-md-:h-auto;
 }
 
 .block-card-info {
-  @apply cards-md-:pl-5 cards-fold:pl-2 w-full cards-md-:flex cards-md-:flex-col;
+  @apply m-md-:pl-5 m-xs-:pl-2 w-full m-md-:flex m-md-:flex-col;
 }
 
 .card-title {
-  @apply cards-md-:text-light-orange cards-fold:text-md cards-sm-:text-base cards-md-:whitespace-normal cards-md-:text-lg cards-md-:overflow-visible whitespace-nowrap overflow-hidden text-ellipsis;
+  @apply m-md-:text-light-orange m-xs-:text-md m-sm-:text-base m-md-:whitespace-normal m-md-:text-lg m-md-:overflow-visible whitespace-nowrap overflow-hidden text-ellipsis;
 
   @media (max-width: 640px) {
     overflow: hidden;
@@ -23,7 +23,7 @@
 }
 
 .card-desc {
-  @apply hidden h-min mt-2 mb-4 cards-fold:hidden cards-sm-:text-md cards-sm-:text-left cards-md-:text-justify cards-md-:block text-contrast-gray;
+  @apply hidden h-min mt-2 mb-4 m-xs-:hidden m-sm-:text-md m-sm-:text-left m-md-:text-justify m-md-:block text-contrast-gray;
 
   @media (max-width: 640px) {
     overflow: hidden;
@@ -39,13 +39,13 @@
 }
 
 .card-fold-desc {
-  @apply hidden cards-sm-:text-md text-contrast-gray;
+  @apply hidden m-sm-:text-md text-contrast-gray;
 }
 
 .card-section-score-type-year {
-  @apply cards-md-:justify-end justify-between flex cards-md-:flex-col;
+  @apply m-md-:justify-end justify-between flex m-md-:flex-col;
 }
 
 .card-section-first-span {
-  @apply hidden cards-sm-:text-md cards-md-:block mb-2;
+  @apply hidden m-sm-:text-md m-md-:block mb-2;
 }
