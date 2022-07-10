@@ -6,7 +6,7 @@ const HighlightsList = (): JSX.Element => {
   const [progressBar, setProgressBar] = useState<number>(0);
 
   return (
-    <div className="mt-6 mb-12 mx-auto">
+    <div className="mb-12 mx-auto">
       <ProgressBar
         completed={progressBar}
         isLabelVisible={false}
