@@ -11,8 +11,12 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
+import { useTranslation } from 'react-i18next';
+import { i18nLanguages } from '@plugins/i18n';
 
 const Header = (): JSX.Element => {
+  const { t, i18n } = useTranslation();
+  const locale = window.locale;
   const [searchValue, setSearchValue] =
     useRecoilState<string>(headerSearchValue);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -62,23 +66,32 @@ const Header = (): JSX.Element => {
   return (
     <header>
       <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
-        <Link to="/">
+        <Link to={`/${locale}`}>
           <img className="w-main-logo" src="images/logo.png" alt="logo" />
         </Link>
 
+        {i18nLanguages.map((lng) => (
+          <button
+            type="submit"
+            key={lng.locale}
+            onClick={() => i18n.changeLanguage(lng.locale)}
+            disabled={i18n.resolvedLanguage === lng.locale}
+          >
+            {lng.nativeName}
+          </button>
+        ))}
+
         <div className="flex items-center">
           <NavBar className="flex items-center" />
-
           <InputBlock inputBlockProps={inputBlockProps} />
-
-          <MyButton className={styles.btn}>Sign up</MyButton>
-          <MyButton className={styles.btn}>Sign in</MyButton>
+          <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
+          <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
         </div>
       </div>
 
       <div className="hidden xl:block">
         <div className="container mx-auto flex items-center px-5 py-4">
-          <Link to="/">
+          <Link to={`/${locale}`}>
             <img
               className="w-mobile-tablet-logo"
               src="images/mob-logo.png"
@@ -100,8 +113,8 @@ const Header = (): JSX.Element => {
               className="xl:flex xl:flex-col xl:items-center"
             />
 
-            <MyButton className={styles.btn}>Sign up</MyButton>
-            <MyButton className={styles.btn}>Sign in</MyButton>
+            <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
+            <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
           </SideBar>
 
           <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />

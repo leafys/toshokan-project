@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { IRoutesTitleItem, routesTitleItems } from '@layouts/routesTitleItems';
 
 const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
+  const locale = window.locale;
   return (
     <nav {...props}>
       <ul className="flex items-center xl:flex-col">
@@ -12,7 +13,8 @@ const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
           <li className={styles.item} key={index}>
             <NavLink
               onClick={() => setIsNavOpen && setIsNavOpen(false)}
-              to={item.path}
+              to={`/${locale}${item.path}`}
+              end
             >
               {item.title}
             </NavLink>
