@@ -1,4 +1,4 @@
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 import styles from './Card.module.scss';
@@ -8,14 +8,11 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import ToolltipCard from '@components/ToolltipCard/ToolltipCard';
 
-type cardProps = {
-  card: ITopAndUncomingTitles;
-  disabled: boolean;
-};
+type cardProps = { card: ITopAndUncomingTitle; disabled: boolean };
 
 const Card = ({ card, disabled }: cardProps): JSX.Element => {
   return (
-    <article tabIndex={4} className="w-full h-full">
+    <article tabIndex={card.mal_id} className="w-full h-full">
       <Tippy
         placement="right"
         delay={400}

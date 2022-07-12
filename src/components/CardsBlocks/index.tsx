@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Card from './partials/Card';
 import styles from './CardsBlocks.module.scss';
 import { useHightLight } from '@hooks/useTitles';
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 
 const CardsBlocks = (): JSX.Element => {
-  const [topTitles, setTopTitles] = React.useState<ITopAndUncomingTitles[]>([]);
+  const [topTitles, setTopTitles] = React.useState<ITopAndUncomingTitle[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
   const currentSizeWindow = () =>
@@ -26,7 +26,7 @@ const CardsBlocks = (): JSX.Element => {
       <h1 className="text-xxl pb-4 font-bold">Top Anime</h1>
 
       <div className={styles['cards-block']}>
-        {topTitles.map((item: ITopAndUncomingTitles) => (
+        {topTitles.map((item: ITopAndUncomingTitle) => (
           <Card key={item.mal_id} disabled={disabled} card={item} />
         ))}
       </div>

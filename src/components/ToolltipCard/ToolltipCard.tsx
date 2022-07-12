@@ -1,8 +1,8 @@
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import styles from './ToolltipCard.module.scss';
 
-const ToolltipCard = (card: ITopAndUncomingTitles): JSX.Element => {
+const ToolltipCard = (card: ITopAndUncomingTitle): JSX.Element => {
   const genresNotFound = (
     <span className="text-contrast-gray text-base">genres not found</span>
   );
@@ -21,21 +21,21 @@ const ToolltipCard = (card: ITopAndUncomingTitles): JSX.Element => {
       <ul className={styles['content-list']}>
         <span>Type:</span>
 
-        {card?.type && (
+        {card.type && (
           <li className="relative">
             <Link className={styles.link} to="#">
               {card.type}
             </Link>
           </li>
         )}
-        {card?.year && (
+        {card.year && (
           <li className="relative">
             <Link className={styles.link} to="#">
               {card.year}
             </Link>
           </li>
         )}
-        {card?.status && (
+        {card.status && (
           <li className="relative">
             <Link className={styles.link} to="#">
               {card.status}
@@ -47,29 +47,29 @@ const ToolltipCard = (card: ITopAndUncomingTitles): JSX.Element => {
       <ul className={styles['content-list']}>
         <span>Genres:</span>
 
-        {card.genres.length < 1
-          ? genresNotFound
-          : card.genres.map((item) => (
+        {card.genres.length
+          ? card.genres.map((item) => (
               <li key={item.mal_id} className="relative">
                 <Link className={styles.link} to="#">
                   {item.name}
                 </Link>
               </li>
-            ))}
+            ))
+          : genresNotFound}
       </ul>
 
       <ul className={styles['content-list']}>
         <span>Themes:</span>
 
-        {card.themes.length < 1
-          ? themesNotFound
-          : card.themes.map((item) => (
+        {card.themes.length
+          ? card.themes.map((item) => (
               <li key={item.mal_id} className="relative">
                 <Link className={styles.link} to="#">
                   {item.name}
                 </Link>
               </li>
-            ))}
+            ))
+          : themesNotFound}
       </ul>
     </div>
   );

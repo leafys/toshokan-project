@@ -17,7 +17,7 @@ type Themes = {
   name: string;
 };
 
-export interface ITopAndUncomingTitles {
+export interface ITopAndUncomingTitle {
   mal_id: number;
   title: string;
   type: string;
@@ -34,5 +34,5 @@ export interface ITopAndUncomingTitles {
 }
 
 export interface IPopularTitles {
-  data: ITopAndUncomingTitles[];
+  data: ITopAndUncomingTitle[];
 }
