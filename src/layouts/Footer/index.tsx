@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import {
-  IRoutesTitleItem,
-  ISocialLink,
-  routesTitleItems,
-  socialLinks,
-} from '@layouts/routesTitleItems';
+import { ISocialLink, socialLinks } from '@layouts/routesTitleItems';
+
+import NavBar from '@components/NavBar';
 
 const Footer = () => {
   return (
@@ -33,13 +30,11 @@ const Footer = () => {
           </div>
 
           <div className="flex items-end sm:flex-col sm:items-center sm:gap-5 ">
-            <ul className="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center">
-              {routesTitleItems.map((item: IRoutesTitleItem) => (
-                <li className={styles.item} key={item.path}>
-                  <NavLink to={item.path}>{item.title}</NavLink>
-                </li>
-              ))}
-            </ul>
+            <NavBar
+              className="flex items center justify-center"
+              classNameForUl="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center"
+              classNameForLi={styles.item}
+            />
 
             <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:justify-evenly">
               {socialLinks.map((item: ISocialLink, index) => (
