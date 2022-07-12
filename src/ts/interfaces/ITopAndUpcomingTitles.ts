@@ -8,13 +8,26 @@ type jpgTypes = {
   small_image_url: string;
 };
 
+type Genre = {
+  mal_id: number;
+  name: string;
+};
+type Themes = {
+  mal_id: number;
+  name: string;
+};
+
 export interface ITopAndUncomingTitles {
-  mal_id?: number;
+  mal_id: number;
   title: string;
   type: string;
-  score?: number;
-  year?: number;
-  synopsis?: string;
+  score: number;
+  year: number;
+  synopsis: string;
+  episodes: number;
+  genres: Genre[];
+  themes: Themes[];
+  status: string;
   images: {
     jpg: jpgTypes;
   };
