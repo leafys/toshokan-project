@@ -1,7 +1,7 @@
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 
-const Slide = ({ images, title }: ITopAndUncomingTitles): JSX.Element => {
+const Slide = ({ images, title }: ITopAndUncomingTitle): JSX.Element => {
   return (
     <article>
       <Link to="#" className="flex flex-col items-center justify-center">
