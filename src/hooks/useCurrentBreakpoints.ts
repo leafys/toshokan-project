@@ -1,33 +1,33 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '@tailwind';
+import { tailwindConfig } from '@plugins/taillwind';
 import { useMediaQuery } from 'react-responsive';
 
-interface IBreakpoints {
-  isXxl: boolean;
-  isXl: boolean;
-  isLg: boolean;
-  isMd: boolean;
-  isSM: boolean;
-}
 
-const fullConfig = resolveConfig(tailwindConfig);
-
-export const useCurrentBreakpoints = (): IBreakpoints => {
-  const isXxl = useMediaQuery({
-    query: `(max-width: ${fullConfig.theme.screens.xxl.max})`,
+export const useIsXxl = (): boolean => {
+  return useMediaQuery({
+    query: `(max-width: ${tailwindConfig.theme.screens.xxl.max})`,
   });
-  const isXl = useMediaQuery({
-    query: `(max-width: ${fullConfig.theme.screens.xl.max})`,
-  });
-  const isLg = useMediaQuery({
-    query: `(max-width: ${fullConfig.theme.screens.lg.max})`,
-  });
-  const isMd = useMediaQuery({
-    query: `(max-width: ${fullConfig.theme.screens.md.max})`,
-  });
-  const isSM = useMediaQuery({
-    query: `(max-width: ${fullConfig.theme.screens.sm.max})`,
-  });
-
-  return { isXxl, isXl, isLg, isMd, isSM };
 };
+
+export const useIsXl = (): boolean => {
+  return useMediaQuery({
+    query: `(max-width: ${tailwindConfig.theme.screens.xl.max})`,
+  });
+};
+
+export const useIsLg = (): boolean => {
+  return useMediaQuery({
+    query: `(max-width: ${tailwindConfig.theme.screens.lg.max})`,
+  });
+};
+
+export const useIsMd = (): boolean => {
+  return useMediaQuery({
+    query: `(max-width: ${tailwindConfig.theme.screens.md.max})`,
+  });
+};
+export const useIsSm = (): boolean => {
+  return useMediaQuery({
+    query: `(max-width: ${tailwindConfig.theme.screens.sm.max})`,
+  });
+};
+  
