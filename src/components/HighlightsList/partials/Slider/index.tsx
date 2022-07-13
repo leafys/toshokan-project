@@ -23,12 +23,15 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
   useHightLight('upcoming', 15, 'seasons/upcoming', setUpcomingTitle);
 
   const onSlideChange = (slider: swiper) => {
-    const slideProgress = Math.ceil(slider.progress * 106);
-    setProgressBar(
-      slideProgress <= 5 && slideProgress !== 0
-        ? slideProgress - 6
-        : slideProgress
-    );
+    let slideProgress = Math.ceil(slider.progress * 100);
+    if (slideProgress > 87) {
+      slideProgress = 100;
+    }
+    if (slideProgress <= 9) {
+      slideProgress = 0;
+    }
+
+    setProgressBar(slideProgress);
   };
 
   return (
