@@ -89,57 +89,48 @@ const Header = (): JSX.Element => {
             {t('header.sign_in')}
           </MyButton>
         </div>
+      </div>
+      <div className="hidden xl:block">
+        <div className="container mx-auto flex items-center px-5 py-4">
+          <Link to={`/${locale}`}>
+            <img
+              className="w-mobile-tablet-logo"
+              src="images/mob-logo.png"
+              alt="logo"
+            />
+          </Link>
 
-        <div className="hidden xl:block">
-          <div className="container mx-auto flex items-center px-5 py-4">
-            <Link to={`/${locale}`}>
-              <img
-                className="w-mobile-tablet-logo"
-                src="images/mob-logo.png"
-                alt="logo"
-              />
-            </Link>
-
-            <div className="w-full mr-6 relative">
-              <div
-                onClick={() => pushQuery()}
-                className={styles.searchIcon}
-              ></div>
-
-              <MyInput
-                value={searchValue}
-                onKeyDown={onHandler}
-                onChange={(e) => setSearchValue(e.target.value)}
-                className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-                placeholder="Search..."
-                type="search"
-              />
-            </div>
+          <div className="w-full mr-6 relative">
+            <div
+              onClick={() => pushQuery()}
+              className={styles.searchIcon}
+            ></div>
 
             <MyInput
               value={searchValue}
+              onKeyDown={onHandler}
               onChange={(e) => setSearchValue(e.target.value)}
               className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
               placeholder="Search..."
               type="search"
             />
-
-            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-              <NavBar
-                setIsNavOpen={setIsNavOpen}
-                className="xl:flex xl:flex-col xl:items-center"
-              />
-
-              <MyButton purple className={styles.btn}>
-                {t('header.sign_up')}
-              </MyButton>
-              <MyButton purple className={styles.btn}>
-                {t('header.sign_in')}
-              </MyButton>
-            </SideBar>
-
-            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
           </div>
+
+          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+            <NavBar
+              setIsNavOpen={setIsNavOpen}
+              className="xl:flex xl:flex-col xl:items-center"
+            />
+
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_up')}
+            </MyButton>
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_in')}
+            </MyButton>
+          </SideBar>
+
+          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
         </div>
       </div>
     </header>
