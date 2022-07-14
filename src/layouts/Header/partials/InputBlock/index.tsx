@@ -3,7 +3,7 @@ import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
-import { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { FocusEvent, useEffect, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 
@@ -38,24 +38,22 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
     };
   }, []);
 
-  const onSearch = () => {
-    !isActive ? setIsActive(true) : pushQuery();
-    inputRef.current?.focus();
-  };
-
   const clearSearchInput = () => {
     setValueInput('');
     inputRef.current?.focus();
   };
 
-  const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-    event.key === 'Enter' && pushQuery();
+  const onSearch = () => {
+    !isActive ? setIsActive(true) : pushQuery();
+    inputRef.current?.focus();
   };
+
   const {
     setSearchValue,
-    pushQuery,
+    onHandler,
     setIsActive,
     toggleSelectCategory,
+    pushQuery,
     searchValue,
     isActive,
     activeBtnIndex,
@@ -78,7 +76,12 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
       {isActive && (
         <>
           <span onClick={clearSearchInput} className={styles.clearInput}></span>
-          <div className={cn(styles.select_btn_block, isUserScrolled &&  styles.select_btn_block_active)}>
+          <div
+            className={cn(
+              styles.select_btn_block,
+              isUserScrolled && styles.select_btn_block_active
+            )}
+          >
             {selectBtns.map((btn, index) => (
               <MyButton
                 key={index}
