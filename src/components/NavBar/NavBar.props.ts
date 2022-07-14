@@ -1,6 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
+
 
 export interface INavBarProps {
-  className?: string;
-  setIsNavOpen?: Dispatch<SetStateAction<boolean>>;
+  className: string;
+  classNameForUl: string;
+  classNameForLi: string;
 }
