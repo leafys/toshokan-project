@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
-import { MutableRefObject, useState } from 'react';
+import { KeyboardEvent, MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
   const { t } = useTranslation();
@@ -57,10 +57,15 @@ const Header = (): JSX.Element => {
     searchFunc();
   };
 
+  const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    event.key === 'Enter' && pushQuery();
+  };
+
   const inputBlockProps = {
     setSearchValue,
     setIsActive,
     pushQuery,
+    onHandler,
     toggleSelectCategory,
     searchValue,
     isActive,
@@ -84,40 +89,57 @@ const Header = (): JSX.Element => {
             {t('header.sign_in')}
           </MyButton>
         </div>
-      </div>
-      <div className="hidden xl:block">
-        <div className="container mx-auto flex items-center px-5 py-4">
-          <Link to={`/${locale}`}>
-            <img
-              className="w-mobile-tablet-logo"
-              src="images/mob-logo.png"
-              alt="logo"
+
+        <div className="hidden xl:block">
+          <div className="container mx-auto flex items-center px-5 py-4">
+            <Link to={`/${locale}`}>
+              <img
+                className="w-mobile-tablet-logo"
+                src="images/mob-logo.png"
+                alt="logo"
+              />
+            </Link>
+
+            <div className="w-full mr-6 relative">
+              <div
+                onClick={() => pushQuery()}
+                className={styles.searchIcon}
+              ></div>
+
+              <MyInput
+                value={searchValue}
+                onKeyDown={onHandler}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+                placeholder="Search..."
+                type="search"
+              />
+            </div>
+
+            <MyInput
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+              placeholder="Search..."
+              type="search"
             />
-          </Link>
 
-          <MyInput
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-            placeholder="Search..."
-            type="search"
-          />
+            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+              <NavBar
+                setIsNavOpen={setIsNavOpen}
+                className="xl:flex xl:flex-col xl:items-center"
+              />
 
-          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-            <NavBar
-              setIsNavOpen={setIsNavOpen}
-              className="xl:flex xl:flex-col xl:items-center"
-            />
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_up')}
+              </MyButton>
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_in')}
+              </MyButton>
+            </SideBar>
 
-            <MyButton purple className={styles.btn}>
-              {t('header.sign_up')}
-            </MyButton>
-            <MyButton purple className={styles.btn}>
-              {t('header.sign_in')}
-            </MyButton>
-          </SideBar>
-
-          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
         </div>
       </div>
     </header>
