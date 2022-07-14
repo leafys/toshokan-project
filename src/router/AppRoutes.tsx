@@ -9,6 +9,8 @@ import Search from '@pages/Search';
 declare global {
   interface Window {
     locale: string;
+    disableScroll: () => void;
+    enableScroll: () => void;
   }
 }
 

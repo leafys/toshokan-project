@@ -11,11 +11,10 @@ import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
-import { i18nLanguages } from '@plugins/i18n';
 import { MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const locale = window.locale;
   const [searchValue, setSearchValue] =
     useRecoilState<string>(headerSearchValue);
@@ -32,8 +31,8 @@ const Header = (): JSX.Element => {
     setIsNavOpen(!isNavOpen);
 
     !isNavOpen && typeof window != 'undefined' && window.document
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'unset');
+      ? window.disableScroll()
+      : window.enableScroll();
   };
 
   const toggleSelectCategory = (
@@ -75,54 +74,50 @@ const Header = (): JSX.Element => {
           <img className="w-main-logo" src="images/logo.png" alt="logo" />
         </Link>
 
-        {i18nLanguages.map((lng) => (
-          <button
-            type="submit"
-            key={lng.locale}
-            onClick={() => i18n.changeLanguage(lng.locale)}
-            disabled={i18n.resolvedLanguage === lng.locale}
-          >
-            {lng.nativeName}
-          </button>
-        ))}
-
         <div className="flex items-center">
           <NavBar className="flex items-center" />
           <InputBlock inputBlockProps={inputBlockProps} />
-          <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
-          <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
+          <MyButton purple className={styles.btn}>
+            {t('header.sign_up')}
+          </MyButton>
+          <MyButton purple className={styles.btn}>
+            {t('header.sign_in')}
+          </MyButton>
         </div>
+      </div>
+      <div className="hidden xl:block">
+        <div className="container mx-auto flex items-center px-5 py-4">
+          <Link to={`/${locale}`}>
+            <img
+              className="w-mobile-tablet-logo"
+              src="images/mob-logo.png"
+              alt="logo"
+            />
+          </Link>
 
-        <div className="hidden xl:block">
-          <div className="container mx-auto flex items-center px-5 py-4">
-            <Link to={`/${locale}`}>
-              <img
-                className="w-mobile-tablet-logo"
-                src="images/mob-logo.png"
-                alt="logo"
-              />
-            </Link>
+          <MyInput
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+            placeholder="Search..."
+            type="search"
+          />
 
-            <MyInput
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-              placeholder="Search..."
-              type="search"
+          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+            <NavBar
+              setIsNavOpen={setIsNavOpen}
+              className="xl:flex xl:flex-col xl:items-center"
             />
 
-            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-              <NavBar
-                setIsNavOpen={setIsNavOpen}
-                className="xl:flex xl:flex-col xl:items-center"
-              />
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_up')}
+            </MyButton>
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_in')}
+            </MyButton>
+          </SideBar>
 
-              <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
-              <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
-            </SideBar>
-
-            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
-          </div>
+          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
         </div>
       </div>
     </header>

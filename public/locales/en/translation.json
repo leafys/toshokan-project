@@ -1,4 +1,16 @@
 {
     "header.sign_up": "Sign up",
-    "header.sign_in": "Sign in"
+    "header.sign_in": "Sign in",
+    "header.home_link": "Home",
+    "header.category_link": "Category",
+    "header.random_link": "Random",
+    "locale.title": "Select interface language",
+    "locale.desc": "You can change your choice at any time in the settings",
+    "locale.en_lg": "English",
+    "locale.ru_lg": "Russian",
+    "highlights.title": "Upcoming",
+    "cards_block.title": "Top Anime",
+    "footer.title": "Welcome to the best anime site",
+    "footer.subtitle": "Anime online, all rights reserved",
+    "footer.desc": "Attention: this site does not host videos on its server. All content is provided by unaffiliated third parties."
 }

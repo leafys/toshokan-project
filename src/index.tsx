@@ -11,16 +11,26 @@ import '@plugins/i18n';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const enableScroll = () => {
+  document.body.style.overflow = 'unset';
+};
+
+const disableScroll = () => {
+  document.body.style.overflow = 'hidden';
+};
+
+window.disableScroll = disableScroll;
+window.enableScroll = enableScroll;
+
 root.render(
-  <React.StrictMode>
-    <React.Suspense>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </QueryClientProvider>
-      </RecoilRoot>
-    </React.Suspense>
-  </React.StrictMode>
+  <React.Suspense>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </RecoilRoot>
+  </React.Suspense>
 );

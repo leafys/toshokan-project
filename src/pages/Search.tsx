@@ -16,7 +16,9 @@ const Search = (): JSX.Element => {
     <div className="search">
       <h1>Ты на серче епта</h1>
 
-      <MyButton onClick={clearSearchAndBack}>Назад йопта</MyButton>
+      <MyButton purple onClick={clearSearchAndBack}>
+        Назад йопта
+      </MyButton>
     </div>
   );
 };

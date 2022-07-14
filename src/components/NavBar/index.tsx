@@ -3,8 +3,10 @@ import { INavBarProps } from './NavBar.props';
 import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import { IRoutesTitleItem, routesTitleItems } from '@layouts/routesTitleItems';
+import { useTranslation } from 'react-i18next';
 
 const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
+  const { t } = useTranslation();
   const locale = window.locale;
   return (
     <nav {...props}>
@@ -16,7 +18,7 @@ const NavBar = ({ setIsNavOpen, ...props }: INavBarProps): JSX.Element => {
               to={`/${locale}${item.path}`}
               end
             >
-              {item.title}
+              {t(item.title)}
             </NavLink>
           </li>
         ))}

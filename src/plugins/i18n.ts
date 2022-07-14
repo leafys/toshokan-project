@@ -6,11 +6,11 @@ import Backend from 'i18next-http-backend';
 export const i18nLanguages = [
   {
     locale: 'en',
-    nativeName: 'English',
+    nativeName: 'locale.en_lg',
   },
   {
     locale: 'ru',
-    nativeName: 'Russian',
+    nativeName: 'locale.ru_lg',
   },
 ];
 

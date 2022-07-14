@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import {
@@ -7,28 +6,33 @@ import {
   routesTitleItems,
   socialLinks,
 } from '@layouts/routesTitleItems';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  const locale = window.locale;
   return (
     <footer className="mt-auto bg-light-gray-opacity">
       <div className="container mx-auto py-8 px-5">
         <div className="flex md:gap-4 sm:justify-center sm:flex-col ">
           <div className="flex flex-auto flex-col gap-2 sm:items-center">
-            <Link to="/" className="max-w-[260px] sm:max-w-[210px]">
-              <img className="w-main-logo" src="images/logo.png" alt="logo" />
-              <span className="text-base sm:text-sm">
-                Bem vindo ao melhor site de animes
-              </span>
+            <Link
+              className="sm:flex sm:flex-col sm:items-center"
+              to={`/${locale}`}
+            >
+              <img
+                className="w-main-logo mb-2"
+                src="images/logo.png"
+                alt="logo"
+              />
+              <span className="text-base sm:text-sm">{t('footer.title')}</span>
             </Link>
 
             <div className="flex flex-col gap-1 max-w-[372px] ">
               <span className="text-sm sm:text-center">
-                Animes online todos os direitos reservados
+                {t('footer.subtitle')}
               </span>
-              <span className="text-sm sm:text-center">
-                Atenção: Este site não hospeda nenhum vídeo em seu servidor.
-                Todo conteudo é provido por terceiros e não afiliados.
-              </span>
+              <span className="text-sm sm:text-center">{t('footer.desc')}</span>
             </div>
           </div>
 
@@ -36,7 +40,7 @@ const Footer = () => {
             <ul className="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center">
               {routesTitleItems.map((item: IRoutesTitleItem) => (
                 <li className={styles.item} key={item.path}>
-                  <NavLink to={item.path}>{item.title}</NavLink>
+                  <NavLink to={item.path}>{t(item.title)}</NavLink>
                 </li>
               ))}
             </ul>

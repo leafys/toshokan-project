@@ -78,10 +78,16 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
       {isActive && (
         <>
           <span onClick={clearSearchInput} className={styles.clearInput}></span>
-          <div className={cn(styles.select_btn_block, isUserScrolled &&  styles.select_btn_block_active)}>
+          <div
+            className={cn(
+              styles.select_btn_block,
+              isUserScrolled && styles.select_btn_block_active
+            )}
+          >
             {selectBtns.map((btn, index) => (
               <MyButton
                 key={index}
+                purple
                 className={cn(
                   { [styles.select_btn]: true },
                   { [styles.active_btn]: activeBtnIndex === index }
