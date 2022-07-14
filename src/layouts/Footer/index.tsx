@@ -1,12 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import {
-  IRoutesTitleItem,
-  ISocialLink,
-  routesTitleItems,
-  socialLinks,
-} from '@layouts/routesTitleItems';
+import { ISocialLink, socialLinks } from '@layouts/routesTitleItems';
 import { useTranslation } from 'react-i18next';
+import NavBar from '@components/NavBar';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -37,23 +34,21 @@ const Footer = () => {
           </div>
 
           <div className="flex items-end sm:flex-col sm:items-center sm:gap-5 ">
-            <ul className="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center">
-              {routesTitleItems.map((item: IRoutesTitleItem) => (
-                <li className={styles.item} key={item.path}>
-                  <NavLink to={item.path}>{t(item.title)}</NavLink>
-                </li>
-              ))}
-            </ul>
+            <NavBar
+              className="flex items center justify-center"
+              classNameForUl="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center"
+              classNameForLi={styles.item}
+            />
 
             <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:justify-evenly">
               {socialLinks.map((item: ISocialLink, index) => (
                 <Link
                   to={item.path}
-                  className="flex gap-2  sm:text-base;"
+                  className="flex gap-2 sm:text-base"
                   key={index}
                 >
                   <div className="w-[28px]">{item.icon}</div>
-                  {item.title}
+                  {t(item.title)}
                 </Link>
               ))}
             </div>

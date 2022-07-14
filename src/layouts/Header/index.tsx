@@ -73,67 +73,75 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header>
-      <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
-        <Link to={`/${locale}`}>
-          <img className="w-main-logo" src="images/logo.png" alt="logo" />
-        </Link>
-
-        <div className="flex items-center">
-          <NavBar className="flex items-center" />
-          <InputBlock inputBlockProps={inputBlockProps} />
-          <MyButton purple className={styles.btn}>
-            {t('header.sign_up')}
-          </MyButton>
-          <MyButton purple className={styles.btn}>
-            {t('header.sign_in')}
-          </MyButton>
-        </div>
-      </div>
-      <div className="hidden xl:block">
-        <div className="container mx-auto flex items-center px-5 py-4">
+    <>
+      <div className="h-[80px]"></div>
+      <header className="w-full bg-black fixed top-0 left-0 right-0 z-10">
+        <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
           <Link to={`/${locale}`}>
-            <img
-              className="w-mobile-tablet-logo"
-              src="images/mob-logo.png"
-              alt="logo"
-            />
+            <img className="w-main-logo" src="images/logo.png" alt="logo" />
           </Link>
 
-          <div className="w-full mr-6 relative">
-            <div
-              onClick={() => pushQuery()}
-              className={styles.searchIcon}
-            ></div>
-
-            <MyInput
-              value={searchValue}
-              onKeyDown={onHandler}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-              placeholder="Search..."
-              type="search"
-            />
-          </div>
-
-          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+          <div className="flex items-center">
             <NavBar
-              setIsNavOpen={setIsNavOpen}
-              className="xl:flex xl:flex-col xl:items-center"
+              classNameForUl={'flex items-center xl:flex-col'}
+              classNameForLi={styles.item}
+              className="flex items-center"
             />
-
+            <InputBlock inputBlockProps={inputBlockProps} />
             <MyButton purple className={styles.btn}>
               {t('header.sign_up')}
             </MyButton>
             <MyButton purple className={styles.btn}>
               {t('header.sign_in')}
             </MyButton>
-          </SideBar>
-
-          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
         </div>
-      </div>
-    </header>
+        <div className="hidden xl:block">
+          <div className="container mx-auto flex items-center px-5 py-4">
+            <Link to={`/${locale}`}>
+              <img
+                className="w-mobile-tablet-logo"
+                src="images/mob-logo.png"
+                alt="logo"
+              />
+            </Link>
+
+            <div className="w-full mr-6 relative">
+              <div
+                onClick={() => pushQuery()}
+                className={styles.searchIcon}
+              ></div>
+
+              <MyInput
+                value={searchValue}
+                onKeyDown={onHandler}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+                placeholder="Search..."
+                type="search"
+              />
+            </div>
+
+            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+              <NavBar
+                classNameForUl={'flex items-center xl:flex-col'}
+                classNameForLi={styles.item}
+                className="xl:flex xl:flex-col xl:items-center"
+              />
+
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_up')}
+              </MyButton>
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_in')}
+              </MyButton>
+            </SideBar>
+
+            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
