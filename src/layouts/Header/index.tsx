@@ -10,9 +10,12 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
+import { useTranslation } from 'react-i18next';
 import { KeyboardEvent, MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
+  const { t } = useTranslation();
+  const locale = window.locale;
   const [searchValue, setSearchValue] =
     useRecoilState<string>(headerSearchValue);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -28,8 +31,8 @@ const Header = (): JSX.Element => {
     setIsNavOpen(!isNavOpen);
 
     !isNavOpen && typeof window != 'undefined' && window.document
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'unset');
+      ? window.disableScroll()
+      : window.enableScroll();
   };
 
   const toggleSelectCategory = (
@@ -71,30 +74,31 @@ const Header = (): JSX.Element => {
 
   return (
     <>
-      <div className="h-[80px] "></div>
+      <div className="h-[80px]"></div>
       <header className="w-full bg-black fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
-          <Link to="/">
+          <Link to={`/${locale}`}>
             <img className="w-main-logo" src="images/logo.png" alt="logo" />
           </Link>
 
           <div className="flex items-center">
             <NavBar
-              className="flex items-center"
               classNameForUl={'flex items-center xl:flex-col'}
               classNameForLi={styles.item}
+              className="flex items-center"
             />
-
             <InputBlock inputBlockProps={inputBlockProps} />
-
-            <MyButton className={styles.btn}>Sign up</MyButton>
-            <MyButton className={styles.btn}>Sign in</MyButton>
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_up')}
+            </MyButton>
+            <MyButton purple className={styles.btn}>
+              {t('header.sign_in')}
+            </MyButton>
           </div>
         </div>
-
         <div className="hidden xl:block">
           <div className="container mx-auto flex items-center px-5 py-4">
-            <Link to="/">
+            <Link to={`/${locale}`}>
               <img
                 className="w-mobile-tablet-logo"
                 src="images/mob-logo.png"
@@ -120,13 +124,17 @@ const Header = (): JSX.Element => {
 
             <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
               <NavBar
-                className="xl:flex xl:flex-col xl:items-center"
                 classNameForUl={'flex items-center xl:flex-col'}
                 classNameForLi={styles.item}
+                className="xl:flex xl:flex-col xl:items-center"
               />
 
-              <MyButton className={styles.btn}>Sign up</MyButton>
-              <MyButton className={styles.btn}>Sign in</MyButton>
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_up')}
+              </MyButton>
+              <MyButton purple className={styles.btn}>
+                {t('header.sign_in')}
+              </MyButton>
             </SideBar>
 
             <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />

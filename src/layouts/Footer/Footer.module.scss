@@ -1,5 +1,5 @@
 .item {
-  @apply mr-9 sm:mr-0 text-lg sm:text-base  sm:text-center;
+  @apply mr-9 sm:mr-0 text-lg sm:text-base sm:text-center mx-2;
 
   @media (hover: hover) {
     &:hover {

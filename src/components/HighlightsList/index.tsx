@@ -1,8 +1,10 @@
 import Slider from './partials/Slider';
 import ProgressBar from '@ramonak/react-progress-bar';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const HighlightsList = (): JSX.Element => {
+  const { t } = useTranslation();
   const [progressBar, setProgressBar] = useState<number>(0);
 
   return (
@@ -17,7 +19,7 @@ const HighlightsList = (): JSX.Element => {
         borderRadius="0px"
       />
       <div className="container">
-        <h1 className="text-xxl mt-6 font-bold">Upcoming</h1>
+        <h1 className="text-xxl mt-6 font-bold">{t('highlights.title')}</h1>
         <Slider setProgressBar={setProgressBar} />
       </div>
     </div>

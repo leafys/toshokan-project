@@ -6,5 +6,6 @@ export interface IButton
     HTMLButtonElement
   > {
   children: ReactNode;
-  onChange?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  purple?: boolean;
 }
