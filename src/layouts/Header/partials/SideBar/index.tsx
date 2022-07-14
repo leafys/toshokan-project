@@ -1,24 +1,28 @@
-import { useSpring, animated } from 'react-spring';
 import { ISideBar } from './SideBar.props';
 import styles from './SideBar.module.scss';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const SideBar = ({ isNavOpen, children, toggleNav }: ISideBar): JSX.Element => {
-  const { transform } = useSpring({
-    from: { transform: 'translateX(-100%)' },
-    transform: isNavOpen ? 'translateX(0%)' : 'translateX(-100%)',
-  });
   return (
-    <div className={styles.sidebar}>
+    <AnimatePresence>
       {isNavOpen && (
-        <div onClick={toggleNav} className={styles.sidebar__backdrop}></div>
+        <div className={styles.sidebar}>
+          <div onClick={toggleNav} className={styles.sidebar__backdrop} />
+
+          <motion.div
+            initial={{ transform: 'translateX(-100%)' }}
+            animate={{
+              transform: isNavOpen ? 'translateX(0%)' : 'translateX(-100%)',
+            }}
+            exit={{ transform: 'translateX(-100%)' }}
+            className={styles.sidebar__panel}
+            transition={{ duration: 0.4 }}
+          >
+            {children}
+          </motion.div>
+        </div>
       )}
-      <animated.div
-        style={{ transform: transform }}
-        className={styles.sidebar__panel}
-      >
-        {isNavOpen && <div className={styles.sidebar__panel}>{children}</div>}
-      </animated.div>
-    </div>
+    </AnimatePresence>
   );
 };
 
