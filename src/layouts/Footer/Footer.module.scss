@@ -1,7 +1,9 @@
 .item {
-  @apply mr-9 sm:mr-0 text-lg sm:text-base sm:w-1/4 sm:text-center m-fold:w-full;
+  @apply mr-9 sm:mr-0 text-lg sm:text-base sm:text-center mx-2;
 
-  &:hover {
-    @apply text-purple;
+  @media (hover: hover) {
+    &:hover {
+      @apply text-purple;
+    }
   }
 }
