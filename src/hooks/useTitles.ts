@@ -1,4 +1,4 @@
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { IError } from '@interfaces/ITopAndUpcomingTitles';
 import { axios } from '@plugins';
 import { Dispatch } from 'react';
@@ -8,7 +8,7 @@ export const useHightLight = (
   key: string,
   limit: number | undefined,
   url: string,
-  setData: Dispatch<React.SetStateAction<ITopAndUncomingTitles[]>>
+  setData: Dispatch<React.SetStateAction<ITopAndUncomingTitle[]>>
 ) => {
   return useQuery(
     key,
