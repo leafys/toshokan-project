@@ -18,6 +18,4 @@ const NavBar = ({classNameForUl, classNameForLi, ...props }: INavBarProps): JSX.
   );
 };
   
-// flex items-center xl:flex-col"
-
 export default NavBar;
