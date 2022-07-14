@@ -1,0 +1,40 @@
+.title {
+  @apply text-lg;
+}
+
+.desc {
+  @apply text-contrast-gray;
+
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  line-clamp: 5;
+  box-orient: vertical;
+}
+
+.content-list {
+  @apply flex flex-wrap items-center gap-x-1;
+}
+
+.link {
+  &::after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: orange;
+  }
+
+  &:hover {
+    &::after {
+      background-color: var(--red);
+    }
+  }
+}

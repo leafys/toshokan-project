@@ -7,7 +7,7 @@ import 'swiper/scss/scrollbar';
 import 'swiper/scss/navigation';
 import { useHightLight } from '@hooks/useTitles';
 import Slide from './partials/Slide';
-import { ITopAndUncomingTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { swiperSettings } from './plugins/swiperSettings';
 import { Swiper as swiper } from 'swiper/types';
 
@@ -16,19 +16,22 @@ type SliderProps = {
 };
 
 const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
-  const [upcomingTitle, setUpcomingTitle] = useState<ITopAndUncomingTitles[]>(
+  const [upcomingTitle, setUpcomingTitle] = useState<ITopAndUncomingTitle[]>(
     []
   );
 
   useHightLight('upcoming', 15, 'seasons/upcoming', setUpcomingTitle);
 
   const onSlideChange = (slider: swiper) => {
-    const slideProgress = Math.ceil(slider.progress * 106);
-    setProgressBar(
-      slideProgress <= 5 && slideProgress !== 0
-        ? slideProgress - 6
-        : slideProgress
-    );
+    let slideProgress = Math.ceil(slider.progress * 100);
+    if (slideProgress > 87) {
+      slideProgress = 100;
+    }
+    if (slideProgress <= 9) {
+      slideProgress = 0;
+    }
+
+    setProgressBar(slideProgress);
   };
 
   return (
@@ -37,7 +40,7 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
       className={styles.swiper}
       onSlideChange={onSlideChange}
     >
-      {upcomingTitle.map((item: ITopAndUncomingTitles) => (
+      {upcomingTitle.map((item: ITopAndUncomingTitle) => (
         <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
           <Slide {...item} />
         </SwiperSlide>
