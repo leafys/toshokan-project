@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Card from './partials/Card';
 import styles from './CardsBlocks.module.scss';
 import { useHightLight } from '@hooks/useTitles';
+import { useTranslation } from 'react-i18next';
 import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 
 const CardsBlocks = (): JSX.Element => {
+  const { t } = useTranslation();
   const [topTitles, setTopTitles] = React.useState<ITopAndUncomingTitle[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -23,7 +25,7 @@ const CardsBlocks = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h1 className="text-xxl pb-4 font-bold">Top Anime</h1>
+      <h1 className="text-xxl pb-4 font-bold">{t('cards_block.title')}</h1>
 
       <div className={styles['cards-block']}>
         {topTitles.map((item: ITopAndUncomingTitle) => (

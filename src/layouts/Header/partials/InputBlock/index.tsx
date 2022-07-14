@@ -90,6 +90,7 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
             {selectBtns.map((btn, index) => (
               <MyButton
                 key={index}
+                purple
                 className={cn(
                   { [styles.select_btn]: true },
                   { [styles.active_btn]: activeBtnIndex === index }
