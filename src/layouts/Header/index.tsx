@@ -79,7 +79,11 @@ const Header = (): JSX.Element => {
           </Link>
 
           <div className="flex items-center">
-            <NavBar className="flex items-center" />
+            <NavBar
+              className="flex items-center"
+              classNameForUl={'flex items-center xl:flex-col'}
+              classNameForLi={styles.item}
+            />
 
             <InputBlock inputBlockProps={inputBlockProps} />
 
@@ -116,8 +120,9 @@ const Header = (): JSX.Element => {
 
             <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
               <NavBar
-                setIsNavOpen={setIsNavOpen}
                 className="xl:flex xl:flex-col xl:items-center"
+                classNameForUl={'flex items-center xl:flex-col'}
+                classNameForLi={styles.item}
               />
 
               <MyButton className={styles.btn}>Sign up</MyButton>
