@@ -127,6 +127,7 @@ const Header = (): JSX.Element => {
                 classNameForUl={'flex items-center xl:flex-col'}
                 classNameForLi={styles.item}
                 className="xl:flex xl:flex-col xl:items-center"
+                setIsNavOpen={setIsNavOpen}
               />
 
               <MyButton purple className={styles.btn}>
