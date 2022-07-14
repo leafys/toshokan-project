@@ -1,5 +1,5 @@
 .item {
-  @apply mr-9 sm:mr-0 text-lg;
+  @apply mr-9 sm:mr-0 text-lg sm:text-base sm:w-1/4 sm:text-center m-fold:w-full;
 
   &:hover {
     @apply text-purple;

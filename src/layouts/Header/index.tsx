@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import NavBar from '@components/NavBar';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
@@ -13,6 +12,7 @@ import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
 import { i18nLanguages } from '@plugins/i18n';
+import { MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -36,9 +36,14 @@ const Header = (): JSX.Element => {
       : (document.body.style.overflow = 'unset');
   };
 
-  const toggleSelectCategory = (btn: { text: string }, index: number) => {
+  const toggleSelectCategory = (
+    btn: { text: string },
+    index: number,
+    focus: MutableRefObject<HTMLInputElement | null>
+  ) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
+    focus.current?.focus();
   };
 
   const pushQuery = () => {
@@ -87,37 +92,37 @@ const Header = (): JSX.Element => {
           <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
           <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
         </div>
-      </div>
 
-      <div className="hidden xl:block">
-        <div className="container mx-auto flex items-center px-5 py-4">
-          <Link to={`/${locale}`}>
-            <img
-              className="w-mobile-tablet-logo"
-              src="images/mob-logo.png"
-              alt="logo"
-            />
-          </Link>
+        <div className="hidden xl:block">
+          <div className="container mx-auto flex items-center px-5 py-4">
+            <Link to={`/${locale}`}>
+              <img
+                className="w-mobile-tablet-logo"
+                src="images/mob-logo.png"
+                alt="logo"
+              />
+            </Link>
 
-          <MyInput
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-            placeholder="Search..."
-            type="search"
-          />
-
-          <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
-            <NavBar
-              setIsNavOpen={setIsNavOpen}
-              className="xl:flex xl:flex-col xl:items-center"
+            <MyInput
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+              placeholder="Search..."
+              type="search"
             />
 
-            <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
-            <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
-          </SideBar>
+            <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
+              <NavBar
+                setIsNavOpen={setIsNavOpen}
+                className="xl:flex xl:flex-col xl:items-center"
+              />
 
-          <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+              <MyButton className={styles.btn}>{t('header.sign_up')}</MyButton>
+              <MyButton className={styles.btn}>{t('header.sign_in')}</MyButton>
+            </SideBar>
+
+            <Burger toggleNav={toggleNav} isNavOpen={isNavOpen} />
+          </div>
         </div>
       </div>
     </header>

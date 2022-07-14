@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-end sm:flex-col sm:items-center sm:gap-5 ">
-            <ul className="flex items-end gap-2 flex-col sm:flex-row sm:justify-center sm:flex-wrap">
+            <ul className="flex items-end gap-2 flex-col sm:flex-row  sm:flex-wrap sm:w-full sm:justify-center">
               {routesTitleItems.map((item: IRoutesTitleItem) => (
                 <li className={styles.item} key={item.path}>
                   <NavLink to={item.path}>{item.title}</NavLink>

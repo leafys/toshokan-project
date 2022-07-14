@@ -36,6 +36,9 @@ module.exports = {
       'gray-opacity': 'var(--gray-opacity)',
       'light-gray-opacity': 'var(--light-gray-opacity)',
       orange: 'var(--orange)',
+      'dark-purple': 'var(--dark-purple)',
+      'contrast-gray': 'var(--contrast-gray)',
+      'light-orange': 'var(--light-orange)',
     },
     placeholderColor: {
       'primary-color': '#fcfcfc',
@@ -45,6 +48,7 @@ module.exports = {
     },
     fontSize: {
       sm: ['12px', '15px'],
+      md: ['14px', '16px'],
       base: ['16px', '24px'],
       lg: ['20px', '28px'],
       xl: ['24px', '32px'],
@@ -52,7 +56,10 @@ module.exports = {
     },
     extend: {
       screens: {
-        'cards-md-': { max: '640px' },
+        'm-md-': { max: '640px' },
+        'm-sm-': { max: '490px' },
+        'm-xs-': { max: '375px' },
+        'm-fold': { max: '319px' },
       },
       width: {
         'main-logo': '180px',
