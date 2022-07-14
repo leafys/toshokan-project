@@ -3,7 +3,7 @@ import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
-import { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { FocusEvent, useEffect, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 import { useLocation } from 'react-router';
@@ -43,24 +43,22 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
     };
   }, [location.pathname]);
 
-  const onSearch = () => {
-    !isActive ? setIsActive(true) : pushQuery();
-    inputRef.current?.focus();
-  };
-
   const clearSearchInput = () => {
     setValueInput('');
     inputRef.current?.focus();
   };
 
-  const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-    event.key === 'Enter' && pushQuery();
+  const onSearch = () => {
+    !isActive ? setIsActive(true) : pushQuery();
+    inputRef.current?.focus();
   };
+
   const {
     setSearchValue,
-    pushQuery,
+    onHandler,
     setIsActive,
     toggleSelectCategory,
+    pushQuery,
     searchValue,
     isActive,
     activeBtnIndex,

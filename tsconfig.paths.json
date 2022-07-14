@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@styles/*": ["./assets/scss/*"],
-      "@components/*": ["./components/*"],
-      "@layouts/*": ["./layouts/*"],
-      "@UI/*": ["./components/UI/*"],
-      "@router/*": ["./router/*"],
-      "@pages/*": ["./pages/*"],
-      "@atoms/*": ["./store/atoms/*"],
-      "@selectors/*": ["./store/selectors/*"],
-      "@plugins": ["./plugins"],
-      "@plugins/*": ["./plugins/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@interfaces/*": ["./ts/interfaces/*"]
+      "@tailwind": ["./tailwind.config.js"],
+      "@styles/*": ["./src/assets/scss/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@UI/*": ["./src/components/UI/*"],
+      "@router/*": ["./src/router/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@atoms/*": ["./src/store/atoms/*"],
+      "@selectors/*": ["./src/store/selectors/*"],
+      "@plugins": ["./src/plugins"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@interfaces/*": ["./src/ts/interfaces/*"]
     }
   }
 }

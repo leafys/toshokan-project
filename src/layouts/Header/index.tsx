@@ -10,7 +10,7 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
-import { MutableRefObject, useState } from 'react';
+import { KeyboardEvent, MutableRefObject, useState } from 'react';
 
 const Header = (): JSX.Element => {
   const [searchValue, setSearchValue] =
@@ -54,10 +54,15 @@ const Header = (): JSX.Element => {
     searchFunc();
   };
 
+  const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    event.key === 'Enter' && pushQuery();
+  };
+
   const inputBlockProps = {
     setSearchValue,
     setIsActive,
     pushQuery,
+    onHandler,
     toggleSelectCategory,
     searchValue,
     isActive,
@@ -97,13 +102,21 @@ const Header = (): JSX.Element => {
               />
             </Link>
 
-            <MyInput
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
-              placeholder="Search..."
-              type="search"
-            />
+            <div className="w-full mr-6 relative">
+              <div
+                onClick={() => pushQuery()}
+                className={styles.searchIcon}
+              ></div>
+
+              <MyInput
+                value={searchValue}
+                onKeyDown={onHandler}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="w-full mx-3 p-4 h-12 text-gray-light bg-dark rounded-md"
+                placeholder="Search..."
+                type="search"
+              />
+            </div>
 
             <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
               <NavBar

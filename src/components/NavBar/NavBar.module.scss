@@ -1,0 +1,9 @@
+.item {
+  @apply relative mr-9 text-xl duration-300;
+
+  @apply xl:mr-0 xl:mb-3 xl:text-xl;
+
+  &:hover {
+    @apply text-purple;
+  }
+}
