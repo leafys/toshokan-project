@@ -18,9 +18,11 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "react": "^18.2.0",
+    "react-app-alias-ex": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-query": "^3.39.1",
+    "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spring": "^9.4.5",
@@ -58,6 +60,7 @@
     "craco-alias": "^3.0.1",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
+    "react-app-alias": "^2.2.0",
     "tailwindcss": "^3.1.4"
   }
 }
