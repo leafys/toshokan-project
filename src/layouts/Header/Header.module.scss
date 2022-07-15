@@ -1,71 +1,11 @@
-.input_block {
-  @apply h-10 relative flex items-center rounded-md xl:hidden;
-}
-
-.input {
-  @apply transition-all duration-500 w-0 pl-12 h-full rounded-md outline-none bg-black;
-}
-
-.retractable_input {
-  @apply w-retractable-input bg-dark;
-}
-
 .btn {
   @apply ml-5 px-30 py-10 rounded-md;
 
   @apply xl:ml-0 xl:px-4 xl:py-2 xl:my-2;
 }
 
-.select_btn_block {
-  @apply absolute -bottom-9 flex transition-all duration-500;
-}
-
-.select_btn {
-  @apply px-4 py-1 mr-3 text-sm border-gray rounded-md;
-
-  @apply hover:border-purple transition-all duration-300;
-}
-
-.active_btn {
-  @apply border-purple;
-}
-
-.searchIcon {
-  position: absolute;
-  top: 10px;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  border-radius: 6px;
-  align-items: center;
-  z-index: 1000;
-  cursor: pointer;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    transform: translate(-4px, -4px);
-    cursor: pointer;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 12px;
-    background: #fff;
-    transform: translate(6px, 6px) rotate(315deg);
-  }
-}
-
 .item {
-  @apply relative mr-9 text-xl duration-300;
+  @apply relative text-xl duration-300 mr-9 last:mr-4;
 
   @apply xl:mr-0 xl:mb-3 xl:text-xl;
 
