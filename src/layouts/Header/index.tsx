@@ -80,7 +80,6 @@ const Header = (): JSX.Element => {
           <Link to={`/${locale}`}>
             <img className="w-main-logo" src="images/logo.png" alt="logo" />
           </Link>
-
           <div className="flex items-center">
             <NavBar
               classNameForUl={'flex items-center xl:flex-col'}
@@ -88,6 +87,7 @@ const Header = (): JSX.Element => {
               className="flex items-center"
             />
             <InputBlock inputBlockProps={inputBlockProps} />
+
             <MyButton purple className={styles.btn}>
               {t('header.sign_up')}
             </MyButton>

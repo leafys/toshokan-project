@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import styles from './InputBlock.module.scss';
 import MyButton from '@components/UI/Buttons/MainButton';
-import MyInput from '@components/UI/Inputs/MainInput';
 import { IInputBlockProps } from './InputBlock.props';
 import { FocusEvent, useEffect, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { searchValue as searchInputValue } from '@atoms/searchValueAtom';
 import { useLocation } from 'react-router';
+import { motion } from 'framer-motion';
 
 const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
   const selectBtns = [{ text: 'anime' }, { text: 'manga' }];
@@ -68,19 +68,34 @@ const InputBlock = ({ inputBlockProps }: IInputBlockProps): JSX.Element => {
     <div onBlur={handleBlur} tabIndex={1} className={styles.input_block}>
       <div onClick={onSearch} className={styles.searchIcon}></div>
 
-      <MyInput
+      <motion.input
+        initial={{ width: 0, background: 'var(--black)' }}
+        animate={{
+          width: isActive ? '360px' : 0,
+          background: isActive ? 'var(--brown-dark)' : 'var(--black)',
+        }}
+        exit={{ width: 0, background: 'var(--black)' }}
+        transition={{ duration: 0.4 }}
         value={searchValue}
         ref={inputRef}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={onHandler}
-        className={cn([styles.input, isActive && styles.retractable_input])}
+        className="pl-12 h-full rounded-md outline-none"
         placeholder={cn([isActive && 'Search...'])}
         type="search"
       />
 
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isActive ? 1 : 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        onClick={clearSearchInput}
+        className={styles.clearInput}
+      ></motion.span>
+
       {isActive && (
         <>
-          <span onClick={clearSearchInput} className={styles.clearInput}></span>
           <div
             className={cn(
               { [styles.select_btn_block]: true },
