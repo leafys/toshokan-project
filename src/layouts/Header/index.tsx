@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
-import { KeyboardEvent, MutableRefObject, useState } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { CgArrowDownR } from 'react-icons/cg';
+import { motion } from 'framer-motion';
+import cn from 'classnames';
+import { useOutsideCloseElement } from '@hooks/useOutsideCloseElement';
 
 const Header = (): JSX.Element => {
   const { t } = useTranslation();
@@ -20,12 +24,21 @@ const Header = (): JSX.Element => {
     useRecoilState<string>(headerSearchValue);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+  const [isNavOpenDropDawn, setNavOpenDropDawn] = useState<boolean>(false);
   const [searchCategory, setSearchCategory] = useState<string>('anime');
   const [activeBtnIndex, setActiveBtnIndex] = useState<number>(0);
-  const searchParams = { [searchCategory]: searchValue };
-  const navigate = useNavigate();
+  const selectBtns = [{ text: 'anime' }, { text: 'manga' }];
 
-  const searchFunc = useSeacrh({ searchCategory, searchParams });
+  const categoryFromLocalstore = localStorage.getItem(
+    'selectedСategory'
+  ) as string;
+  const searchParams = { [categoryFromLocalstore]: searchValue };
+  const navigate = useNavigate();
+  const dropRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  useOutsideCloseElement(dropRef, setNavOpenDropDawn);
+
+  const searchFunc = useSeacrh({ categoryFromLocalstore, searchParams });
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -35,14 +48,14 @@ const Header = (): JSX.Element => {
       : window.enableScroll();
   };
 
-  const toggleSelectCategory = (
-    btn: { text: string },
-    index: number,
-    focus: MutableRefObject<HTMLInputElement | null>
-  ) => {
+  useEffect(() => {
+    localStorage.setItem('selectedСategory', searchCategory);
+  }, [searchCategory]);
+
+  const toggleSelectCategory = (btn: { text: string }, index: number) => {
     setActiveBtnIndex(index);
     setSearchCategory(btn.text);
-    focus.current?.focus();
+    setNavOpenDropDawn(false);
   };
 
   const pushQuery = () => {
@@ -77,9 +90,49 @@ const Header = (): JSX.Element => {
       <div className="h-[80px]"></div>
       <header className="w-full bg-black fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto flex justify-between items-center py-4 xl:hidden xl:flex-col">
-          <Link to={`/${locale}`}>
-            <img className="w-main-logo" src="images/logo.png" alt="logo" />
-          </Link>
+          <div className="relative">
+            <Link to={`/${locale}`}>
+              <img
+                className="w-main-logo select-none"
+                src="images/logo.png"
+                alt="logo"
+              />
+            </Link>
+
+            <div ref={dropRef}>
+              <CgArrowDownR
+                onClick={() => setNavOpenDropDawn(!isNavOpenDropDawn)}
+                className="absolute select-none w-[14px] -right-4 bottom-[0px] cursor-pointer"
+              />
+
+              <motion.div
+                initial={{ transform: 'translateY(-50px)', opacity: 0 }}
+                animate={{
+                  transform: isNavOpenDropDawn
+                    ? 'translateY(0%)'
+                    : 'translateY(-100%)',
+                  opacity: isNavOpenDropDawn ? 1 : 0,
+                }}
+                exit={{ transform: 'translateY(-50px)', opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className={styles.dropdown}
+              >
+                {selectBtns.map((btn, index) => (
+                  <button
+                    key={index}
+                    onClick={() => toggleSelectCategory(btn, index)}
+                    className={cn(
+                      { [styles.select_btn]: true },
+                      { [styles.active_btn]: activeBtnIndex === index }
+                    )}
+                  >
+                    {btn.text}
+                  </button>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
           <div className="flex items-center">
             <NavBar
               classNameForUl={'flex items-center xl:flex-col'}
@@ -96,6 +149,7 @@ const Header = (): JSX.Element => {
             </MyButton>
           </div>
         </div>
+
         <div className="hidden xl:block">
           <div className="container mx-auto flex items-center px-5 py-4">
             <Link to={`/${locale}`}>
@@ -125,7 +179,7 @@ const Header = (): JSX.Element => {
             <SideBar toggleNav={toggleNav} isNavOpen={isNavOpen}>
               <NavBar
                 classNameForUl={'flex items-center xl:flex-col'}
-                classNameForLi={styles.item}
+                classNameForLi={styles['item-moobile']}
                 className="xl:flex xl:flex-col xl:items-center"
                 setIsNavOpen={setIsNavOpen}
               />
