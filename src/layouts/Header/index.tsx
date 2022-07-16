@@ -13,7 +13,7 @@ import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
 import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { CgArrowDownR } from 'react-icons/cg';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import cn from 'classnames';
 import { useOutsideCloseElement } from '@hooks/useOutsideCloseElement';
 
@@ -105,31 +105,35 @@ const Header = (): JSX.Element => {
                 className="absolute select-none w-[14px] -right-4 bottom-[0px] cursor-pointer"
               />
 
-              <motion.div
-                initial={{ transform: 'translateY(-50px)', opacity: 0 }}
-                animate={{
-                  transform: isNavOpenDropDawn
-                    ? 'translateY(0%)'
-                    : 'translateY(-100%)',
-                  opacity: isNavOpenDropDawn ? 1 : 0,
-                }}
-                exit={{ transform: 'translateY(-50px)', opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className={styles.dropdown}
-              >
-                {selectBtns.map((btn, index) => (
-                  <button
-                    key={index}
-                    onClick={() => toggleSelectCategory(btn, index)}
-                    className={cn(
-                      { [styles.select_btn]: true },
-                      { [styles.active_btn]: activeBtnIndex === index }
-                    )}
+              <AnimatePresence>
+                {isNavOpenDropDawn && (
+                  <motion.div
+                    initial={{ transform: 'translateY(-50px)', opacity: 0 }}
+                    animate={{
+                      transform: isNavOpenDropDawn
+                        ? 'translateY(0%)'
+                        : 'translateY(-100%)',
+                      opacity: isNavOpenDropDawn ? 1 : 0,
+                    }}
+                    exit={{ transform: 'translateY(-50px)', opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className={styles.dropdown}
                   >
-                    {btn.text}
-                  </button>
-                ))}
-              </motion.div>
+                    {selectBtns.map((btn, index) => (
+                      <button
+                        key={index}
+                        onClick={() => toggleSelectCategory(btn, index)}
+                        className={cn(
+                          { [styles.select_btn]: true },
+                          { [styles.active_btn]: activeBtnIndex === index }
+                        )}
+                      >
+                        {btn.text}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
