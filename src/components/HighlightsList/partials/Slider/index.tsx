@@ -24,7 +24,7 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
 
   const onSlideChange = (slider: swiper) => {
     let slideProgress = Math.ceil(slider.progress * 100);
-    if (slideProgress >= 89) {
+    if (slideProgress >= 88) {
       slideProgress = 100;
     }
     if (slideProgress <= 9) {
