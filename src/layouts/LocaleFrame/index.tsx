@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import MyButton from '@components/UI/Buttons/MainButton';
+import { globalCategores } from '@enums/globalCategores';
 
 const LocaleFrame = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -13,6 +14,8 @@ const LocaleFrame = (): JSX.Element => {
       setIsLanguageChoosen(true);
     } else {
       localStorage.setItem('isOldUser', 'true');
+      localStorage.setItem('selectedСategory', globalCategores.Anime);
+
       window.disableScroll();
     }
   }, []);

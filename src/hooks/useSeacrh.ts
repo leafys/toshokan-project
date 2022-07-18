@@ -1,19 +1,19 @@
 import { axios } from '@plugins';
 
 type ISearch = {
-  categoryFromLocalstore: string;
+  searchCategory: string;
   searchParams: { [x: string]: string };
 };
 
 export const useSeacrh = ({
-  categoryFromLocalstore,
+  searchCategory,
   searchParams,
 }: ISearch): (() => Promise<void>) => {
   return async () => {
     return await axios({
       method: 'GET',
-      url: `${categoryFromLocalstore}`,
-      params: { q: searchParams[categoryFromLocalstore] },
+      url: `${searchCategory}`,
+      params: { q: searchParams[searchCategory] },
     })
       .then(({ data }) => {
         console.log(data);

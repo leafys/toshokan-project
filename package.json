@@ -30,7 +30,6 @@
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-spring": "^9.4.5",
     "recoil": "^0.7.4",
     "sass": "^1.52.3",
     "swiper": "^8.2.6",
