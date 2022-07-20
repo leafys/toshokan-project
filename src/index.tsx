@@ -7,6 +7,7 @@ import { RecoilRoot } from 'recoil';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from '@plugins';
 import '@plugins/i18n';
+import Preloader from '@components/Preloader';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,13 +25,13 @@ window.disableScroll = disableScroll;
 window.enableScroll = enableScroll;
 
 root.render(
-  <React.Suspense>
-    <RecoilRoot>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+  <RecoilRoot>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <React.Suspense fallback={<Preloader />}>
           <App />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </RecoilRoot>
-  </React.Suspense>
+        </React.Suspense>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </RecoilRoot>
 );

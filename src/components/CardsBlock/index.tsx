@@ -3,21 +3,19 @@ import Card from './partials/Card';
 import styles from './CardsBlock.module.scss';
 import { useTranslation } from 'react-i18next';
 import { IPopularTitles } from '@interfaces/ITopAndUpcomingTitles';
+import { useIsXl } from '@hooks/useCurrentBreakpoints';
 
 const CardsBlock = ({ data }: IPopularTitles): JSX.Element => {
   const { t } = useTranslation();
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  const currentSizeWindow = () =>
-    window.innerWidth < 1224 ? setDisabled(true) : setDisabled(false);
+  const xl = useIsXl();
+
+  const currentSizeWindow = () => (xl ? setDisabled(true) : setDisabled(false));
 
   useEffect(() => {
-    window.addEventListener('resize', currentSizeWindow);
-
-    return () => {
-      window.removeEventListener('resize', currentSizeWindow);
-    };
-  }, []);
+    currentSizeWindow();
+  }, [xl]);
 
   return (
     <div className="container">
