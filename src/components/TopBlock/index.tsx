@@ -6,14 +6,15 @@ import {
 } from '@interfaces/ITopAndUpcomingTitles';
 import { axios } from '@plugins';
 import { memo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useQuery } from 'react-query';
 import style from './TopBlock.module.scss';
 
-const TopBlock = memo(() => {
+const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
   const [page, setPage] = useState<number>(1);
 
-  const test = async () => {
+  const getTopAnime = async () => {
     return await axios({
       method: 'GET',
       url: 'top/anime',
@@ -21,7 +22,7 @@ const TopBlock = memo(() => {
     });
   };
 
-  const { isLoading } = useQuery(['top anime', page], test, {
+  const { isLoading } = useQuery(['top anime', page], getTopAnime, {
     onSuccess: ({ data }) => {
       setTopTitles([...topTitles, ...data.data]);
     },
@@ -42,7 +43,17 @@ const TopBlock = memo(() => {
           className="my-10 px-30 py-10 rounded-md sm:px-25 sm:py-3"
         >
           {isLoading ? (
-            <div className={style['ShowMore-loader']} />
+            <motion.div
+              className={style['ShowMore-loader']}
+              initial={{ rotate: '0deg' }}
+              animate={{ rotate: '360deg' }}
+              transition={{
+                duration: 1.2,
+                ease: 'linear',
+                repeat: Infinity,
+                repeatType: 'loop',
+              }}
+            />
           ) : (
             <span>Show More</span>
           )}
