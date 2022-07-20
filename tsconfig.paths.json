@@ -14,7 +14,13 @@
       "@plugins": ["./src/plugins"],
       "@plugins/*": ["./src/plugins/*"],
       "@hooks/*": ["./src/hooks/*"],
+<<<<<<< Updated upstream
       "@interfaces/*": ["./src/ts/interfaces/*"]
+=======
+      "@interfaces/*": ["./src/ts/interfaces/*"],
+      "@enums/*": ["./src/ts/enums/*"],
+      "@service/*": ["./src/service/*"]
+>>>>>>> Stashed changes
     }
   }
 }

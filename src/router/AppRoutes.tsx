@@ -1,10 +1,13 @@
 import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Layout from '@layouts/LayoutWithHeaderAndFooter';
-import Home from '@pages/Home';
-import Categories from '@pages/Categories';
-import Random from '@pages/Random';
-import Search from '@pages/Search';
+import React, { lazy } from 'react';
+import Preloader from '@components/Preloader';
+
+const Layout = lazy(() => import('@layouts/LayoutWithHeaderAndFooter'));
+const Home = lazy(() => import('@pages/Home'));
+const Categories = lazy(() => import('@pages/Categories'));
+const Random = lazy(() => import('@pages/Random'));
+const Search = lazy(() => import('@pages/Search'));
 
 declare global {
   interface Window {
@@ -23,12 +26,28 @@ const AppRoutes = () => {
   const element = useRoutes([
     {
       path: `/${window.locale}`,
-      element: <Layout />,
+      element: (
+        <React.Suspense fallback={<Preloader />}>
+          <Layout />
+        </React.Suspense>
+      ),
       children: [
-        { index: true, element: <Home /> },
-        { path: `/${window.locale}/category`, element: <Categories /> },
-        { path: `/${window.locale}/random`, element: <Random /> },
-        { path: `/${window.locale}/search`, element: <Search /> },
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: `/${window.locale}/category`,
+          element: <Categories />,
+        },
+        {
+          path: `/${window.locale}/random`,
+          element: <Random />,
+        },
+        {
+          path: `/${window.locale}/search`,
+          element: <Search />,
+        },
       ],
     },
     {

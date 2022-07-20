@@ -1,10 +1,10 @@
 import Footer from '@layouts/Footer';
 import Header from '@layouts/Header';
-import LocaleFrame from '@layouts/LocaleFrame';
-
+import { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
+const LocaleFrame = lazy(() => import('@layouts/LocaleFrame'));
 
-const index = (): JSX.Element => {
+const Layout = (): JSX.Element => {
   return (
     <>
       <Header />
@@ -17,4 +17,4 @@ const index = (): JSX.Element => {
   );
 };
 
-export default index;
+export default Layout;

@@ -4,22 +4,20 @@ import styles from './CardsBlocks.module.scss';
 import { useHightLight } from '@hooks/useTitles';
 import { useTranslation } from 'react-i18next';
 import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
+import { useIsXl } from '@hooks/useCurrentBreakpoints';
 
 const CardsBlocks = (): JSX.Element => {
   const { t } = useTranslation();
   const [topTitles, setTopTitles] = React.useState<ITopAndUncomingTitle[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  const currentSizeWindow = () =>
-    window.innerWidth < 1224 ? setDisabled(true) : setDisabled(false);
+  const xl = useIsXl();
+
+  const currentSizeWindow = () => (xl ? setDisabled(true) : setDisabled(false));
 
   useEffect(() => {
-    window.addEventListener('resize', currentSizeWindow);
-
-    return () => {
-      window.removeEventListener('resize', currentSizeWindow);
-    };
-  }, []);
+    currentSizeWindow();
+  }, [xl]);
 
   useHightLight('top anime', 15, 'top/anime', setTopTitles);
 
