@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './partials/Card';
-import styles from './CardsBlocks.module.scss';
-import { useHightLight } from '@hooks/useTitles';
+import styles from './CardsBlock.module.scss';
 import { useTranslation } from 'react-i18next';
-import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
+import { IPopularTitles } from '@interfaces/ITopAndUpcomingTitles';
 
-const CardsBlocks = (): JSX.Element => {
+const CardsBlock = ({ data }: IPopularTitles): JSX.Element => {
   const { t } = useTranslation();
-  const [topTitles, setTopTitles] = React.useState<ITopAndUncomingTitle[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
   const currentSizeWindow = () =>
@@ -21,14 +19,11 @@ const CardsBlocks = (): JSX.Element => {
     };
   }, []);
 
-  useHightLight('top anime', 15, 'top/anime', setTopTitles);
-
   return (
     <div className="container">
       <h1 className="text-xxl pb-4 font-bold">{t('cards_block.title')}</h1>
-
       <div className={styles['cards-block']}>
-        {topTitles.map((item: ITopAndUncomingTitle) => (
+        {data.map((item) => (
           <Card key={item.mal_id} disabled={disabled} card={item} />
         ))}
       </div>
@@ -36,4 +31,4 @@ const CardsBlocks = (): JSX.Element => {
   );
 };
 
-export default CardsBlocks;
+export default CardsBlock;

@@ -1,11 +1,11 @@
-import CardsBlocks from '@components/CardsBlocks';
 import HighlightsList from '@components/HighlightsList';
+import TopBlock from '@components/TopBlock';
 
 const Home = (): JSX.Element => {
   return (
     <div className="home">
       <HighlightsList />
-      <CardsBlocks />
+      <TopBlock />
     </div>
   );
 };
