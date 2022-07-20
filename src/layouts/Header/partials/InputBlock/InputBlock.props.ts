@@ -8,7 +8,6 @@ type propsType = {
   setSearchValue: SetterOrUpdater<string>;
   onHandler: (event: KeyboardEvent<HTMLInputElement>) => void;
   isActive: boolean;
-  activeBtnIndex: number;
 };
 
 export interface IInputBlockProps {

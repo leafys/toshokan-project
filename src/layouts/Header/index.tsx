@@ -11,11 +11,17 @@ import { Link } from 'react-router-dom';
 import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
-import { KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { KeyboardEvent, useRef, useState } from 'react';
 import { CgArrowDownR } from 'react-icons/cg';
 import { AnimatePresence, motion } from 'framer-motion';
 import cn from 'classnames';
 import { useOutsideCloseElement } from '@hooks/useOutsideCloseElement';
+import { globalCategores } from '@enums/globalCategores';
+
+const selectBtns = [
+  { text: globalCategores.Anime },
+  { text: globalCategores.Manga },
+];
 
 const Header = (): JSX.Element => {
   const { t } = useTranslation();
@@ -25,37 +31,30 @@ const Header = (): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isNavOpenDropDawn, setNavOpenDropDawn] = useState<boolean>(false);
-  const [searchCategory, setSearchCategory] = useState<string>('anime');
-  const [activeBtnIndex, setActiveBtnIndex] = useState<number>(0);
-  const selectBtns = [{ text: 'anime' }, { text: 'manga' }];
 
-  const categoryFromLocalstore = localStorage.getItem(
-    'selectedСategory'
-  ) as string;
-  const searchParams = { [categoryFromLocalstore]: searchValue };
+  const [searchCategory, setSearchCategory] = useState<string>(
+    globalCategores.Anime
+  );
+
+  const toggleSelectCategory = (category: string) => {
+    localStorage.setItem('selectedСategory', category);
+    setSearchCategory(category);
+    setNavOpenDropDawn(false);
+  };
+
+  const searchParams = { [searchCategory]: searchValue };
+
   const navigate = useNavigate();
   const dropRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   useOutsideCloseElement(dropRef, setNavOpenDropDawn);
 
-  const searchFunc = useSeacrh({ categoryFromLocalstore, searchParams });
+  const searchFunc = useSeacrh({ searchCategory, searchParams });
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
 
-    !isNavOpen && typeof window != 'undefined' && window.document
-      ? window.disableScroll()
-      : window.enableScroll();
-  };
-
-  useEffect(() => {
-    localStorage.setItem('selectedСategory', searchCategory);
-  }, [searchCategory]);
-
-  const toggleSelectCategory = (btn: { text: string }, index: number) => {
-    setActiveBtnIndex(index);
-    setSearchCategory(btn.text);
-    setNavOpenDropDawn(false);
+    !isNavOpen ? window.disableScroll() : window.enableScroll();
   };
 
   const pushQuery = () => {
@@ -82,7 +81,6 @@ const Header = (): JSX.Element => {
     toggleSelectCategory,
     searchValue,
     isActive,
-    activeBtnIndex,
   };
 
   return (
@@ -122,11 +120,13 @@ const Header = (): JSX.Element => {
                     {selectBtns.map((btn, index) => (
                       <button
                         key={index}
-                        onClick={() => toggleSelectCategory(btn, index)}
-                        className={cn(
-                          { [styles.select_btn]: true },
-                          { [styles.active_btn]: activeBtnIndex === index }
-                        )}
+                        onClick={() => toggleSelectCategory(btn.text)}
+                        className={cn([
+                          styles.select_btn,
+                          btn.text ===
+                            localStorage.getItem('selectedСategory') &&
+                            styles.active_btn,
+                        ])}
                       >
                         {btn.text}
                       </button>
