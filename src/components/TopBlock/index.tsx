@@ -9,10 +9,13 @@ import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from 'react-query';
 import style from './TopBlock.module.scss';
+import { useTranslation } from 'react-i18next';
 
-const TopBlock = memo((): JSX.Element => {
+ const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
   const [page, setPage] = useState<number>(1);
+
+  const { t } = useTranslation();
 
   const getTopAnime = async () => {
     return await axios({
@@ -55,7 +58,7 @@ const TopBlock = memo((): JSX.Element => {
               }}
             />
           ) : (
-            <span>Show More</span>
+            <span>{t('topBlock.btnLoader')}</span>
           )}
         </MyButton>
       )}
