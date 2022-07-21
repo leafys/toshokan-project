@@ -6,6 +6,7 @@ const Home = (): JSX.Element => {
     <div className="home">
       <HighlightsList />
       <TopBlock />
+      
     </div>
   );
 };
