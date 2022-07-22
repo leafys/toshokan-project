@@ -1,7 +1,6 @@
-import React from 'react';
-import { IButton } from './MainButton.props';
 import styles from './MainButton.module.scss';
 import cn from 'classnames';
+import { IButton } from './MainButton.props';
 
 const MyButton = ({
   children,

@@ -1,4 +1,4 @@
-import MyButton from '@components/UI/Buttons/MainButton';
+import MyButton from '@components/UI/buttons/MainButton';
 import { useNavigate } from 'react-router';
 import { useSetRecoilState } from 'recoil';
 import { searchValue } from '@atoms/searchValueAtom';
