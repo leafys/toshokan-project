@@ -8,7 +8,7 @@ import SideBar from './partials/SideBar';
 import Burger from './partials/Burger';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useSeacrh } from '@hooks/useSeacrh';
+
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
 import { KeyboardEvent, useRef, useState } from 'react';
@@ -49,8 +49,6 @@ const Header = (): JSX.Element => {
 
   useOutsideCloseElement(dropRef, setNavOpenDropDawn);
 
-  const searchFunc = useSeacrh({ searchCategory, searchParams });
-
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
 
@@ -61,12 +59,10 @@ const Header = (): JSX.Element => {
     if (!searchValue || searchValue.length < 3) return;
 
     navigate({
-      pathname: '/search',
+      pathname: `search`,
 
       search: `?${createSearchParams(searchParams)}`,
     });
-
-    searchFunc();
   };
 
   const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {

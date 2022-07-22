@@ -10,7 +10,6 @@ const NavBar = ({
   ...props
 }: INavBarProps): JSX.Element => {
   const { t } = useTranslation();
-  const locale = window.locale;
 
   // close Sidebar and add scroll
   const closeNavbar = () => {
@@ -23,7 +22,7 @@ const NavBar = ({
       <ul className={classNameForUl}>
         {routesTitleItems.map((item: IRoutesTitleItem, index) => (
           <li className={classNameForLi} key={index}>
-            <NavLink onClick={closeNavbar} to={`/${locale}${item.path}`} end>
+            <NavLink onClick={closeNavbar} to={item.path} end>
               {t(item.title)}
             </NavLink>
           </li>

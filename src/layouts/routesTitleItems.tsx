@@ -12,9 +12,9 @@ export interface ISocialLink {
 }
 
 export const routesTitleItems: IRoutesTitleItem[] = [
-  { path: '', title: 'header.home_link' },
-  { path: '/category', title: 'header.category_link' },
-  { path: '/random', title: 'header.random_link' },
+  { path: ``, title: 'header.home_link' },
+  { path: 'category', title: 'header.category_link' },
+  { path: 'random', title: 'header.random_link' },
 ];
 
 export const socialLinks: ISocialLink[] = [

@@ -5,9 +5,9 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { QueryClientProvider } from 'react-query';
-import { queryClient } from '@plugins';
 import '@plugins/i18n';
 import Preloader from '@components/Preloader';
+import queryClient from '@plugins/reactQuery';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

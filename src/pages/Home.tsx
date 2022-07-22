@@ -1,5 +1,5 @@
 import HighlightsList from '@components/HighlightsList';
-import TopBlock from '@components/TopBlock';
+import TopBlock from '@components/TopCardsBlock';
 
 const Home = (): JSX.Element => {
   return (
