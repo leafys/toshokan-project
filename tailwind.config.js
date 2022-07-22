@@ -22,6 +22,7 @@ module.exports = {
       xl: { max: '1230px' },
       lg: { max: '976px' },
       md: { max: '768px' },
+      lessMd: { max: '640px' },
       sm: { max: '580px' },
     },
     placeholderColor: {
@@ -58,7 +59,7 @@ module.exports = {
         'brown-dark-opacity': 'var(--brown-dark-opacity)',
       },
       screens: {
-        'm-md-': { max: '640px' },
+        mobileMd: { max: '640px' },
         'm-sm-': { max: '490px' },
         'm-xs-': { max: '375px' },
         'm-fold': { max: '319px' },

@@ -1,12 +1,19 @@
 .cards-block {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, auto));
+  column-gap: 10px;
+  row-gap: 25px;
+  justify-content: space-between;
+
+  @media (max-width: 1020px) {
+    justify-content: center;
+    column-gap: 50px;
+  }
 
   @media (max-width: 640px) {
     grid-template-columns: repeat(1, minmax(190px, 1fr));
     justify-items: start;
   }
 
-  @apply m-md-:grid m-md-:justify-items-center;
+  @apply mobileMd:grid mobileMd:justify-items-center;
 }

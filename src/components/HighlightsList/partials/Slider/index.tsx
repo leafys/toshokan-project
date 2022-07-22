@@ -10,6 +10,7 @@ import Slide from './partials/Slide';
 import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { swiperSettings } from './plugins/swiperSettings';
 import { Swiper as swiper } from 'swiper/types';
+import SkeletonHighlights from './partials/skeletons/HighlightSkeleton';
 
 type SliderProps = {
   setProgressBar: Dispatch<React.SetStateAction<number>>;
@@ -19,8 +20,14 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
   const [upcomingTitle, setUpcomingTitle] = useState<ITopAndUncomingTitle[]>(
     []
   );
+  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
-  useHightLight('upcoming', 15, 'seasons/upcoming', setUpcomingTitle);
+  const { isLoading } = useHightLight(
+    'upcoming',
+    15,
+    'seasons/upcoming',
+    setUpcomingTitle
+  );
 
   const onSlideChange = (slider: swiper) => {
     let slideProgress = Math.ceil(slider.progress * 100);
@@ -40,11 +47,21 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
       className={styles.swiper}
       onSlideChange={onSlideChange}
     >
-      {upcomingTitle.map((item: ITopAndUncomingTitle) => (
-        <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
-          <Slide {...item} />
-        </SwiperSlide>
-      ))}
+      {isLoading
+        ? [...new Array(10)].map((_, index) => (
+            <SwiperSlide key={index} className={styles['swiper-slide']}>
+              <SkeletonHighlights className="w-auto" />
+            </SwiperSlide>
+          ))
+        : upcomingTitle.map((item: ITopAndUncomingTitle) => (
+            <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
+              <Slide
+                setImgLoaded={setImgLoaded}
+                imgLoaded={imgLoaded}
+                slide={item}
+              />
+            </SwiperSlide>
+          ))}
     </Swiper>
   );
 };
