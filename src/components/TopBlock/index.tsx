@@ -1,5 +1,5 @@
 import CardsBlock from '@components/CardsBlock';
-import MyButton from '@components/UI/Buttons/MainButton';
+import MyButton from '@components/UI/buttons/MainButton';
 import {
   IError,
   ITopAndUncomingTitle,

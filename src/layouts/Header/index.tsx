@@ -2,7 +2,7 @@ import NavBar from '@components/NavBar';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 import { useRecoilState } from 'recoil';
-import MyButton from '@components/UI/Buttons/MainButton';
+import MyButton from '@components/UI/buttons/MainButton';
 import styles from './Header.module.scss';
 import SideBar from './partials/SideBar';
 import Burger from './partials/Burger';
