@@ -11,7 +11,7 @@ import { useQuery } from 'react-query';
 import style from './TopBlock.module.scss';
 import { useTranslation } from 'react-i18next';
 
- const TopBlock = memo((): JSX.Element => {
+const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
   const [page, setPage] = useState<number>(1);
 
@@ -36,7 +36,7 @@ import { useTranslation } from 'react-i18next';
 
   return (
     <div className="flex flex-col items-center">
-      <CardsBlock data={topTitles} />
+      <CardsBlock data={topTitles} isLoading={isLoading} />
       {page <= 11 && (
         <MyButton
           purple

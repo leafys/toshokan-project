@@ -20,6 +20,7 @@ type Themes = {
 export interface ITopAndUncomingTitle {
   mal_id: number;
   title: string;
+  isLoading: boolean;
   type: string;
   score: number;
   year: number;
