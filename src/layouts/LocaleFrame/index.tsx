@@ -1,5 +1,5 @@
 import { i18nLanguages } from '@plugins/i18n';
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import MyButton from '@components/UI/Buttons/MainButton';
@@ -9,7 +9,7 @@ const LocaleFrame = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const [isLanguageChoosen, setIsLanguageChoosen] = useState<boolean>(false);
 
-  useMemo(() => {
+  useEffect(() => {
     if (localStorage.getItem('isOldUser')) {
       setIsLanguageChoosen(true);
     } else {
@@ -29,7 +29,7 @@ const LocaleFrame = (): JSX.Element => {
   return (
     <>
       {!isLanguageChoosen && (
-        <section className="flex justify-center items-center fixed w-full h-full bg-black z-20">
+        <section className="flex justify-center items-center fixed w-full h-full bg-black z-10">
           <div className="container text-center">
             <h2 className="text-xxl font-bold mb-2">{t('locale.title')}</h2>
             <p className="mb-5">{t('locale.desc')}</p>

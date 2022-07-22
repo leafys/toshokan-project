@@ -2,17 +2,29 @@ import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 import styles from './Card.module.scss';
-
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import ToolltipCard from '@components/ToolltipCard/ToolltipCard';
 
-type cardProps = { card: ITopAndUncomingTitle; disabled: boolean };
+type cardProps = {
+  card: ITopAndUncomingTitle;
+  disabled: boolean;
+  imgLoaded: boolean;
+  setImgLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const Card = ({ card, disabled }: cardProps): JSX.Element => {
+const Card = ({
+  card,
+  disabled,
+  imgLoaded,
+  setImgLoaded,
+}: cardProps): JSX.Element => {
   return (
-    <article tabIndex={card.mal_id} className="w-full h-full">
+    <article
+      tabIndex={card.mal_id}
+      className=" lessMd:w-full lessMd:h-full w-[190px] h-[348px]"
+    >
       <Tippy
         placement="right"
         delay={400}
@@ -20,10 +32,15 @@ const Card = ({ card, disabled }: cardProps): JSX.Element => {
         disabled={disabled}
         interactive={true}
       >
-        <Link className="m-md-:flex w-full" to="#">
+        <Link className="mobileMd:flex w-full" to="#">
           <img
+            onLoad={() => setImgLoaded(true)}
             className={styles['card-img']}
-            src={card.images.jpg.image_url}
+            src={
+              imgLoaded
+                ? card.images.jpg.image_url
+                : 'images/imagePreloader.webp'
+            }
             alt="anime canvas"
           />
 
@@ -35,14 +52,14 @@ const Card = ({ card, disabled }: cardProps): JSX.Element => {
             <h4 className={styles['card-fold-desc']}>{card.synopsis}</h4>
 
             <div className={styles['card-section-score-type-year']}>
-              <div className="m-md-:flex m-md-:gap-2 items-center">
+              <div className="mobileMd:flex mobileMd:gap-2 items-center">
                 <span className={styles['card-section-first-span']}>Type:</span>
                 <span className="m-sm-:text-md mb-2">{card.type}</span>
               </div>
 
               <div className="flex gap-2 items-center">
-                <BsFillStarFill className="fill-orange m-md-:hidden" />
-                <div className="m-md-:flex m-md-:gap-2">
+                <BsFillStarFill className="fill-orange mobileMd:hidden" />
+                <div className="mobileMd:flex mobileMd:gap-2">
                   <span className={styles['card-section-first-span']}>
                     Score:
                   </span>
@@ -50,7 +67,7 @@ const Card = ({ card, disabled }: cardProps): JSX.Element => {
                 </div>
               </div>
 
-              <div className="m-md-:flex m-md-:gap-2">
+              <div className="mobileMd:flex mobileMd:gap-2">
                 <span className={styles['card-section-first-span']}>Year:</span>
                 <span className="m-sm-:text-md mb-2">
                   {card.year === null ? 'unknown' : card.year}

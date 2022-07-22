@@ -40,7 +40,7 @@ const TopBlock = memo((): JSX.Element => {
         {t('top_block.title')}
       </h1>
 
-      <CardsBlock data={topTitles} />
+      <CardsBlock data={topTitles} isLoading={isLoading} />
       {page <= 11 && (
         <MyButton
           purple

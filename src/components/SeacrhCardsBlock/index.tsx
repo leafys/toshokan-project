@@ -11,7 +11,7 @@ import style from './SeacrhCardsBlock.module.scss';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 
-const SeacrhCardsBlock = () => {
+const SeacrhCardsBlock = (): JSX.Element => {
   const { t } = useTranslation();
   let [searchParams] = useSearchParams();
   const searchValue = (searchParams.values().next().value ?? undefined) || '';
@@ -68,7 +68,7 @@ const SeacrhCardsBlock = () => {
         <span>{pages?.items.total}</span>
       </div>
 
-      <CardsBlock data={searchData} />
+      <CardsBlock data={searchData} isLoading={isLoading} />
       {isLoading ? null : !pages?.has_next_page ? null : (
         <div ref={observerRef} className={style.observer} />
       )}
