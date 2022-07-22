@@ -7,15 +7,14 @@ import { useIsMobileMd, useIsXl } from '@hooks/useCurrentBreakpoints';
 import MobileSkeleton from './partials/skeletons/MobileSkeleton';
 import DescTabletSkeleton from './partials/skeletons/DescTabletSkeleton';
 
-type test = {
+type cardsBlockProps = {
   data: ITopAndUncomingTitle[];
   isLoading: boolean;
 };
 
-const CardsBlock = ({ data, isLoading }: test): JSX.Element => {
+const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
   const { t } = useTranslation();
   const [disabled, setDisabled] = useState<boolean>(false);
-
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
   const xl = useIsXl();
