@@ -4,7 +4,7 @@ import {
   ITopAndUncomingTitle,
 } from '@interfaces/ITopAndUpcomingTitles';
 import { axios } from '@plugins';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import style from './SeacrhCardsBlock.module.scss';
@@ -15,7 +15,9 @@ const SeacrhCardsBlock = (): JSX.Element => {
   const { t } = useTranslation();
   let [searchParams] = useSearchParams();
   const searchValue = (searchParams.values().next().value ?? undefined) || '';
-  const searchCategory = localStorage.getItem('selectedСategory');
+  const searchCategory =
+    (searchParams.keys().next().value ?? undefined) ||
+    localStorage.getItem('selectedСategory');
   const [searchData, setSearchData] = useState<ITopAndUncomingTitle[]>([]);
   const [pages, setPages] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -24,7 +26,7 @@ const SeacrhCardsBlock = (): JSX.Element => {
     rootMargin: '200px 0px 0px 0px',
   });
 
-  useEffect(() => {
+  useMemo(() => {
     setPages(null);
     setCurrentPage(1);
   }, [searchParams]);
@@ -63,14 +65,21 @@ const SeacrhCardsBlock = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div className="pb-4 flex gap 20px">
+      <div className="pb-4 flex gap-1 items-center">
         <h1 className="text-xxl font-bold">{t('search_block.title')}</h1>
-        <span>{pages?.items.total}</span>
+        <div className="w-[50px] m-w-[75px] h-full bg-purple rounded-full flex items-center justify-center text-white text-base">
+          {pages?.items.total}
+        </div>
       </div>
-
-      <CardsBlock data={searchData} isLoading={isLoading} />
-      {isLoading ? null : !pages?.has_next_page ? null : (
-        <div ref={observerRef} className={style.observer} />
+      {pages?.items.total === 0 ? (
+        <div className="text-contrast-gray">{t('search_block.notfound')}</div>
+      ) : (
+        <>
+          <CardsBlock data={searchData} isLoading={isLoading} />
+          {isLoading ? null : !pages?.has_next_page ? null : (
+            <div ref={observerRef} className={style.observer} />
+          )}
+        </>
       )}
     </div>
   );

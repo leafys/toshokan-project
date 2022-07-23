@@ -14,5 +14,6 @@
     "footer.title": "Welcome to the best anime site",
     "footer.subtitle": "Anime online, all rights reserved",
     "footer.desc": "Attention: this site does not host videos on its server. All content is provided by unaffiliated third parties.",
-    "topBlock.btnLoader": "Show More"
+    "topBlock.btnLoader": "Show More",
+    "search_block.notfound": "Nothing found"
 }
