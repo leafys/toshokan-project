@@ -7,7 +7,7 @@ import { axios } from '@plugins';
 import { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-import style from './SeacrhCardsBlock.module.scss';
+
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 
@@ -77,7 +77,7 @@ const SeacrhCardsBlock = (): JSX.Element => {
         <>
           <CardsBlock data={searchData} isLoading={isLoading} />
           {isLoading ? null : !pages?.has_next_page ? null : (
-            <div ref={observerRef} className={style.observer} />
+            <div ref={observerRef} className="w-full h-[20px]" />
           )}
         </>
       )}
