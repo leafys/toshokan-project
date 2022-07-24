@@ -64,8 +64,6 @@ const SeacrhCardsBlock = (): JSX.Element => {
     }
   );
 
-  console.log(pages?.has_next_page);
-
   return (
     <div className="container">
       <div className="pb-4 flex gap-1 items-center">
