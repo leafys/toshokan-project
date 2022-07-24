@@ -15,7 +15,8 @@
       "@plugins/*": ["./src/plugins/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@enums/*": ["./src/ts/enums/*"],
-      "@interfaces/*": ["./src/ts/interfaces/*"]
+      "@interfaces/*": ["./src/ts/interfaces/*"],
+      "@services/*": ["./src/services/*"]
     }
   }
 }

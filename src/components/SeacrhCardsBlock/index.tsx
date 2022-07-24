@@ -4,13 +4,12 @@ import {
   ITitlePagination,
   ITopAndUncomingTitle,
 } from '@interfaces/ITopAndUpcomingTitles';
-import { axios } from '@plugins';
 import { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
+import TitlesService from '@services/TitlesService';
 
 const SeacrhCardsBlock = (): JSX.Element => {
   const { t } = useTranslation();
@@ -38,17 +37,10 @@ const SeacrhCardsBlock = (): JSX.Element => {
     );
   }, [myElemVisible]);
 
-  const getSearchData = async () => {
-    return await axios({
-      method: 'GET',
-      url: `${searchCategory}`,
-      params: { q: `${searchValue}`, page: currentPage },
-    });
-  };
-
   const { isLoading } = useQuery(
     ['top anime', currentPage, searchValue, searchCategory],
-    getSearchData,
+    () =>
+      TitlesService.getSearchedTitles(searchCategory, searchValue, currentPage),
     {
       onSuccess: ({ data }) => {
         if (pages) {
