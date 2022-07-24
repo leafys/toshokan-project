@@ -37,3 +37,14 @@ export interface ITopAndUncomingTitle {
 export interface IPopularTitles {
   data: ITopAndUncomingTitle[];
 }
+
+export interface ITitlePagination {
+  current_page: number;
+  has_next_page: boolean;
+  last_visible_page: number;
+  items: {
+    count: number;
+    per_page: number;
+    total: number;
+  };
+}

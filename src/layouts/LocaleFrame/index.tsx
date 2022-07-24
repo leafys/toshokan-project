@@ -2,7 +2,7 @@ import { i18nLanguages } from '@plugins/i18n';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
-import MyButton from '@components/UI/buttons/MainButton';
+import MyButton from '@components/UI/Buttons/MainButton';
 import { globalCategores } from '@enums/globalCategores';
 
 const LocaleFrame = (): JSX.Element => {

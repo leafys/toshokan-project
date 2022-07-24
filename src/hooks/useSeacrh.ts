@@ -1,25 +1,31 @@
 import { axios } from '@plugins';
 
 type ISearch = {
-  searchCategory: string;
-  searchParams: { [x: string]: string };
+  searchCategory: string | null;
+  searchValue: string;
+  setTest: React.Dispatch<any>;
 };
 
 export const useSeacrh = ({
   searchCategory,
-  searchParams,
+  searchValue,
+  setTest,
 }: ISearch): (() => Promise<void>) => {
   return async () => {
     return await axios({
       method: 'GET',
       url: `${searchCategory}`,
-      params: { q: searchParams[searchCategory] },
+      params: { q: searchValue },
+
     })
       .then(({ data }) => {
         console.log(data);
+        setTest(data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
 };
+
+

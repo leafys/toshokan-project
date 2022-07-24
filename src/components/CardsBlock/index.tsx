@@ -28,7 +28,6 @@ const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
 
   return (
     <div className="container">
-      <h1 className="text-xxl pb-4 font-bold">{t('cards_block.title')}</h1>
       <div className={styles['cards-block']}>
         {isLoading
           ? [...new Array(15)].map((_, index) =>
@@ -38,7 +37,7 @@ const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
                 <DescTabletSkeleton key={index} />
               )
             )
-          : data.map((item: ITopAndUncomingTitle) => (
+          : data?.map((item: ITopAndUncomingTitle) => (
               <Card
                 key={item.mal_id}
                 setImgLoaded={setImgLoaded}

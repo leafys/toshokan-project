@@ -37,15 +37,15 @@ const AppRoutes = () => {
           element: <Home />,
         },
         {
-          path: `/${window.locale}/category`,
+          path: `category`,
           element: <Categories />,
         },
         {
-          path: `/${window.locale}/random`,
+          path: `random`,
           element: <Random />,
         },
         {
-          path: `/${window.locale}/search`,
+          path: `search`,
           element: <Search />,
         },
       ],

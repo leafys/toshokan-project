@@ -2,13 +2,11 @@ import NavBar from '@components/NavBar';
 import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 import { useRecoilState } from 'recoil';
-import MyButton from '@components/UI/buttons/MainButton';
 import styles from './Header.module.scss';
 import SideBar from './partials/SideBar';
 import Burger from './partials/Burger';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useSeacrh } from '@hooks/useSeacrh';
 import InputBlock from './partials/InputBlock';
 import { useTranslation } from 'react-i18next';
 import { KeyboardEvent, useRef, useState } from 'react';
@@ -17,6 +15,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import cn from 'classnames';
 import { useOutsideCloseElement } from '@hooks/useOutsideCloseElement';
 import { globalCategores } from '@enums/globalCategores';
+import MyButton from '@components/UI/Buttons/MainButton';
 
 const selectBtns = [
   { text: globalCategores.Anime },
@@ -49,8 +48,6 @@ const Header = (): JSX.Element => {
 
   useOutsideCloseElement(dropRef, setNavOpenDropDawn);
 
-  const searchFunc = useSeacrh({ searchCategory, searchParams });
-
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
 
@@ -61,12 +58,10 @@ const Header = (): JSX.Element => {
     if (!searchValue || searchValue.length < 3) return;
 
     navigate({
-      pathname: '/search',
+      pathname: `search`,
 
       search: `?${createSearchParams(searchParams)}`,
     });
-
-    searchFunc();
   };
 
   const onHandler = (event: KeyboardEvent<HTMLInputElement>) => {

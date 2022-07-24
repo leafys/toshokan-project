@@ -1,5 +1,5 @@
 import CardsBlock from '@components/CardsBlock';
-import MyButton from '@components/UI/buttons/MainButton';
+import MyButton from '@components/UI/Buttons/MainButton';
 import {
   IError,
   ITopAndUncomingTitle,
@@ -35,7 +35,11 @@ const TopBlock = memo((): JSX.Element => {
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="container flex flex-col items-center">
+      <h1 className="flex text-xxl pb-4 font-bold self-start">
+        {t('top_block.title')}
+      </h1>
+
       <CardsBlock data={topTitles} isLoading={isLoading} />
       {page <= 11 && (
         <MyButton

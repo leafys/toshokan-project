@@ -9,9 +9,11 @@
   "locale.en_lg": "Английский",
   "locale.ru_lg": "Русский",
   "highlights.title": "Предстоящие",
-  "cards_block.title": "Самые популярные",
+  "top_block.title": "Самые популярные",
+  "search_block.title": "Поиск",
   "footer.title": "Добро пожаловать на лучший сайт аниме",
   "footer.subtitle": "Аниме онлайн, все права защищены",
   "footer.desc": "Внимание: этот сайт не размещает видео на своем сервере. Весь контент предоставлен неаффилированными третьими лицами.",
-  "topBlock.btnLoader": "Показать Больше"
+  "topBlock.btnLoader": "Показать Больше",
+  "search_block.notfound": "Ничего не найдено"
 }
