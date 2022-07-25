@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from './partials/Card';
 import styles from './CardsBlock.module.scss';
-import { useTranslation } from 'react-i18next';
 import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { useIsMobileMd, useIsXl } from '@hooks/useCurrentBreakpoints';
 import MobileSkeleton from './partials/skeletons/MobileSkeleton';
@@ -13,7 +12,6 @@ type cardsBlockProps = {
 };
 
 const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
-  const { t } = useTranslation();
   const [disabled, setDisabled] = useState<boolean>(false);
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 

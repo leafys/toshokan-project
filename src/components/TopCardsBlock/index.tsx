@@ -4,12 +4,12 @@ import {
   IError,
   ITopAndUncomingTitle,
 } from '@interfaces/ITopAndUpcomingTitles';
-import { axios } from '@plugins';
 import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from 'react-query';
 import style from './TopBlock.module.scss';
 import { useTranslation } from 'react-i18next';
+import TitlesService from '@services/TitlesService';
 
 const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
@@ -17,22 +17,18 @@ const TopBlock = memo((): JSX.Element => {
 
   const { t } = useTranslation();
 
-  const getTopAnime = async () => {
-    return await axios({
-      method: 'GET',
-      url: 'top/anime',
-      params: { page },
-    });
-  };
-
-  const { isLoading } = useQuery(['top anime', page], getTopAnime, {
-    onSuccess: ({ data }) => {
-      setTopTitles([...topTitles, ...data.data]);
-    },
-    onError: (error: IError) => {
-      alert(error.message);
-    },
-  });
+  const { isLoading } = useQuery(
+    ['top anime', page],
+    () => TitlesService.getAnime(page),
+    {
+      onSuccess: ({ data }) => {
+        setTopTitles([...topTitles, ...data.data]);
+      },
+      onError: (error: IError) => {
+        alert(error.message);
+      },
+    }
+  );
 
   return (
     <div className="container flex flex-col items-center">

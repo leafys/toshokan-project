@@ -5,28 +5,25 @@ import styles from './slider.module.scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/navigation';
-import { useHightLight } from '@hooks/useTitles';
 import Slide from './partials/Slide';
 import { ITopAndUncomingTitle } from '@interfaces/ITopAndUpcomingTitles';
 import { swiperSettings } from './plugins/swiperSettings';
 import { Swiper as swiper } from 'swiper/types';
 import SkeletonHighlights from './partials/skeletons/HighlightSkeleton';
+import { useQuery } from 'react-query';
+import TitlesService from '@services/TitlesService';
 
 type SliderProps = {
   setProgressBar: Dispatch<React.SetStateAction<number>>;
 };
 
+const limit: number = 15;
+
 const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
-  const [upcomingTitle, setUpcomingTitle] = useState<ITopAndUncomingTitle[]>(
-    []
-  );
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
-  const { isLoading } = useHightLight(
-    'upcoming',
-    15,
-    'seasons/upcoming',
-    setUpcomingTitle
+  const { data, isLoading } = useQuery('upcoming titles', () =>
+    TitlesService.getUpcomingTitles(limit)
   );
 
   const onSlideChange = (slider: swiper) => {
@@ -53,7 +50,7 @@ const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
               <SkeletonHighlights className="w-auto" />
             </SwiperSlide>
           ))
-        : upcomingTitle.map((item: ITopAndUncomingTitle) => (
+        : data?.data.map((item: ITopAndUncomingTitle) => (
             <SwiperSlide className={styles['swiper-slide']} key={item.mal_id}>
               <Slide
                 setImgLoaded={setImgLoaded}
