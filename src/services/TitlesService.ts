@@ -1,6 +1,12 @@
 import { axios } from '@plugins';
 import { AxiosResponse } from 'axios';
 
+type SearchedTitlesAttrs = {
+  searchCategory: string;
+  searchValue: string;
+  currentPage: number;
+};
+
 export default class TitlesService {
   static async getAnime(page: number): Promise<AxiosResponse> {
     return await axios({
@@ -18,11 +24,11 @@ export default class TitlesService {
     }).then((res) => res.data);
   }
 
-  static async getSearchedTitles(
-    searchCategory: string,
-    searchValue: string,
-    currentPage: number
-  ): Promise<AxiosResponse> {
+  static async getSearchedTitles({
+    searchCategory,
+    searchValue,
+    currentPage,
+  }: SearchedTitlesAttrs): Promise<AxiosResponse> {
     return await axios({
       method: 'GET',
       url: searchCategory,

@@ -17,11 +17,13 @@ type SliderProps = {
   setProgressBar: Dispatch<React.SetStateAction<number>>;
 };
 
+const limit: number = 15;
+
 const Slider = ({ setProgressBar }: SliderProps): JSX.Element => {
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
   const { data, isLoading } = useQuery('upcoming titles', () =>
-    TitlesService.getUpcomingTitles(15)
+    TitlesService.getUpcomingTitles(limit)
   );
 
   const onSlideChange = (slider: swiper) => {

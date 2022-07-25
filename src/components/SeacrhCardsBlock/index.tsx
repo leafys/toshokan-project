@@ -40,7 +40,11 @@ const SeacrhCardsBlock = (): JSX.Element => {
   const { isLoading } = useQuery(
     ['top anime', currentPage, searchValue, searchCategory],
     () =>
-      TitlesService.getSearchedTitles(searchCategory, searchValue, currentPage),
+      TitlesService.getSearchedTitles({
+        searchCategory,
+        searchValue,
+        currentPage,
+      }),
     {
       onSuccess: ({ data }) => {
         if (pages) {
