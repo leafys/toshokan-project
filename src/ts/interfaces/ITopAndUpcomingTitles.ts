@@ -34,6 +34,34 @@ export interface ITopAndUncomingTitle {
   };
 }
 
+type webpTypesSeasonsNow = {
+  image_url: string;
+  large_image_url: string;
+  small_image_url: string;
+};
+
+type genresSeasonsNow = {
+  mal_id: number;
+  name: string;
+};
+
+type airedSeasonsNow = {
+  from: string;
+  string: string;
+};
+
+export interface ISeasonsNowTitlesBlockItems {
+  mal_id: number;
+  images: {
+    webp: webpTypesSeasonsNow;
+  };
+  title: string;
+  synopsis: string;
+  genres: genresSeasonsNow[];
+  score: number;
+  aired: airedSeasonsNow;
+}
+
 export interface IPopularTitles {
   data: ITopAndUncomingTitle[];
 }

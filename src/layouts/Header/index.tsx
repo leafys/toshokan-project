@@ -68,6 +68,14 @@ const Header = (): JSX.Element => {
     event.key === 'Enter' && pushQuery();
   };
 
+  const handlerScrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const inputBlockProps = {
     setSearchValue,
     setIsActive,
@@ -86,6 +94,7 @@ const Header = (): JSX.Element => {
           <div className="relative">
             <Link to={`/${locale}`}>
               <img
+                onClick={handlerScrollUp}
                 className="w-main-logo select-none"
                 src="images/logo.png"
                 alt="logo"

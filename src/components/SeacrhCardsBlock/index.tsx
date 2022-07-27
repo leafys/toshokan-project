@@ -23,7 +23,7 @@ const SeacrhCardsBlock = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { ref: observerRef, inView: myElemVisible } = useInView({
-    rootMargin: '200px 0px 0px 0px',
+    rootMargin: '0px 0px 100px 0px',
   });
 
   useMemo(() => {

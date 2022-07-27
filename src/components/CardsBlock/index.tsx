@@ -25,7 +25,7 @@ const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
   }, [xl]);
 
   return (
-    <div className="container">
+    <div className="w-full">
       <div className={styles['cards-block']}>
         {isLoading
           ? [...new Array(15)].map((_, index) =>

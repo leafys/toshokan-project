@@ -1,4 +1,5 @@
 import HighlightsList from '@components/HighlightsList';
+import SeasonsNowTitlesBlock from '@components/SeasonsNowTitlesBlock';
 import TopBlock from '@components/TopCardsBlock';
 
 const Home = (): JSX.Element => {
@@ -6,7 +7,7 @@ const Home = (): JSX.Element => {
     <div className="home">
       <HighlightsList />
       <TopBlock />
-      
+      <SeasonsNowTitlesBlock />
     </div>
   );
 };
