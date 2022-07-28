@@ -7,6 +7,11 @@ type SearchedTitlesAttrs = {
   currentPage: number;
 };
 
+type SeasonsNowTitlesAttrs = {
+  limit: number;
+  page: number;
+};
+
 export default class TitlesService {
   static async getAnime(page: number): Promise<AxiosResponse> {
     return await axios({
@@ -36,10 +41,11 @@ export default class TitlesService {
     });
   }
 
-  static async getSchedulesTitles(): Promise<AxiosResponse> {
+  static async getSeasonsNowTitles({ limit, page }: SeasonsNowTitlesAttrs) {
     return await axios({
       method: 'GET',
-      url: 'schedules',
+      url: 'seasons/now',
+      params: { limit, page },
     });
   }
 }

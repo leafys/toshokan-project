@@ -5,7 +5,7 @@ import styles from './Card.module.scss';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
-import ToolltipCard from '@components/ToolltipCard/ToolltipCard';
+import ToolltipCard from '@components/ToolltipCard';
 
 type cardProps = {
   card: ITopAndUncomingTitle;

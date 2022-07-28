@@ -1,7 +1,7 @@
 import CardsBlock from '@components/CardsBlock';
 import {
+  IDataPagination,
   IError,
-  ITitlePagination,
   ITopAndUncomingTitle,
 } from '@interfaces/ITopAndUpcomingTitles';
 import { useMemo, useState } from 'react';
@@ -19,11 +19,11 @@ const SeacrhCardsBlock = (): JSX.Element => {
     (searchParams.keys().next().value ?? undefined) ||
     localStorage.getItem('selectedСategory');
   const [searchData, setSearchData] = useState<ITopAndUncomingTitle[]>([]);
-  const [pages, setPages] = useState<ITitlePagination | null>(null);
+  const [pages, setPages] = useState<IDataPagination | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { ref: observerRef, inView: myElemVisible } = useInView({
-    rootMargin: '200px 0px 0px 0px',
+    rootMargin: '0px 0px 100px 0px',
   });
 
   useMemo(() => {

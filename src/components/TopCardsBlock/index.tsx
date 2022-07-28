@@ -5,11 +5,10 @@ import {
   ITopAndUncomingTitle,
 } from '@interfaces/ITopAndUpcomingTitles';
 import { memo, useState } from 'react';
-import { motion } from 'framer-motion';
 import { useQuery } from 'react-query';
-import style from './TopBlock.module.scss';
 import { useTranslation } from 'react-i18next';
 import TitlesService from '@services/TitlesService';
+import Spinner from '@components/Spinner';
 
 const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
@@ -45,21 +44,7 @@ const TopBlock = memo((): JSX.Element => {
           }}
           className="my-10 px-30 py-10 rounded-md sm:px-25 sm:py-3"
         >
-          {isLoading ? (
-            <motion.div
-              className={style['ShowMore-loader']}
-              initial={{ rotate: '0deg' }}
-              animate={{ rotate: '360deg' }}
-              transition={{
-                duration: 1.2,
-                ease: 'linear',
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-            />
-          ) : (
-            <span>{t('topBlock.btnLoader')}</span>
-          )}
+          {isLoading ? <Spinner /> : <span>{t('topBlock.btnLoader')}</span>}
         </MyButton>
       )}
     </div>

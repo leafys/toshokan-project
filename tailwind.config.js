@@ -57,8 +57,10 @@ module.exports = {
         'contrast-gray': 'var(--contrast-gray)',
         'light-orange': 'var(--light-orange)',
         'brown-dark-opacity': 'var(--brown-dark-opacity)',
+        'light-blue': 'var(--light-blue)',
       },
       screens: {
+        'tabletLg-': { max: '930px' },
         mobileMd: { max: '640px' },
         'm-sm-': { max: '490px' },
         'm-xs-': { max: '375px' },
