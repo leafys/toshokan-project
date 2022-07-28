@@ -66,7 +66,7 @@ export interface IPopularTitles {
   data: ITopAndUncomingTitle[];
 }
 
-export interface ITitlePagination {
+export interface IDataPagination {
   current_page: number;
   has_next_page: boolean;
   last_visible_page: number;

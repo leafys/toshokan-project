@@ -1,16 +1,5 @@
-type PaginationItems = {
-  pagination: {
-    current_page: number;
-    has_next_page: boolean;
-    last_visible_page: number;
-    items: {
-      count: number;
-      per_page: number;
-      total: number;
-    };
-  };
-};
+import { IDataPagination } from '@interfaces/ITopAndUpcomingTitles';
 
 export interface ISeasonsNowDataPagination {
-  data: PaginationItems;
+  data: IDataPagination;
 }
