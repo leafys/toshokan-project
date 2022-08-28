@@ -8,7 +8,7 @@ const SeasonsNowDescPart = (item: ISeasonsNowTitlesBlockItems): JSX.Element => {
 
   return (
     <div className="w-full flex flex-col gap-2 lessMd:gap-[0.5rem]">
-      <Link className="max-w-max" to="#">
+      <Link className="max-w-max" to={`product-page/${item.mal_id}`}>
         <h1
           className={cn([
             styles['title-options'],

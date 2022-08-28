@@ -1,0 +1,5 @@
+.gallery-block {
+  @apply grid bg-product-page-bg p-11 gap-x-3 gap-y-5 rounded-md justify-between lessMd:justify-center lessMd:gap-10;
+
+  grid-template-columns: repeat(auto-fill, minmax(180px, auto));
+}

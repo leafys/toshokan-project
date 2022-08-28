@@ -32,7 +32,10 @@ const Card = ({
         disabled={disabled}
         interactive={true}
       >
-        <Link className="mobileMd:flex w-full" to="#">
+        <Link
+          className="mobileMd:flex w-full"
+          to={`product-page/${card.mal_id}`}
+        >
           <img
             onLoad={() => setImgLoaded(true)}
             className={styles['card-img']}
@@ -67,12 +70,16 @@ const Card = ({
                 </div>
               </div>
 
-              <div className="mobileMd:flex mobileMd:gap-2">
-                <span className={styles['card-section-first-span']}>Year:</span>
-                <span className="m-sm-:text-md mb-2">
-                  {card.year === null ? 'unknown' : card.year}
-                </span>
-              </div>
+              {!!card.year && (
+                <div className="mobileMd:flex mobileMd:gap-2">
+                  <span className={styles['card-section-first-span']}>
+                    Year:
+                  </span>
+                  <span className="m-sm-:text-md mb-2">
+                    {card.year === null ? 'unknown' : card.year}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </Link>

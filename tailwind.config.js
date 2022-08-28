@@ -58,6 +58,8 @@ module.exports = {
         'light-orange': 'var(--light-orange)',
         'brown-dark-opacity': 'var(--brown-dark-opacity)',
         'light-blue': 'var(--light-blue)',
+        'product-page-bg': 'var(--product-page-bg)',
+        'color-blue': 'var(--color-blue)',
       },
       screens: {
         'tabletLg-': { max: '930px' },

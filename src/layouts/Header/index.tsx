@@ -1,5 +1,4 @@
 import NavBar from '@components/NavBar';
-import MyInput from '@components/UI/Inputs/MainInput';
 import { searchValue as headerSearchValue } from '@atoms/searchValueAtom';
 import { useRecoilState } from 'recoil';
 import styles from './Header.module.scss';
@@ -15,7 +14,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import cn from 'classnames';
 import { useOutsideCloseElement } from '@hooks/useOutsideCloseElement';
 import { globalCategores } from '@enums/globalCategores';
-import MyButton from '@components/UI/Buttons/MainButton';
+import MyButton from '@components/UI/buttons/MainButton';
+import MyInput from '@components/UI/inputs/MainInput';
 
 const selectBtns = [
   { text: globalCategores.Anime },

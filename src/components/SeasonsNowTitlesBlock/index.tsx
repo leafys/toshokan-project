@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SeasonsNowDescPart from './partials/SeasonsNowDescPart';
-import { ISeasonsNowTitlesBlockItems } from '@interfaces/ITopAndUpcomingTitles';
+import {
+  IGroupInfo,
+  ISeasonsNowTitlesBlockItems,
+} from '@interfaces/ITopAndUpcomingTitles';
 import Spinner from '@components/Spinner';
 
 const limit: number = 5;
@@ -33,7 +36,7 @@ const SeasonsNowTitlesBlock = (): JSX.Element => {
     <section className="container">
       <h1 className="text-xxl font-bold">Seasons now</h1>
       <div className="gap-4 m-xs-:gap-7 flex flex-row tabletLg-:flex-col justify-between flex-wrap w-full">
-        {data?.pages.map((group: any) =>
+        {data?.pages.map((group: IGroupInfo) =>
           group.data.data.map((item: ISeasonsNowTitlesBlockItems) => (
             <motion.div
               initial={{ opacity: 0 }}
@@ -44,7 +47,7 @@ const SeasonsNowTitlesBlock = (): JSX.Element => {
             >
               <Link
                 className="max-w-[195px] lessMd:max-w-[150px] m-xs-:max-w-[115px] w-full"
-                to="#"
+                to={`product-page/${item.mal_id}`}
               >
                 <img src={item.images.webp.image_url} alt="test" />
               </Link>

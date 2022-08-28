@@ -1,0 +1,5 @@
+.character-template {
+  @apply grid gap-5 justify-between lg:justify-center;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+}

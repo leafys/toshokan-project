@@ -2,6 +2,8 @@ import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import React, { lazy } from 'react';
 import Preloader from '@components/Preloader';
+import ProductPage from '@pages/ProductPage';
+import PageNotFound from '@pages/PageNotFound';
 
 const Layout = lazy(() => import('@layouts/LayoutWithHeaderAndFooter'));
 const Home = lazy(() => import('@pages/Home'));
@@ -32,24 +34,18 @@ const AppRoutes = () => {
         </React.Suspense>
       ),
       children: [
+        { index: true, element: <Home /> },
+        { path: `category`, element: <Categories /> },
+        { path: `random`, element: <Random /> },
+        { path: `search`, element: <Search /> },
         {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: `category`,
-          element: <Categories />,
-        },
-        {
-          path: `random`,
-          element: <Random />,
-        },
-        {
-          path: `search`,
-          element: <Search />,
+          path: 'product-page/',
+          element: <ProductPage />,
+          children: [{ path: `:id`, element: <ProductPage /> }],
         },
       ],
     },
+    { path: 'page-not-found', element: <PageNotFound /> },
     {
       path: '*',
       element: (

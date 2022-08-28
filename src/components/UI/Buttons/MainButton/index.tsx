@@ -2,7 +2,6 @@ import styles from './MainButton.module.scss';
 import { IButton } from './MainButton.props';
 import cn from 'classnames';
 
-
 const MyButton = ({
   children,
   className,

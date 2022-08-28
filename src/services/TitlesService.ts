@@ -12,11 +12,29 @@ type SeasonsNowTitlesAttrs = {
   page: number;
 };
 
+type TabsDataAttr = {
+  id: string | number | undefined;
+  getQueryTab: string | undefined;
+};
+
+type TitleByIdAttr = {
+  category: string | null;
+  id: string | number | undefined;
+};
+
+type AnimeAttrs = {
+  page: number;
+  category: string | null;
+};
+
 export default class TitlesService {
-  static async getAnime(page: number): Promise<AxiosResponse> {
+  static async getAnime({
+    page,
+    category,
+  }: AnimeAttrs): Promise<AxiosResponse> {
     return await axios({
       method: 'GET',
-      url: 'top/anime',
+      url: `top/${category}`,
       params: { page },
     });
   }
@@ -41,11 +59,34 @@ export default class TitlesService {
     });
   }
 
-  static async getSeasonsNowTitles({ limit, page }: SeasonsNowTitlesAttrs) {
+  static async getSeasonsNowTitles({
+    limit,
+    page,
+  }: SeasonsNowTitlesAttrs): Promise<AxiosResponse> {
     return await axios({
       method: 'GET',
       url: 'seasons/now',
       params: { limit, page },
     });
+  }
+
+  static async getTitleById({
+    category,
+    id,
+  }: TitleByIdAttr): Promise<AxiosResponse> {
+    return await (
+      await axios.get(`${category}/${id}/full`)
+    ).data;
+  }
+
+  static async getTabsData({
+    id,
+    getQueryTab,
+  }: TabsDataAttr): Promise<AxiosResponse | null> {
+    if (!getQueryTab) return null;
+
+    return await await (
+      await axios.get(`anime/${id}/${getQueryTab}`)
+    ).data;
   }
 }

@@ -1,0 +1,5 @@
+.staff-block {
+  @apply grid gap-x-3 gap-y-5 justify-between lg:justify-center;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+}

@@ -1,7 +1,7 @@
-import { IMainInput } from './MainInput.props';
 import styles from './MainInput.module.scss';
 import cn from 'classnames';
 import React from 'react';
+import { IMainInput } from './MainInput.props';
 
 const MyInput = React.forwardRef(
   (

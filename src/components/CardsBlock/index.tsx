@@ -27,23 +27,23 @@ const CardsBlock = ({ data, isLoading }: cardsBlockProps): JSX.Element => {
   return (
     <div className="w-full">
       <div className={styles['cards-block']}>
-        {isLoading
-          ? [...new Array(15)].map((_, index) =>
-              mobileMd ? (
-                <MobileSkeleton key={index} />
-              ) : (
-                <DescTabletSkeleton key={index} />
-              )
+        {data?.map((item: ITopAndUncomingTitle) => (
+          <Card
+            key={item.mal_id}
+            setImgLoaded={setImgLoaded}
+            imgLoaded={imgLoaded}
+            disabled={disabled}
+            card={item}
+          />
+        ))}
+        {isLoading &&
+          [...new Array(25)].map((_, index) =>
+            mobileMd ? (
+              <MobileSkeleton key={index} />
+            ) : (
+              <DescTabletSkeleton key={index} />
             )
-          : data?.map((item: ITopAndUncomingTitle) => (
-              <Card
-                key={item.mal_id}
-                setImgLoaded={setImgLoaded}
-                imgLoaded={imgLoaded}
-                disabled={disabled}
-                card={item}
-              />
-            ))}
+          )}
       </div>
     </div>
   );

@@ -10,7 +10,10 @@ type slideProps = {
 const Slide = ({ slide, imgLoaded, setImgLoaded }: slideProps): JSX.Element => {
   return (
     <article>
-      <Link to="#" className="flex flex-col items-center justify-center">
+      <Link
+        to={`product-page/${slide.mal_id}`}
+        className="flex flex-col items-center justify-center"
+      >
         <img
           src={
             imgLoaded

@@ -1,0 +1,22 @@
+.watch-block {
+  @apply grid bg-product-page-bg p-5 rounded-md justify-between gap-y-5 gap-x-3 lg:justify-center;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+}
+
+.loadedImage {
+  @apply max-w-[300px] w-full max-h-[120px] object-cover;
+}
+
+.title {
+  max-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  box-orient: vertical;
+}

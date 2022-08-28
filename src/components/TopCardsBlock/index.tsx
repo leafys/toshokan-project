@@ -1,5 +1,5 @@
 import CardsBlock from '@components/CardsBlock';
-import MyButton from '@components/UI/Buttons/MainButton';
+import MyButton from '@components/UI/buttons/MainButton';
 import {
   IError,
   ITopAndUncomingTitle,
@@ -13,12 +13,13 @@ import Spinner from '@components/Spinner';
 const TopBlock = memo((): JSX.Element => {
   const [topTitles, setTopTitles] = useState<ITopAndUncomingTitle[]>([]);
   const [page, setPage] = useState<number>(1);
+  const categoryName = localStorage.getItem('selectedСategory');
 
   const { t } = useTranslation();
 
   const { isLoading } = useQuery(
-    ['top anime', page],
-    () => TitlesService.getAnime(page),
+    ['top anime', page, categoryName],
+    () => TitlesService.getAnime({ page, category: categoryName }),
     {
       onSuccess: ({ data }) => {
         setTopTitles([...topTitles, ...data.data]);

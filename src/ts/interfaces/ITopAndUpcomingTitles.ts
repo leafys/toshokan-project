@@ -76,3 +76,11 @@ export interface IDataPagination {
     total: number;
   };
 }
+
+type Pages = {
+  data: ISeasonsNowTitlesBlockItems[];
+};
+
+export interface IGroupInfo {
+  data: Pages;
+}
